@@ -2,7 +2,14 @@
 
 [Expo](https://expo.io/) の [expo-template-bare-typescript](https://github.com/expo/expo/tree/master/templates/expo-template-bare-typescript) をベースにしたReact Nativeのテンプレートです。
 
-## How to use
+## 前提条件
+
+* [React Nativeの開発環境が構築](https://reactnative.dev/docs/environment-setup)されていること
+  * **必ず「React Native CLI Quickstart」というタブをクリック**して、手順を確認してください。
+  * 「Development OS」は、使っているOSを選択してください。
+  * （macOSのみ）「Target OS」は、「iOS」「Android」の両方の手順を実施してください。
+
+## 使い方
 
 ### 新規プロジェクトの作成
 
@@ -21,9 +28,10 @@ npm run ios // iPhoneのシミュレータが起動します
 npm run android // Androidエミュレータが起動します
 ```
 
-### ストア配信の準備
+### アプリの配信準備
 
-ExpoのBare Workflowを利用することになるため、Expoのドキュメントを参照してストア配信の準備をしてください。Managed Workflowのドキュメントではありますが、このテンプレートを利用する場合でも参考になります。
+アプリの配信までにしなくてはいけない作業がいくつかあるので、Expoのドキュメントを参照してアプリの配信準備をしてください。
+Managed Workflowのドキュメントではありますが、Bare Workflowを採用しているこのテンプレートを利用する場合でも参考になります。
 
 * [Deploying to App Stores - Expo](https://docs.expo.io/distribution/app-stores/)
   * このテンプレートではBare Workflowを採用しているため、`app.json` の `ios`と`android` に関する設定は、`Info.plist`や`AndroidManifest.xml`などで設定する必要があります
@@ -31,11 +39,13 @@ ExpoのBare Workflowを利用することになるため、Expoのドキュメ�
 
 ### ソースコードのスタイルなどをチェックする
 
-詳細に定義されたコーディング規約を意識しながらソースコードを書くのではなく、自動的にソースコードのスタイルなどをチェックしてくれるツールを活用してください。
+詳細に定義されたコーディング規約を意識しながらコードを書くのではなく、自動的にコードのスタイルなどをチェックしてくれるツールを活用してください。
 このテンプレートでは、そういった支援をしてくれる、以下のツールを導入しています。
 
 * [ESLint](https://eslint.org/)
   * 標準的な規約として、[eslint-config-universe](https://github.com/expo/expo/tree/master/packages/eslint-config-universe)を設定してあります。
+  * TypeScriptの型に関する規約([@typescript-eslint/recommended-requiring-type-checking](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules))も設定してあります。
+    * TypeScriptに慣れていないと、この規約が厳しく感じるかもしれません。実際にコードを書いてみて、対応するのが難しい指摘や効果の薄い指摘は個別にルールを無効化してみてください。
   * 設定を変更したい場合は、ESLintやeslint-config-universeのドキュメントを確認して、`.eslintrc.js`を変更してください。
 * [Prettier](https://prettier.io/)
   * `.prettierrc.js`に設定を記載しています。内容についてはコメントを確認してください。
