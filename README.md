@@ -21,3 +21,7 @@ ExpoのBare Workflowを利用することになるため、Expoのドキュメ�
 * [Deploying to App Stores - Expo](https://docs.expo.io/distribution/app-stores/)
   * このテンプレートではBare Workflowを採用しているため、`app.json` の `ios`と`android` に関する設定は、`Info.plist`や`AndroidManifest.xml`などで設定する必要があります
   * Managed WorkflowとBare Workflowの違いについては [Workflows - Expo Documentation](https://docs.expo.io/introduction/managed-vs-bare/) を参照してください
+
+## `expo-template-bare-typescript` からの変更点
+
+* [ ] Editorconfig, ESLint, Prettierを追加
