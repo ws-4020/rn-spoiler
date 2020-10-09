@@ -16,7 +16,6 @@ jobs:
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     steps:
       - name: Auto-complete
-        if: ${{ success() }}
         uses: "pascalgn/automerge-action@v0.12.0"
         env:
           MERGE_LABELS: '!skip-auto-complete,!wip'
