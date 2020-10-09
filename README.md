@@ -1,4 +1,4 @@
-# ws-4020 React Native template
+# ws-4020 React Native starter
 
 [Expo](https://expo.io/) の [expo-template-bare-typescript](https://github.com/expo/expo/tree/master/templates/expo-template-bare-typescript) をベースにしたReact Nativeのテンプレートです。
 
