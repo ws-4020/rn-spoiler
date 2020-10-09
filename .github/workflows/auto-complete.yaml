@@ -6,30 +6,25 @@ on:
       - labeled
       - unlabeled
       - synchronize
-      - opened
-      - edited
       - ready_for_review
       - reopened
-      - unlocked
   pull_request_review:
     types:
       - submitted
   check_suite:
     types:
       - completed
-  status: {}
 
 jobs:
   auto-complete:
     runs-on: ubuntu-latest
+    # Auto-complete takes too much time, so run it only when pr is not a draft
+    if: ${{ github.event.pull_request.draft == false }}
     env:
-      GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
     steps:
-      - name: WIP
-        uses: wip/action@v1.0.0
       - name: Auto-complete
-        if: ${{ success() }}
-        uses: "pascalgn/automerge-action@v0.12.0"
+        uses: 'pascalgn/automerge-action@v0.12.0'
         env:
           MERGE_LABELS: '!skip-auto-complete,!wip'
           MERGE_METHOD: squash
