@@ -6,8 +6,11 @@
     "web": "expo start --web",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint --ext .jsx,.js,.tsx,.ts .",
-    "lint:fix": "eslint --fix --ext .jsx,.js,.tsx,.ts ."
+    "lint": "run-s --print-name --continue-on-error lint:*",
+    "lint:es": "eslint --ext .jsx,.js,.tsx,.ts .",
+    "lint:tsc": "tsc --noEmit",
+    "fix": "run-s --print-name --continue-on-error fix:*",
+    "fix:es": "eslint --fix --ext .jsx,.js,.tsx,.ts ."
   },
   "dependencies": {
     "expo": "~39.0.2",
