@@ -1,0 +1,49 @@
+# Add 'iOS' label to any change within the 'ios' directory
+iOS:
+  - ios/**/*
+
+# Add 'Android' label to any change within the 'android' directory
+Android:
+  - android/**/*
+
+# Add 'app' label to any change within the 'app' directory and to the files listed below
+app:
+  - app/**/*
+  - app.json
+  - index.js
+
+# Add 'build' label to any changes to the files listed below
+build:
+  - .buckconfig
+  - .editorconfig
+  - .eslintrc.js
+  - .prettierrc.js
+  - babel.config.js
+  - metro.config.js
+  - package.json
+  - package-lock.json
+  - tsconfig.json
+
+# Add 'chore' label to any change within the '.github' directory and to the files listed below
+chore:
+  # Changes to files within '.github/workflows' should correspond to the 'ci' label
+  - any: ['.github/**/*', '!.github/workflows/**/*']
+  - .gitattributes
+  - .gitignore
+  - gitignore
+  - LICENSE
+
+# Add 'ci' label to any change within the '.github/workflows' directory
+ci:
+  - .github/workflows/**/*
+
+# Add 'doc' label to any change within the 'docs' directory
+doc:
+  - docs/**/*
+  - README.md
+
+# Add 'test' label to any change to files within the directories listed below
+test:
+  - __tests__/**/*
+  - __mocks__/**/*
+  - jest.config.js
