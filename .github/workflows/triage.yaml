@@ -1,7 +1,11 @@
 name: Triage
 
 on:
-  - pull_request_target
+  pull_request:
+    types:
+      - opend
+      - edited
+      - reopened
 
 jobs:
   triage:
