@@ -13,10 +13,14 @@ on:
       - '__tests__/**'
       - '__mocks__/**'
       - 'app.json'
+      - 'index.js'
       - 'package.json'
       - 'package-lock.json'
       - 'tsconfig.json'
       - '.editorconfig'
+      - '.eslintrc.js'
+      - '.prettierrc.js'
+      - '.github/workflows/typescript.yaml'
   pull_request:
     branches:
       - master
@@ -29,10 +33,14 @@ on:
       - '__tests__/**'
       - '__mocks__/**'
       - 'app.json'
+      - 'index.js'
       - 'package.json'
       - 'package-lock.json'
       - 'tsconfig.json'
       - '.editorconfig'
+      - '.eslintrc.js'
+      - '.prettierrc.js'
+      - '.github/workflows/typescript.yaml'
     types:
       - opened
       - synchronize
