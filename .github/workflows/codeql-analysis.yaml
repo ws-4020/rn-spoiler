@@ -22,6 +22,7 @@ on:
       - 'package.json'
       - 'package-lock.json'
       - 'tsconfig.json'
+      - '.github/workflows/codeql-analysis.yaml'
   pull_request:
     branches:
       - master
@@ -38,6 +39,7 @@ on:
       - 'package.json'
       - 'package-lock.json'
       - 'tsconfig.json'
+      - '.github/workflows/codeql-analysis.yaml'
     types:
       - opened
       - synchronize
