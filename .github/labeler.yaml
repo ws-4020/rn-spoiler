@@ -6,9 +6,9 @@ iOS:
 Android:
   - android/**/*
 
-# Add 'app' label to any change within the 'app' directory and to the files listed below
+# Add 'app' label to any change within the 'src' directory and to the files listed below
 app:
-  - app/**/*
+  - src/**/*
   - app.json
   - index.js
 
