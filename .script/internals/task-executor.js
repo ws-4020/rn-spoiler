@@ -12,23 +12,26 @@ const elapsedTime = (startTime) => {
 
 const runCommand = (task, command) => {
   return new Promise((resolve, reject) => {
+    process.stdout.write(`\t${command.command} ${command.args.join(' ')} @[${command.cwd || './'}]...`);
     const spawnedTask = spawn(command.command, command.args, {shell: true, cwd: command.cwd});
 
+    let stderr = ''
     spawnedTask.stderr.on('data', (data) => {
-      console.log()
-      console.log(`\tstdout: ${data}`);
+      stderr += data
     });
 
     spawnedTask.on('error', (error) => {
-      console.log(`❌  Command '${task.name}' failed with error: ${error.message}`);
+      console.log(`❌ (error: ${error.message})`);
       reject(error);
     });
 
     spawnedTask.on('exit', (code) => {
       if (code !== 0) {
-        console.log(`❌  Command '${task.name}' failed with code: ${code}`);
+        console.log(`❌ (code: ${code})`);
+        process.stderr.write(`\t\t${stderr}`)
         reject(code);
       } else {
+        console.log(`✔️`);
         resolve(code);
       }
     });
@@ -36,20 +39,22 @@ const runCommand = (task, command) => {
 };
 
 const execute = async (task) => {
-  const startTime = process.hrtime();
+  if (!task.enabled) {
+    console.log(`⏭️ Skip '${task.name}'`)
+    return;
+  }
 
-  console.log(`🚀 ${task.name} has started.`);
+  console.log(`🚀 '${task.name}' has started.`);
+  const startTime = process.hrtime();
   for (let command of task.commands) {
     try {
-      process.stdout.write(`\t${command.command} ${command.args.join(' ')} @[${command.cwd || './'}]...`);
       await runCommand(task, command);
-      console.log(`✔️`);
     } catch (e) {
-      console.log(`❌ ${task.name} has failed in ${elapsedTime(startTime)}.`);
+      console.log(`❌ '${task.name}' has failed in ${elapsedTime(startTime)}.`);
       return;
     }
   }
-  console.log(`✅ ${task.name} has finished running in ${elapsedTime(startTime)}.`);
+  console.log(`✅ '${task.name}' has finished running in ${elapsedTime(startTime)}.`);
 };
 
 module.exports = {

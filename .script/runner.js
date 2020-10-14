@@ -67,6 +67,8 @@ const main = async () => {
   for (let task of tasks) {
     if (task.enabled) {
       await execute(task);
+    } else {
+      console.log(`⏭️ Skip ${task.name}`)
     }
   }
 };
