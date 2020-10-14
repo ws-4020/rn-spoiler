@@ -103,7 +103,7 @@ module.exports = [
   // Android related build artifacts and caches
   {
     name: 'Delete Android build artifacts and build cache',
-    enabled: false,
+    enabled: true,
     commands: [
       {
         command: 'bash',
