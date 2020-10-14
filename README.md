@@ -24,81 +24,16 @@ expo init -t https://github.com/ws-4020/rn-spoiler.git <YourAppName>
 
 正しく生成できていることを確認するために、次のコマンドを実行してアプリが正しく起動することを確認してください。
 
-```
-npm run ios // iPhoneのシミュレータが起動します
-npm run android // Androidエミュレータが起動します
-```
-
-### アプリの配信準備
-
-アプリの配信までにしなくてはいけない作業がいくつかあるので、Expo のドキュメントを参照してアプリの配信準備をしてください。
-Managed Workflow のドキュメントではありますが、Bare Workflow を採用しているこのテンプレートを利用する場合でも参考になります。
-
-- [Deploying to App Stores - Expo](https://docs.expo.io/distribution/app-stores/)
-  - このテンプレートでは Bare Workflow を採用しているため、`app.json`の`ios`と`android`に関する設定は、`Info.plist`や`AndroidManifest.xml`などで設定する必要があります
-  - Managed Workflow と Bare Workflow の違いについては [Workflows - Expo Documentation](https://docs.expo.io/introduction/managed-vs-bare/) を参照してください
-
-### ソースコードのスタイルなどをチェックする
-
-詳細に定義されたコーディング規約を意識しながらコードを書くのではなく、自動的にコードのスタイルなどをチェックしてくれるツールを活用してください。
-このテンプレートでは、そういった支援をしてくれるツールを導入しています。必要に応じて、各設定ファイルを編集して好みの設定に調整してください。
-
-次のコマンドを実行すると、すべてのツールでのチェックが実行されます。
-
 ```bash
-npm run -s lint
+npm run ios        # iPhoneシミュレータが起動します
+npm run android    # Androidエミュレータが起動します
 ```
 
-ツールに定型的な修正を実行させるには、次のコマンドを実行してください。なお、自動修正が適用できない違反は通常通り報告されます。
-
-```bash
-npm run -s fix
-```
-
-#### ESLint
-
-- [ESLint](https://eslint.org/)
-  - 標準的な規約として、[eslint-config-universe](https://github.com/expo/expo/tree/master/packages/eslint-config-universe)を設定してあります。
-  - TypeScript の型に関する規約([@typescript-eslint/recommended-requiring-type-checking](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules))も設定してあります。
-    - TypeScript に慣れていないと、この規約が厳しく感じるかもしれません。実際にコードを書いてみて、対応するのが難しい指摘や効果の薄い指摘は個別にルールを無効化してみてください。
-  - 設定を変更したい場合は、ESLint や eslint-config-universe のドキュメントを確認して、`.eslintrc.js`を変更してください。
-- [EditorConfig](https://editorconfig.org/)
-  - 一般的と考えている設定をしています。内容については`.eslintconfig`内のコメントを確認してください。
-- [Prettier](https://prettier.io/)
-  - `npx react-native init`で生成されるものと同じ設定をしています。内容については`.prettierrc.js`内のコメントを確認してください。
-  - EditorConfig の設定も読み込むので、重複する内容を設定する必要はありません。[読み込まれる EditorConfig の設定値](https://prettier.io/docs/en/api.html#prettierresolveconfigfilepath--options)は次のものです。
-    - `end_of_line`
-    - `indent_style`
-    - `indent_size`, `tab_width`
-    - `max_line_length`
-
-ESLint でのチェックを実行するには、次のコマンドを実行してください。
-
-```bash
-npm run -s lint:es
-```
-
-定型的な修正はツールが自動的に変更を加えてくれます。自動的に修正したい場合は、次のコマンドを実行してください。すべての違反を修正してくれるわけではありませんが、非常に便利なのでぜひ活用してください。
-
-```bash
-npm run -s fix:es
-```
-
-#### TypeScript
-
-[TypeScript](https://www.typescriptlang.org/)のコンパイラには、コーディング規約をチェックする機能があります。たとえば、型情報が適切に設定されているかどうかや、import/export の構文が規約どおりになっているかなどをチェックすることができます。
-
-テンプレートでは、React Native (Expo) での標準的な内容を設定してあります。設定値の詳細については、`tsconfig.json`と[TSConfig Reference](https://www.typescriptlang.org/tsconfig)を参照してください。
-
-TypeScript コンパイラでの規約チェックを実行するには、次のコマンドを実行してください。
-
-```bash
-npm run -s lint:tsc
-```
+プロジェクトを作成したら、[開発者向けガイド](docs)を参考に開発を始めることが出来ます。
 
 ## `expo-template-bare-typescript` からの変更点
 
 - [x] Editorconfig, ESLint, Prettier を追加
 - [x] TypeScript の設定ファイルを修正、`tsc`での型チェックを lint に追加
-- [x] Androidでデフォルトで要求するパーミッションの最小化
+- [x] Android でデフォルトで要求するパーミッションの最小化
 - [x] `App.tsx`を`src`ディレクトリ配下に移動

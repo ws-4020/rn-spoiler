@@ -1,0 +1,15 @@
+title = "React Native 開発者向けガイド"
+description = "このプロジェクトで React Native を使ってアプリケーションを開発する方に向けたドキュメントです。"
+languageCode = "ja-jp"
+hasCJKLanguage = true
+
+relativeURLs = true
+enableEmoji = true
+
+theme = "github.com/themefisher/dot-hugo-documentation-theme"
+
+sectionPagesMenu = "main"
+
+[markup.goldmark.renderer]
+# Markdownファイル内でHTMLタグを有効にする
+unsafe = true
