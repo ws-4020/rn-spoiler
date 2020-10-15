@@ -37,3 +37,4 @@ npm run android    # Androidエミュレータが起動します
 - [x] TypeScript の設定ファイルを修正、`tsc`での型チェックを lint に追加
 - [x] Android でデフォルトで要求するパーミッションの最小化
 - [x] `App.tsx`を`src`ディレクトリ配下に移動
+- [x] 開発者ごとに簡単にSigningできるように、Signing情報を記述するテンプレートファイルをiOSのビルド設定に追加
