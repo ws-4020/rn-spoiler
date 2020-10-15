@@ -31,37 +31,6 @@ npm run android    # Androidエミュレータが起動します
 
 プロジェクトを作成したら、[開発者向けガイド](docs)を参考に開発を始めることが出来ます。
 
-### Apple IDの設定
-
-アプリをiOSの実機でデバッグする前に以下の設定が必要です。
-
-1. Apple ID設定用のファイルを用意
-   ```
-   cp ios/PersonalAccount.xcconfig.template ios/PersonalAccount.xcconfig
-   ```
-2. `ios/PersonalAccount.xcconfig`にApple IDの設定を追加
-   * `CODE_SIGN_STYLE` は `Automatic` に設定
-   * `PERSONAL_IDENTIFIER` は他の人と重複しない値に設定（Bundle Identiferのサフィックスとして利用されます）
-   * `DEVELOPMENT_TEAM` は、Xcodeで個人のApple IDをTEAMとして設定したときに表示される値を設定
-
-## Tips
-
-### ビルドキャッシュをリセットする
-
-どんな言語やフレームワークで開発していてもそうですが、ドキュメントのとおりにやっているはずなのにビルドに失敗したり、うまくアプリケーションが起動できなかったりすることがあります。
-
-たいていの場合はどこかにタイポがあったりして「あぁ、ミスってた〜」となるのですが、本当にどうにも原因がわからないこともあります。
-
-そういった場合にビルドなどのキャッシュをクリアすると何故かうまく動いてしまうこともあるので、このテンプレートではReact Nativeで開発しているときに生成されるキャッシュなどをすべて削除するスクリプトを用意しています。
-
-次のコマンドを実行することで、ビルド時に利用されているキャッシュをすべて削除することが出来ます。なお、このコマンドを実行するとすべてのキャッシュが削除されるため、次回のアプリケーションビルドにかなり時間がかかるようになります。
-
-> **Note**: コマンドを実行する前に、Metroサーバを停止してください。また、Android StudioやXcodeなども終了しおくことをおすすめします。
-
-```
-npm run reset-cache
-```
-
 ## `expo-template-bare-typescript` からの変更点
 
 - [x] Editorconfig, ESLint, Prettier を追加
