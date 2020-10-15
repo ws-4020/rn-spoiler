@@ -45,7 +45,10 @@
     "typescript": "~3.9.5"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "jest-expo",
+    "setupFiles": [
+      "<rootDir>/__setup__/react-navigation.js"
+    ]
   },
   "jest-junit": {
     "suiteNameTemplate": "{filepath}",
