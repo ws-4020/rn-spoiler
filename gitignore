@@ -64,3 +64,6 @@ web-build/
 
 # Jest
 junit.xml
+
+# Local environmental variables
+ios/PersonalAccount.xcconfig
