@@ -57,7 +57,7 @@ const main = async () => {
       output: process.stdout,
     });
 
-    for (task of tasks) {
+    for (let task of tasks) {
       task.enabled = await ask(cui, task);
     }
 
