@@ -316,7 +316,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.name.HelloWorld.${PERSONAL_IDENTIFIER}";
+				PRODUCT_BUNDLE_IDENTIFIER = "personal.org.name.HelloWorld.${PERSONAL_IDENTIFIER}";
 				PRODUCT_NAME = HelloWorld;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
