@@ -3,7 +3,7 @@ name: Triage
 on:
   pull_request:
     types:
-      - opend
+      - opened
       - edited
       - reopened
 

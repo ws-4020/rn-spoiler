@@ -28,7 +28,7 @@
   - [ ] シミュレータ (iPhone Xs/iOS 14)
   - [ ] 実機 (iPhone 8/iOS 14)
 - [ ] Android
-  - [ ] エミュレータ (Pixel 4a/Android 11)
+  - [ ] エミュレータ (Pixel 3a/Android 11)
   - [ ] 実機 (Pixel 3a/Android 11)
 
 ## その他（レビュアーへの申し送り事項、懸念点など）
