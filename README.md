@@ -102,3 +102,4 @@ npm run -s lint:tsc
 - [x] TypeScript の設定ファイルを修正、`tsc`での型チェックを lint に追加
 - [x] Androidでデフォルトで要求するパーミッションの最小化
 - [x] `App.tsx`を`src`ディレクトリ配下に移動
+- [x] React Navigationを追加
