@@ -18,6 +18,8 @@ jobs:
   auto-complete:
     runs-on: ubuntu-latest
     # Auto-complete takes too much time, so run it only when pr is not a draft
+    # Auto-complete merges if there is a check failure and 'mergeable_state' is 'unstable'
+    # cf: https://github.com/pascalgn/automerge-action/issues/90
     if: ${{ github.event.pull_request.draft == false && github.event.pull_request.mergeable_state != 'unstable' }}
     env:
       GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
