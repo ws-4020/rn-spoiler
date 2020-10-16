@@ -18,7 +18,7 @@ jobs:
   auto-complete:
     runs-on: ubuntu-latest
     # Auto-complete takes too much time, so run it only when pr is not a draft
-    if: ${{ github.event.pull_request.draft == false }}
+    if: ${{ github.event.pull_request.draft == false && github.event.pull_request.mergeable_state != 'unstable' }}
     env:
       GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
     steps:
