@@ -1,23 +1,21 @@
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import * as React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+
+import {RouteParams} from './components/RouteParams';
+import {DetailsHeader, DetailsScreen, HomeHeader, HomeScreen} from './components/pages';
+
+const RootStack = createStackNavigator<RouteParams>();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-      </View>
+      {/*https://reactnavigation.org/docs/stack-navigator/*/}
+      <RootStack.Navigator initialRouteName="Home">
+        <RootStack.Screen name="Home" component={HomeScreen} options={{headerTitle: HomeHeader}} initialParams={{now: new Date().toISOString()}} />
+        <RootStack.Screen name="Details" component={DetailsScreen} options={{headerTitle: DetailsHeader}} initialParams={{name: 'In a Paddy'}} />
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
