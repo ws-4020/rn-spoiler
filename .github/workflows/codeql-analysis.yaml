@@ -100,7 +100,8 @@ jobs:
         run: npm clean-install
 
       # Cache '.gradle' to speed up gradle build
-      - uses: actions/cache@v2
+      - name: Cache .gradle
+        uses: actions/cache@v2
         with:
           path: |
             ~/.gradle/caches
