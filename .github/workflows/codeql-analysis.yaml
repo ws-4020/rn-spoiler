@@ -99,6 +99,18 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm clean-install
 
+      # Cache '.gradle' to speed up gradle build
+      - name: Cache .gradle
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          # If cache is corrupted, increment prefixed number.
+          key: 1-${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            1-${{ runner.os }}-gradle-
+
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
