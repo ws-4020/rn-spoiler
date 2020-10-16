@@ -19,7 +19,12 @@ export default function App() {
       {/*https://reactnavigation.org/docs/stack-navigator/*/}
       <RootStack.Navigator initialRouteName="Home">
         <RootStack.Screen name="Home" component={HomeScreen} options={{headerTitle: HomeHeader}} initialParams={{now: new Date().toISOString()}} />
-        <RootStack.Screen name="Details" component={DetailsScreen} options={{headerTitle: DetailsHeader}} initialParams={{name: 'In a Paddy'}} />
+        <RootStack.Screen
+          name="Details"
+          component={DetailsScreen}
+          options={{headerTitle: DetailsHeader, headerBackTitle: '', headerTruncatedBackTitle: ''}}
+          initialParams={{name: 'In a Paddy'}}
+        />
       </RootStack.Navigator>
     </NavigationContainer>
   );
