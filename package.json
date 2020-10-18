@@ -47,7 +47,7 @@
     "typescript": "~3.9.5"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "jest-expo"
   },
   "jest-junit": {
     "suiteNameTemplate": "{filepath}",
