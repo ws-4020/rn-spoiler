@@ -1,4 +1,5 @@
 import {NavigationContainer} from '@react-navigation/native';
+import {activateKeepAwake} from 'expo-keep-awake';
 import React from 'react';
 // StackNavigatorには、ネイティブUIでスクリーンを表示するNativeStackNavigatorを利用します。
 // ただし、あまりカスタマイズ出来ないようなので、もし細かいカスタマイズが必要になった場合はドキュメントに記載してる通りデフォルトのStackNavigatorを利用するように変更してください。
@@ -14,6 +15,10 @@ import {ExampleNavigator} from './example/components/ExampleDrawer';
 const RootStack = createNativeStackNavigator();
 
 export default function App() {
+  // 開発中は画面がスリープしないようにしておきます。
+  if (__DEV__) {
+    activateKeepAwake();
+  }
   return (
     <NavigationContainer>
       {/* テンプレートに含まれるサンプルをアプリ内で表示できるように、DrawerNavigatorを用意しています。*/}
@@ -25,3 +30,12 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
