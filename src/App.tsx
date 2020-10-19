@@ -25,7 +25,7 @@ export default function App() {
       {/* 必要なくなったらScreenを削除し、initialRouteNameをExampleからMainに変更してください。 */}
       <RootStack.Navigator screenOptions={{headerShown: false}} initialRouteName="Example">
         <RootStack.Screen name="Main" component={MainNavigator} />
-        <RootStack.Screen name="Example" component={ExampleNavigator} options={{gestureEnabled: false}} />
+        <RootStack.Screen name="Example" component={ExampleNavigator} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
