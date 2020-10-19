@@ -1,9 +1,9 @@
 import {RouteProp} from '@react-navigation/native';
 import React from 'react';
-import {Text} from 'react-native-elements';
 import {createNativeStackNavigator, NativeStackNavigationProp} from 'react-native-screens/native-stack';
 
 import {AppRouteProps} from '../../MainNavigator';
+import {PencilIcon} from '../../basics';
 import InputForm1Screen from './InputForm1Screen';
 import InputForm2Screen from './InputForm2Screen';
 import InputFormCompleteScreen from './InputFormCompleteScreen';
@@ -47,6 +47,6 @@ export default {
   name: 'Wizard',
   component: Component,
   options: {
-    tabBarIcon: () => <Text>🖋</Text>,
+    tabBarIcon: () => <PencilIcon size={24} />,
   },
 };

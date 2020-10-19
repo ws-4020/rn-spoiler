@@ -4,8 +4,8 @@ import {Icon, IconProps} from 'react-native-elements';
 type SpecificIconType = Omit<IconProps, 'name' | 'type'>;
 
 // React Native Elementsを使用したアイコンのサンプル
-const GearIcon = ({color = '#9D8CB8', ...props}: SpecificIconType) => {
-  return <Icon name="camera" type="font-awesome" color={color} {...props} />;
+const HomeIcon = ({color = '#9D8CB8', ...props}: SpecificIconType) => {
+  return <Icon name="home" type="font-awesome" color={color} {...props} />;
 };
 
-export default GearIcon;
+export default HomeIcon;
