@@ -5,7 +5,7 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "lint": "run-s --print-name --continue-on-error lint:*",
     "lint:es": "eslint --ext .jsx,.js,.tsx,.ts .",
     "lint:tsc": "tsc --noEmit",
@@ -15,6 +15,11 @@
     "generate-svgr": "svgr ./svg --out-dir src/generated/svg --template svgr-template.js --native --typescript --memo "
   },
   "dependencies": {
+    "@react-native-community/masked-view": "0.1.10",
+    "@react-navigation/bottom-tabs": "^5.9.2",
+    "@react-navigation/drawer": "^5.9.3",
+    "@react-navigation/native": "^5.7.6",
+    "@react-navigation/stack": "^5.9.3",
     "expo": "~39.0.2",
     "expo-splash-screen": "~0.6.2",
     "expo-updates": "~0.3.3",
@@ -26,6 +31,7 @@
     "react-native-gesture-handler": "~1.7.0",
     "react-native-reanimated": "~1.13.0",
     "react-native-responsive-screen": "~1.4.1",
+    "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
     "react-native-svg": "~12.1.0",
     "react-native-unimodules": "~0.11.0",
@@ -51,7 +57,10 @@
     "typescript": "~3.9.5"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "jest-expo",
+    "setupFiles": [
+      "<rootDir>/__setup__/react-navigation.js"
+    ]
   },
   "jest-junit": {
     "suiteNameTemplate": "{filepath}",
