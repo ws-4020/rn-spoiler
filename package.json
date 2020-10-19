@@ -11,7 +11,8 @@
     "lint:tsc": "tsc --noEmit",
     "fix": "run-s --print-name --continue-on-error fix:*",
     "fix:es": "eslint --fix --ext .jsx,.js,.tsx,.ts .",
-    "reset-cache": "node .script/runner.js reset-cache"
+    "reset-cache": "node .script/runner.js reset-cache",
+    "generate-svgr": "svgr ./svg --out-dir src/generated/svg --template svgr-template.js --native --typescript --memo "
   },
   "dependencies": {
     "expo": "~39.0.2",
@@ -26,12 +27,14 @@
     "react-native-reanimated": "~1.13.0",
     "react-native-responsive-screen": "~1.4.1",
     "react-native-screens": "~2.10.1",
+    "react-native-svg": "~12.1.0",
     "react-native-unimodules": "~0.11.0",
     "react-native-vector-icons": "~7.1.0",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@svgr/cli": "~5.4.0",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",

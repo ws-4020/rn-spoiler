@@ -1,13 +1,12 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Alert} from 'react-native';
 
-import {CameraIcon} from './framework/components/basics';
+import {CameraIcon, GuruGuruIcon} from './example/components/basics';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <CameraIcon size={30} color="#9D8CB8" />
+      <Text>Open up App.tsx to start working on your app!!!!<CameraIcon /> <GuruGuruIcon /></Text>
     </View>
   );
 }
