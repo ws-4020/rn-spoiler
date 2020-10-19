@@ -2,6 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {Button, Text} from 'react-native-elements';
 
+import {useTheme} from '../../../themes';
 import {WizardScreenDefinition} from '../../parts/WizardScreenDefinition';
 import {FormWizardParams, FormWizardScreenProps} from './FormWizardNavigator';
 
@@ -20,9 +21,12 @@ const Definition: WizardScreenDefinition<FormWizardParams> = {
 export default Definition;
 
 function Component({navigation}: FormWizardScreenProps<typeof Definition.name>) {
+  const theme = useTheme();
+
   return (
     <View>
       <Text>Input Form 1 Component</Text>
+      <Text style={{color: theme.colors.black}}>theme.colors.black</Text>
       <Button onPress={() => navigation.navigate('Input2')}>Next</Button>
     </View>
   );

@@ -9,6 +9,7 @@ import {createNativeStackNavigator} from 'react-native-screens/native-stack';
 
 import {MainNavigator} from './components/MainNavigator';
 import {ExampleNavigator} from './example/components/ExampleDrawer';
+import {LightTheme, ThemeProvider} from './example/themes';
 
 // モーダル画面などを表示するために、アプリが主として利用するTabNavigatorの前にStackNavigatorを用意しておきます。
 // https://reactnavigation.org/docs/modal/
@@ -20,13 +21,15 @@ export default function App() {
     activateKeepAwake();
   }
   return (
-    <NavigationContainer>
-      {/* テンプレートに含まれるサンプルをアプリ内で表示できるように、DrawerNavigatorを用意しています。*/}
-      {/* 必要なくなったらScreenを削除し、initialRouteNameをExampleからMainに変更してください。 */}
-      <RootStack.Navigator screenOptions={{headerShown: false}} initialRouteName="Example">
-        <RootStack.Screen name="Main" component={MainNavigator} />
-        <RootStack.Screen name="Example" component={ExampleNavigator} />
-      </RootStack.Navigator>
-    </NavigationContainer>
+    <ThemeProvider theme={LightTheme}>
+      <NavigationContainer theme={LightTheme}>
+        {/* テンプレートに含まれるサンプルをアプリ内で表示できるように、DrawerNavigatorを用意しています。*/}
+        {/* 必要なくなったらScreenを削除し、initialRouteNameをExampleからMainに変更してください。 */}
+        <RootStack.Navigator screenOptions={{headerShown: false}} initialRouteName="Example">
+          <RootStack.Screen name="Main" component={MainNavigator} />
+          <RootStack.Screen name="Example" component={ExampleNavigator} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
