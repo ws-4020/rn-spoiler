@@ -8,9 +8,9 @@ const ExampleDrawer = createDrawerNavigator();
 
 export function ExampleNavigator() {
   return (
-    <ExampleDrawer.Navigator initialRouteName="MainNavigator">
-      <ExampleDrawer.Screen name="HelloWorld" component={MainNavigator} />
-      <ExampleDrawer.Screen name="Example" component={ExampleMainNavigator} options={{swipeEnabled: false}} />
+    <ExampleDrawer.Navigator initialRouteName="MainInDrawer">
+      <ExampleDrawer.Screen name="MainInDrawer" component={MainNavigator} options={{drawerLabel: 'Main'}} />
+      <ExampleDrawer.Screen name="ExampleInDrawer" component={ExampleMainNavigator} options={{drawerLabel: 'Example', swipeEnabled: false}} />
     </ExampleDrawer.Navigator>
   );
 }
