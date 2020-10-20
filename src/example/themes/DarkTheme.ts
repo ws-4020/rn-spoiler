@@ -1,3 +1,4 @@
+// テーマ切替用
 import {Theme as NavigatorTheme} from '@react-navigation/native';
 
 import {LightTheme} from './LightTheme';

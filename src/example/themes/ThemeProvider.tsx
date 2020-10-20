@@ -1,3 +1,4 @@
+// テーマ切替用
 import React, {ReactNode, useContext} from 'react';
 import {FullTheme, ThemeContext, ThemeProvider as RNThemeProvider, ThemeProviderProps, ThemeProps} from 'react-native-elements';
 

@@ -1,3 +1,4 @@
+// テーマ切替用
 import React, {useState, createContext, useContext} from 'react';
 import {useColorScheme} from 'react-native';
 

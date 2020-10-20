@@ -1,3 +1,4 @@
+// テーマ切替用
 import {Theme as NavigatorTheme, useTheme as useNavigatorTheme} from '@react-navigation/native';
 import React, {useCallback} from 'react';
 import {Text, withTheme, Button, ThemeProps} from 'react-native-elements';
