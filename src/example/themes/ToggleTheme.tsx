@@ -1,32 +1,30 @@
 // テーマ切替用
-import {Theme as NavigatorTheme, useTheme as useNavigatorTheme} from '@react-navigation/native';
+import {Theme as NavigatorTheme} from '@react-navigation/native';
 import React, {useCallback} from 'react';
-import {Text, withTheme, Button, ThemeProps} from 'react-native-elements';
+import {withTheme, Button, ThemeProps, Theme} from 'react-native-elements';
 
 import {LightTheme, DarkTheme} from './';
 import {useIsDark} from './IsDarkProvider';
 
-const ToggleThemeInner = (props: ThemeProps<NavigatorTheme>) => {
+function nextIsDark(theme: Theme<NavigatorTheme>) {
+  return !theme.dark;
+}
+
+function nextTheme(theme: Theme<NavigatorTheme>) {
+  return nextIsDark(theme) ? DarkTheme : LightTheme;
+}
+
+function ToggleThemeInner(props: ThemeProps<NavigatorTheme>) {
   const {theme, updateTheme} = props;
 
   const {setIsDark} = useIsDark();
 
-  const navigatorTheme = useNavigatorTheme();
-
   const toggleTheme = useCallback(() => {
-    const nextIsDark = !theme.dark;
-    setIsDark(nextIsDark);
-    const nextTheme = nextIsDark ? DarkTheme : LightTheme;
-    updateTheme(nextTheme);
+    setIsDark(nextIsDark(theme));
+    updateTheme(nextTheme(theme));
   }, [theme]);
 
-  return (
-    <>
-      <Button title={`Toggle Theme (current = ${theme.dark ? 'Dark' : 'Light'})`} onPress={toggleTheme} />
-      <Text style={{color: theme.colors.black}}>theme.colors.black = {theme.colors.black}</Text>
-      <Text style={{color: navigatorTheme.colors.text}}>navigatorTheme.colors.text = {navigatorTheme.colors.text}</Text>
-    </>
-  );
-};
+  return <Button title={`to ${theme.dark ? 'Light' : 'Dark'})`} onPress={toggleTheme} />;
+}
 
 export const ToggleTheme = withTheme(ToggleThemeInner);

@@ -19,9 +19,7 @@ const MixinInner: React.FC = ({children}) => {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer theme={theme}>
-        <SyncThemeWithDeviceSettings>
-          {children}
-        </SyncThemeWithDeviceSettings>
+        <SyncThemeWithDeviceSettings>{children}</SyncThemeWithDeviceSettings>
       </NavigationContainer>
     </ThemeProvider>
   );
