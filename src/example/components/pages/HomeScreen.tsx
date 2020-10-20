@@ -17,7 +17,7 @@ function Component() {
   return (
     <SafeAreaView>
       <Text>Home Component</Text>
-      <ToggleTheme />
+      <ToggleTheme /> {/* テーマ切替用 */}
     </SafeAreaView>
   );
 }

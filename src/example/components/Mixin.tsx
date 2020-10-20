@@ -12,13 +12,16 @@ const Mixin: React.FC = ({children}) => {
 };
 
 const MixinInner: React.FC = ({children}) => {
+  // テーマ切替用
   const {isDark} = useIsDark();
   const theme = useMemo<Theme & NavigatorTheme>(() => (isDark ? DarkTheme : LightTheme), [isDark]);
 
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer theme={theme}>
-        <SyncThemeWithDeviceSettings>{children}</SyncThemeWithDeviceSettings>
+        <SyncThemeWithDeviceSettings> {/* テーマ切替用 */}
+          {children}
+        </SyncThemeWithDeviceSettings> {/* テーマ切替用 */}
       </NavigationContainer>
     </ThemeProvider>
   );
