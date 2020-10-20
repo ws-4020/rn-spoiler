@@ -1,7 +1,7 @@
 import {Theme as NavigatorTheme} from '@react-navigation/native';
 import {StyleSheet} from 'react-native';
 
-import {Theme} from '../themes';
+import {Theme} from './react-native-elements';
 
 const ColorPalette = {
   white: '#fff',

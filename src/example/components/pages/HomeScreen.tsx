@@ -3,6 +3,8 @@ import React from 'react';
 import {Text} from 'react-native-elements';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
+import {ToggleTheme} from '../../themes';
+
 export default {
   name: 'Home',
   component: Component,
@@ -15,6 +17,7 @@ function Component() {
   return (
     <SafeAreaView>
       <Text>Home Component</Text>
+      <ToggleTheme />
     </SafeAreaView>
   );
 }
