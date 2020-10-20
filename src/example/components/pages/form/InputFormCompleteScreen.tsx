@@ -19,7 +19,7 @@ function Component({navigation}: FormWizardScreenProps<typeof Definition.name>) 
   return (
     <View>
       <Text>Confirm Component</Text>
-      <Button onPress={() => navigation.navigate('Home')}>Back to Home</Button>
+      <Button title="Back to Home" onPress={() => navigation.navigate('Home')} />
     </View>
   );
 }

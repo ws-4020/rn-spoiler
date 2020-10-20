@@ -21,7 +21,7 @@ const ToggleThemeInner = (props: ThemeProps<NavigatorTheme>) => {
 
   return (
     <>
-      <Button onPress={toggleTheme} title={`Toggle Theme (current = ${theme.dark ? 'Dark' : 'Light'})`} />
+      <Button title={`Toggle Theme (current = ${theme.dark ? 'Dark' : 'Light'})`} onPress={toggleTheme} />
       <Text style={{color: theme.colors.black}}>theme.colors.black = {theme.colors.black}</Text>
       <Text style={{color: navigatorTheme.colors.text}}>navigatorTheme.colors.text = {navigatorTheme.colors.text}</Text>
     </>

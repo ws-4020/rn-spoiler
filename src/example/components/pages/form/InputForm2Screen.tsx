@@ -18,7 +18,7 @@ function Component({navigation}: FormWizardScreenProps<typeof Definition.name>) 
   return (
     <View>
       <Text>Input Form 2 Component</Text>
-      <Button onPress={() => navigation.navigate('Confirm')}>Next</Button>
+      <Button title="Next" onPress={() => navigation.navigate('Confirm')} />
     </View>
   );
 }
