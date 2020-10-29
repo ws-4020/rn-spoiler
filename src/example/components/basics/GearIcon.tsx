@@ -1,5 +1,5 @@
 import React from 'react';
-import {Icon as RNEIcon, IconProps} from 'react-native-elements';
+import {Icon as RNEIcon} from 'react-native-elements';
 
 import {SpecificIconType} from '../Constants';
 
