@@ -2,7 +2,7 @@ import {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-import {CameraIcon, HomeIcon, TrashIcon, GuruGuruIcon} from '../basics';
+import {CameraIcon, HomeIcon, TrashIcon} from '../basics';
 import {Text} from '../parts';
 
 export default {
@@ -23,7 +23,7 @@ function Component() {
         Sample text 1 <CameraIcon size={textFontSize} />
       </Text>
       <Text>
-        <GuruGuruIcon size={textFontSize} /> Sample text 2 <TrashIcon size={textFontSize} />
+        Sample text 2 <TrashIcon size={textFontSize} />
       </Text>
     </SafeAreaView>
   );
