@@ -1,7 +1,7 @@
 import React from 'react';
-import {Icon, IconProps} from 'react-native-elements';
+import {Icon} from 'react-native-elements';
 
-type SpecificIconType = Omit<IconProps, 'name' | 'type'>;
+import {SpecificIconType} from './SpecificIconType';
 
 // React Native Elementsを使用したアイコンのサンプル
 const TrashIcon = ({color = '#9D8CB8', ...props}: SpecificIconType) => {

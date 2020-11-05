@@ -38,3 +38,4 @@ npm run android    # Androidエミュレータが起動します
 - [x] Android でデフォルトで要求するパーミッションの最小化
 - [x] `App.tsx`を`src`ディレクトリ配下に移動
 - [x] 開発者ごとに簡単にSigningできるように、Signing情報を記述するテンプレートファイルをiOSのビルド設定に追加
+- [x] UIライブラリとして[React Native Elements](https://reactnativeelements.com/)を追加
