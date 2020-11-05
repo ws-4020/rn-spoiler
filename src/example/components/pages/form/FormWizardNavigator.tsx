@@ -1,5 +1,6 @@
 import {RouteProp} from '@react-navigation/native';
 import React from 'react';
+import {normalize} from 'react-native-elements';
 import {createNativeStackNavigator, NativeStackNavigationProp} from 'react-native-screens/native-stack';
 
 import {AppRouteProps} from '../../MainNavigator';
@@ -47,6 +48,6 @@ export default {
   name: 'Wizard',
   component: Component,
   options: {
-    tabBarIcon: () => <PencilIcon size={24} />,
+    tabBarIcon: () => <PencilIcon size={normalize(24)} />,
   },
 };
