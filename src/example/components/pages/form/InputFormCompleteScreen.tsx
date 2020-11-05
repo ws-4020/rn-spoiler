@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {Button, Text} from 'react-native-elements';
 
-import {WizardScreenDefinition} from '../../parts/WizardScreenDefinition';
+import {WizardScreenDefinition} from '../../parts';
 import {FormWizardParams, FormWizardScreenProps} from './FormWizardNavigator';
 
 const Definition: WizardScreenDefinition<FormWizardParams> = {

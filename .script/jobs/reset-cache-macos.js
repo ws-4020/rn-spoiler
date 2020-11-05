@@ -24,7 +24,7 @@ module.exports = [
   },
   {
     name: 'Erase all content and settings from Simulator',
-    enabled: false,
+    enabled: true,
     commands: [
       {
         command: 'xcrun',
@@ -64,7 +64,7 @@ module.exports = [
   },
   {
     name: 'Delete CocoaPods cache',
-    enabled: false,
+    enabled: true,
     commands: [
       {
         command: 'pod',
