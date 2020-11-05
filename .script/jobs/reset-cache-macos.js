@@ -75,7 +75,7 @@ module.exports = [
   },
   {
     name: 'Update CocoaPods dependency',
-    enabled: true,
+    enabled: false,
     commands: [
       {
         command: 'ls',
