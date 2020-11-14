@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 const {createInterface} = require('readline');
 const {execute} = require('./internals/task-executor');
 
@@ -10,7 +11,7 @@ const ask = (cui, task) => {
       if (ans === 'invalid') {
         console.log();
         console.log("🚫 Please select 'y' for yes, or 'n' for no.");
-        ask(cui, question).then((a) => resolve(a === 'yes'));
+        ask(cui, task.question).then((a) => resolve(a === 'yes'));
       } else {
         resolve(ans === 'yes');
       }
@@ -51,7 +52,8 @@ const main = async () => {
   const tasks = require(`./jobs/${job}-${platform}`);
   // TODO: Check if task is found
 
-  if (args.includes('--interactive') || args.includes('-i')) {
+  const runAll = args.includes('--all') || args.includes('-a');
+  if (!runAll && args.includes('--interactive') || args.includes('-i')) {
     const cui = createInterface({
       input: process.stdin,
       output: process.stdout,
@@ -65,7 +67,7 @@ const main = async () => {
   }
 
   for (let task of tasks) {
-    if (task.enabled) {
+    if (runAll || task.enabled) {
       await execute(task);
     } else {
       console.log(`⏭️ Skip ${task.name}`)
