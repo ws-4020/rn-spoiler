@@ -1,5 +1,9 @@
 {
   "main": "index.js",
+  "engines": {
+    "node": "^12.13.0 || ^14.15.0",
+    "npm": "^6"
+  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
