@@ -16,11 +16,10 @@
 次のコマンドを実行して、新規プロジェクトを作成できます。
 
 ```bash
-expo init -t https://github.com/ws-4020/rn-spoiler.git <YourAppName>
+npx react-native init --template https://github.com/ws-4020/rn-spoiler.git <YourAppName>
 ```
 
-`<YourAppName>` に設定した名前でディレクトリが作成されて、Git リポジトリとして初期化されます。Git リポジトリにする必要がない場合は`.git`ディレクトリを削除してください。
-また、テンプレートプロジェクト自体のために`.github`ディレクトリを用意していますが、プロジェクトで不要であれば削除してください。
+`<YourAppName>` に設定した名前でディレクトリが作成されます。
 
 正しく生成できていることを確認するために、次のコマンドを実行してアプリが正しく起動することを確認してください。
 
