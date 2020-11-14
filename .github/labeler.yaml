@@ -1,37 +1,40 @@
 # Add 'iOS' label to any change within the 'ios' directory
 iOS:
-  - ios/**/*
+  - template/ios/**/*
 
 # Add 'Android' label to any change within the 'android' directory
 Android:
-  - android/**/*
+  - template/android/**/*
 
 # Add 'app' label to any change within the 'src' directory and to the files listed below
 app:
-  - src/**/*
-  - app.json
-  - index.js
+  - template/src/**/*
+  - template/app.json
+  - template/index.js
 
 # Add 'build' label to any changes to the files listed below
 build:
-  - .script/**/*
-  - .buckconfig
-  - .editorconfig
-  - .eslintrc.js
-  - .prettierrc.js
-  - babel.config.js
-  - metro.config.js
-  - package.json
-  - package-lock.json
-  - tsconfig.json
+  - template/.script/**/*
+  - template/.buckconfig
+  - template/.editorconfig
+  - template/.eslintrc.js
+  - template/.prettierrc.js
+  - template/babel.config.js
+  - template/metro.config.js
+  - template/package.json
+  - template/package-lock.json
+  - template/tsconfig.json
 
 # Add 'chore' label to any change within the '.github' directory and to the files listed below
 chore:
   # Changes to files within '.github/workflows' should correspond to the 'ci' label
   - any: ['.github/**/*', '!.github/workflows/**/*']
-  - .gitattributes
+  - template/.gitattributes
+  - template/.gitignore
   - .gitignore
-  - gitignore
+  - package.json
+  - post-init.js
+  - template.config.js
   - LICENSE
 
 # Add 'ci' label to any change within the '.github/workflows' directory
@@ -40,12 +43,13 @@ ci:
 
 # Add 'doc' label to any change within the 'docs' directory
 doc:
-  - docs/**/*
+  - template/docs/**/*
+  - template/README.md
   - README.md
 
 # Add 'test' label to any change to files within the directories listed below
 test:
-  - __tests__/**/*
-  - __mocks__/**/*
-  - __setup__/**/*
-  - jest.config.js
+  - template/__tests__/**/*
+  - template/__mocks__/**/*
+  - template/__setup__/**/*
+  - template/jest.config.js
