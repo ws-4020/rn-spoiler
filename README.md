@@ -28,7 +28,7 @@ npm run ios        # iPhoneシミュレータが起動します
 npm run android    # Androidエミュレータが起動します
 ```
 
-プロジェクトを作成したら、[開発者向けガイド](template/docs)を参考に開発を始めることが出来ます。VScodeの環境構築手順については[こちら](template/settings-vscode.md)を参考にしてください。
+プロジェクトを作成したら、[開発者向けガイド](template/docs)を参考に開発を始めることが出来ます。VScodeの環境構築手順については[こちら](template/docs/settings-vscode.md)を参考にしてください。
 
 ## `expo-template-bare-typescript` からの変更点
 
