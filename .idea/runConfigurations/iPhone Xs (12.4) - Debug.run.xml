@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="iPhone Xs (12.4) - Debug" type="ReactNative" factoryName="React Native">
+    <working-dir value="$PROJECT_DIR$/template" />
+    <node-interpreter value="project" />
+    <react-native value="$PROJECT_DIR$/template/node_modules/react-native" />
+    <platform value="IOS" />
+    <run-arguments value="--simulator &quot;iPhone Xs (12.4)&quot;" />
+    <envs />
+    <only-packager />
+    <browser value="e304feb3-69cd-4f0d-9e67-c45895c80a2e" />
+    <method v="2">
+      <option name="ReactNativePackager" enabled="true" />
+    </method>
+  </configuration>
+</component>
