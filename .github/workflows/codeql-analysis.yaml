@@ -97,7 +97,7 @@ jobs:
       # node_modulesがキャッシュから復元されなかった場合は、依存ライブラリをインストールします。
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm clean-install
+        run: npm install --prefix template
 
       # Cache '.gradle' to speed up gradle build
       - name: Cache .gradle
@@ -138,7 +138,7 @@ jobs:
       - name: Build (java)
         if: ${{ matrix.language == 'java' }}
         run: |
-          cd android
+          cd template/android
           chmod +x gradlew
           ./gradlew -Dorg.gradle.caching=false --no-daemon -S clean
           ./gradlew -Dorg.gradle.caching=false --no-daemon -S build

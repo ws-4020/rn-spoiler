@@ -1,66 +1,19 @@
 {
-  "main": "index.js",
-  "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "web": "expo start --web",
-    "start": "react-native start",
-    "test": "jest --detectOpenHandles",
-    "lint": "run-s --print-name --continue-on-error lint:*",
-    "lint:es": "eslint --ext .jsx,.js,.tsx,.ts .",
-    "lint:tsc": "tsc --noEmit",
-    "fix": "run-s --print-name --continue-on-error fix:*",
-    "fix:es": "eslint --fix --ext .jsx,.js,.tsx,.ts .",
-    "reset-cache": "node .script/runner.js reset-cache"
+  "name": "@ws-4020/rn-spoiler",
+  "version": "0.1.0",
+  "description": "ws-4020 React Native Boilerplate",
+  "private": true,
+  "engines": {
+    "node": "^12.13.0 || ^14.15.0",
+    "npm": "^6"
   },
-  "dependencies": {
-    "@react-native-community/masked-view": "0.1.10",
-    "@react-navigation/bottom-tabs": "^5.9.2",
-    "@react-navigation/drawer": "^5.9.3",
-    "@react-navigation/native": "^5.7.6",
-    "@react-navigation/stack": "^5.9.3",
-    "expo": "~39.0.2",
-    "expo-splash-screen": "~0.6.2",
-    "expo-updates": "~0.3.3",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "~0.63.3",
-    "react-native-appearance": "~0.3.4",
-    "react-native-elements": "~2.3.2",
-    "react-native-gesture-handler": "~1.7.0",
-    "react-native-reanimated": "~1.13.0",
-    "react-native-responsive-screen": "~1.4.1",
-    "react-native-safe-area-context": "3.1.4",
-    "react-native-screens": "~2.10.1",
-    "react-native-unimodules": "~0.11.0",
-    "react-native-web": "~0.13.12"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ws-4020/rn-spoiler.git"
   },
-  "devDependencies": {
-    "@babel/core": "~7.9.0",
-    "@types/react": "~16.9.35",
-    "@types/react-dom": "~16.9.8",
-    "@types/react-native": "~0.63.2",
-    "@typescript-eslint/eslint-plugin": "^4.4.0",
-    "@typescript-eslint/parser": "^4.4.0",
-    "babel-preset-expo": "~8.3.0",
-    "eslint": "^7.10.0",
-    "eslint-config-universe": "^5.0.0",
-    "jest-expo": "~39.0.0",
-    "jest-junit": "^12.0.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "typescript": "~3.9.5"
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ws-4020/rn-spoiler/issues"
   },
-  "jest": {
-    "preset": "jest-expo",
-    "setupFiles": [
-      "<rootDir>/__setup__/react-navigation.js"
-    ]
-  },
-  "jest-junit": {
-    "suiteNameTemplate": "{filepath}",
-    "classNameTemplate": "{classname}",
-    "titleTemplate": "{title}"
-  },
-  "private": true
+  "homepage": "https://github.com/ws-4020/rn-spoiler#readme"
 }

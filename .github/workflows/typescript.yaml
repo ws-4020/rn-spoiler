@@ -5,41 +5,41 @@ on:
     branches:
       - master
     paths:
-      - '**/*.js'
-      - '**/*.jsx'
-      - '**/*.ts'
-      - '**/*.tsx'
-      - 'src/**'
-      - '__tests__/**'
-      - '__mocks__/**'
-      - 'app.json'
-      - 'index.js'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'tsconfig.json'
-      - '.editorconfig'
-      - '.eslintrc.js'
-      - '.prettierrc.js'
+      - 'template/**/*.js'
+      - 'template/**/*.jsx'
+      - 'template/**/*.ts'
+      - 'template/**/*.tsx'
+      - 'template/src/**'
+      - 'template/__tests__/**'
+      - 'template/__mocks__/**'
+      - 'template/app.json'
+      - 'template/index.js'
+      - 'template/package.json'
+      - 'template/package-lock.json'
+      - 'template/tsconfig.json'
+      - 'template/.editorconfig'
+      - 'template/.eslintrc.js'
+      - 'template/.prettierrc.js'
       - '.github/workflows/typescript.yaml'
   pull_request:
     branches:
       - master
     paths:
-      - '**/*.js'
-      - '**/*.jsx'
-      - '**/*.ts'
-      - '**/*.tsx'
-      - 'src/**'
-      - '__tests__/**'
-      - '__mocks__/**'
-      - 'app.json'
-      - 'index.js'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'tsconfig.json'
-      - '.editorconfig'
-      - '.eslintrc.js'
-      - '.prettierrc.js'
+      - 'template/**/*.js'
+      - 'template/**/*.jsx'
+      - 'template/**/*.ts'
+      - 'template/**/*.tsx'
+      - 'template/src/**'
+      - 'template/__tests__/**'
+      - 'template/__mocks__/**'
+      - 'template/app.json'
+      - 'template/index.js'
+      - 'template/package.json'
+      - 'template/package-lock.json'
+      - 'template/tsconfig.json'
+      - 'template/.editorconfig'
+      - 'template/.eslintrc.js'
+      - 'template/.prettierrc.js'
       - '.github/workflows/typescript.yaml'
     types:
       - opened
@@ -81,7 +81,7 @@ jobs:
       # node_modulesがキャッシュから復元されなかった場合は、依存ライブラリをインストールします。
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm clean-install
+        run: npm install --prefix template
 
       - name: Set up reviewdog
         uses: reviewdog/action-setup@v1
@@ -90,15 +90,15 @@ jobs:
 
       - name: Lint (ESLint)
         run: |
-          npm run -s lint:es | reviewdog -tee -fail-on-error -reporter=github-pr-review -f=eslint -name="ESLint"
+          npm run -s lint:es --prefix template | reviewdog -tee -fail-on-error -reporter=github-pr-review -f=eslint -name="ESLint"
 
       - name: Lint (TypeScript)
         run: |
-          npm run -s lint:tsc | reviewdog -tee -fail-on-error -reporter=github-pr-review -f=tsc -name="TypeScript"
+          npm run -s lint:tsc --prefix template | reviewdog -tee -fail-on-error -reporter=github-pr-review -f=tsc -name="TypeScript"
 
       - name: Test
         run: |
-          npm run -s test -- --ci --reporters=default --reporters=jest-junit
+          npm run -s test --prefix template -- --ci --reporters=default --reporters=jest-junit
 
       - name: Report test result
         uses: ashley-taylor/junit-report-annotations-action@master
@@ -106,4 +106,4 @@ jobs:
         with:
           access-token: ${{ secrets.GITHUB_TOKEN }}
           name: Test results
-          path: junit.xml
+          path: tempalte/junit.xml
