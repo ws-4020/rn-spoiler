@@ -161,6 +161,20 @@ $RECYCLE.BIN/
 *.iml
 *.ipr
 .idea/*
+!/.idea/codeStyles
+!/.idea/dictionaries
+!/.idea/inspectionProfiles
+!/.idea/jsLinters
+!/.idea/runConfigurations
+!/.idea/scopes
+!/.idea/*.iml
+!/.idea/encodings.xml
+!/.idea/google-java-format.xml
+!/.idea/jsLibraryMappings.xml
+!/.idea/misc.xml
+!/.idea/modules.xml
+!/.idea/prettier.xml
+!/.idea/vcs.xml
 
 
 ### .env ###
