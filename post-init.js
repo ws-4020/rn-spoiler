@@ -56,6 +56,6 @@ const main = async () => {
 
 main().catch((reason) => {
   console.log(); // 標準出力上でログを見やすくするために、一行改行しています。
-  console.log(reason);
+  console.error(reason);
   process.exit(1);
 });
