@@ -30,13 +30,14 @@ const generateAndroidDebugKeystore = async () => {
       "-keypass",
       "android",
       "-dname",
-      "'CN=Android Debug,O=Android,C=US'",
+      '"CN=Android Debug,O=Android,C=US"',
     ],
   };
   return new Promise((resolve, reject) => {
     let stdout = "";
     const process = spawn(command.command, command.args, { shell: true });
     process.stdout.on("data", (chunk) => (stdout += chunk));
+    process.stderr.on("data", (chunk) => (stdout += chunk));
     process
       .on("error", () => reject(stdout))
       .on("close", (code) => {
@@ -55,6 +56,6 @@ const main = async () => {
 
 main().catch((reason) => {
   console.log(); // 標準出力上でログを見やすくするために、一行改行しています。
-  console.error(reason);
+  console.log(reason);
   process.exit(1);
 });
