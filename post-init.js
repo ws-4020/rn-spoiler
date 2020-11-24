@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require("fs");
-const fsp = require("fs/promises");
+const fsp = require("fs").promises;
 const { spawn } = require("child_process");
 
 const copyIosPersonalAccountConfig = async () => {
