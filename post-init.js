@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require("fs");
-const fsp = require("fs/promises");
+const fsp = require("fs").promises;
 const { spawn } = require("child_process");
 
 const copyIosPersonalAccountConfig = async () => {
@@ -30,13 +30,14 @@ const generateAndroidDebugKeystore = async () => {
       "-keypass",
       "android",
       "-dname",
-      "'CN=Android Debug,O=Android,C=US'",
+      '"CN=Android Debug,O=Android,C=US"',
     ],
   };
   return new Promise((resolve, reject) => {
     let stdout = "";
     const process = spawn(command.command, command.args, { shell: true });
     process.stdout.on("data", (chunk) => (stdout += chunk));
+    process.stderr.on("data", (chunk) => (stdout += chunk));
     process
       .on("error", () => reject(stdout))
       .on("close", (code) => {
