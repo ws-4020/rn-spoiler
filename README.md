@@ -10,19 +10,14 @@
   - （macOS のみ）「Target OS」は、「iOS」「Android」の両方の手順を実施してください。
 
 ## 注意事項
-次のものが実行環境内にインストールされていると正常に動作しない為、アンインストールを実施して下さい。
+`react-native-cli` がグローバルにインストールされていると、テンプレートからの新規プロジェクトの作成に失敗します。
 
-| パッケージ名 | コマンド(※) |
-| --- | --- |
-| react-native-cli | npm uninstall -g react-native-cli |
-※本コマンドを実行するとアンインストールが開始されます
+グローバルにインストールされているパッケージは `npm ls -g --depth=0` で確認することができます。
 
-実行環境内のインストール物の確認は次のコマンドを実行して確認してください。
+次のように結果が表示されます。ここに `react-native-cli` が含まれている場合は、 **必ず** アンインストールしてください。 `npm uninstall -g react-native-cli` でアンインストールできます。
 
 ```bash
-npm ls -g --depth=0　# 実行環境にインストールされているものが一覧形式で出力されます
-
-・実行例
+・実行例(Windowsの場合)
 c:\>npm ls -g --depth=0
 C:\Users\<ユーザ名>\AppData\Roaming\npm
 +-- expo-cli@3.28.5
@@ -31,7 +26,6 @@ C:\Users\<ユーザ名>\AppData\Roaming\npm
 `-- yarn@1.22.10
 
 ```
-
 
 ## 使い方
 
