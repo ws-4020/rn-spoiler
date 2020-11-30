@@ -52,8 +52,11 @@ const main = async () => {
   const tasks = require(`./jobs/${job}-${platform}`);
   // TODO: Check if task is found
 
-  const runAll = args.includes('--all') || args.includes('-a');
-  if (!runAll && args.includes('--interactive') || args.includes('-i')) {
+  if (args.includes('--all') || args.includes('-a')) {
+    for (let task of tasks) {
+      task.enabled = true;
+    }
+  } else if (args.includes('--interactive') || args.includes('-i')) {
     const cui = createInterface({
       input: process.stdin,
       output: process.stdout,
@@ -67,11 +70,7 @@ const main = async () => {
   }
 
   for (let task of tasks) {
-    if (runAll || task.enabled) {
-      await execute(task);
-    } else {
-      console.log(`⏭️ Skip ${task.name}`)
-    }
+    await execute(task);
   }
 };
 
