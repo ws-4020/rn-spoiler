@@ -13,13 +13,12 @@
 `react-native-cli` がグローバルにインストールされていると、テンプレートからの新規プロジェクトの作成に失敗します。
 
 グローバルにインストールされているパッケージは `npm ls -g --depth=0` で確認することができます。
-
-次のように結果が表示されます。ここに `react-native-cli` が含まれている場合は、 **必ず** アンインストールしてください。 `npm uninstall -g react-native-cli` でアンインストールできます。
+実行結果に `react-native-cli` が含まれている場合は、 **必ず** アンインストールしてください。 
+`npm uninstall -g react-native-cli` でアンインストールできます。
 
 ```bash
-・実行例(Windowsの場合)
-c:\>npm ls -g --depth=0
-C:\Users\<ユーザ名>\AppData\Roaming\npm
+・実行例
+npm ls -g --depth=0
 +-- expo-cli@3.28.5
 +-- npm@6.14.8
 +-- react-native-cli@2.0.1
