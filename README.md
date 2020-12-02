@@ -9,6 +9,23 @@
   - 「Development OS」は、開発に利用している OS を選択してください。
   - （macOS のみ）「Target OS」は、「iOS」「Android」の両方の手順を実施してください。
 
+## 注意事項
+`react-native-cli` がグローバルにインストールされていると、テンプレートからの新規プロジェクトの作成に失敗します。
+
+グローバルにインストールされているパッケージは `npm ls -g --depth=0` で確認することができます。
+実行結果に `react-native-cli` が含まれている場合は、 **必ず** アンインストールしてください。 
+`npm uninstall -g react-native-cli` でアンインストールできます。
+
+```bash
+・実行例
+npm ls -g --depth=0
++-- expo-cli@3.28.5
++-- npm@6.14.8
++-- react-native-cli@2.0.1
+`-- yarn@1.22.10
+
+```
+
 ## 使い方
 
 ### 新規プロジェクトの作成
