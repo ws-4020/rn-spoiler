@@ -15,9 +15,9 @@ const runCommand = (task, command) => {
     process.stdout.write(`\t${command.command} ${command.args.join(' ')} @[${command.cwd || './'}]...`);
     const spawnedTask = spawn(command.command, command.args, {shell: true, cwd: command.cwd});
 
-    let stderr = ''
+    let stderr = '';
     spawnedTask.stderr.on('data', (data) => {
-      stderr += data
+      stderr += data;
     });
 
     spawnedTask.on('error', (error) => {
@@ -28,7 +28,7 @@ const runCommand = (task, command) => {
     spawnedTask.on('exit', (code) => {
       if (code !== 0) {
         console.log(`❌ (code: ${code})`);
-        process.stderr.write(`\t\t${stderr}`)
+        process.stderr.write(`\t\t${stderr}`);
         reject(code);
       } else {
         console.log(`✔️`);
@@ -40,7 +40,7 @@ const runCommand = (task, command) => {
 
 const execute = async (task) => {
   if (!task.enabled) {
-    console.log(`⏭️ Skip '${task.name}'`)
+    console.log(`⏭️ Skip '${task.name}'`);
     return;
   }
 
