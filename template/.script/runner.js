@@ -56,7 +56,8 @@ const main = async () => {
     for (let task of tasks) {
       task.enabled = true;
     }
-  } else if (args.includes('--interactive') || args.includes('-i')) {
+  }
+  if (args.includes('--interactive') || args.includes('-i')) {
     const cui = createInterface({
       input: process.stdin,
       output: process.stdout,
