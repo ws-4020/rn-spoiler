@@ -64,10 +64,6 @@ module.exports = [
         command: 'npm',
         args: ['-s', 'clean-install'],
       },
-      {
-        command: 'npx',
-        args: ['-q', 'pod-install'],
-      },
     ],
   },
 ]
