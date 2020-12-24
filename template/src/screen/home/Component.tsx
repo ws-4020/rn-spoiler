@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Text, ThemeContext} from 'react-native-elements';
 
-const HelloWorld = () => {
+export const Component = () => {
   const {theme} = useContext(ThemeContext);
   return (
     <View style={StyleSheet.flatten([StyleSheet.absoluteFillObject, styles.container, {backgroundColor: theme.colors?.primary}])}>
@@ -23,9 +23,3 @@ const styles = StyleSheet.create({
     color: '#fefefe',
   },
 });
-
-export default {
-  name: 'Hello World',
-  component: HelloWorld,
-  options: {headerShown: false},
-};

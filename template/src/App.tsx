@@ -6,14 +6,12 @@ import React from 'react';
 // https://reactnavigation.org/docs/react-native-screens/
 // https://reactnavigation.org/docs/native-stack-navigator/
 import {createNativeStackNavigator} from 'react-native-screens/native-stack';
-
-import {MainNavigator} from './components/MainNavigator';
+import {Navigator} from 'src/screen/Navigator';
 
 // モーダル画面などを表示するために、アプリが主として利用するTabNavigatorの前にStackNavigatorを用意しておきます。
 // https://reactnavigation.org/docs/modal/
 const RootStack = createNativeStackNavigator();
-
-export default function App() {
+export const App = () => {
   // 開発中は画面がスリープしないようにしておきます。
   if (__DEV__) {
     activateKeepAwake();
@@ -21,8 +19,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <RootStack.Navigator screenOptions={{headerShown: false}} initialRouteName="Example">
-        <RootStack.Screen name="Main" component={MainNavigator} />
+        <RootStack.Screen name="Main" component={Navigator} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
-}
+};
