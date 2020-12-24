@@ -4,8 +4,9 @@ import {Text, ThemeContext} from 'react-native-elements';
 
 export const Component = () => {
   const {theme} = useContext(ThemeContext);
+  const backgroundColor = theme.colors?.primary;
   return (
-    <View style={StyleSheet.flatten([StyleSheet.absoluteFillObject, styles.container, {backgroundColor: theme.colors?.primary}])}>
+    <View style={StyleSheet.flatten([StyleSheet.absoluteFillObject, styles.container, {backgroundColor}])}>
       <Text h1 style={styles.textColor}>
         Hello, World!
       </Text>
