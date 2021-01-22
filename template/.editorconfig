@@ -18,5 +18,5 @@ charset = utf-8
 trim_trailing_whitespace = true
 # ファイル末尾に改行を入れる。
 insert_final_newline = true
-# 一行の長さは150文字まで。
-max_line_length = 150
+# 一行の長さは120文字まで。
+max_line_length = 120
