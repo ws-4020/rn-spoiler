@@ -9,7 +9,7 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest --detectOpenHandles",
+    "test": "jest --detectOpenHandles --runInBand",
     "lint": "run-s --print-name --continue-on-error lint:*",
     "lint:es": "eslint --ext .jsx,.js,.tsx,.ts .",
     "lint:tsc": "tsc --noEmit",
@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@types/jest": "<26.0.0",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
