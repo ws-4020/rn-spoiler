@@ -94,9 +94,8 @@ jobs:
           # If cache is corrupted, increment prefixed number.
           key: 1-${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
 
-      # node_modulesがキャッシュから復元されなかった場合は、依存ライブラリをインストールします。
+      # 依存ライブラリをインストールします。
       - name: Install dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm install --prefix template
 
       # Cache '.gradle' to speed up gradle build

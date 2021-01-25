@@ -4,23 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'template/**/*.js'
-      - 'template/**/*.jsx'
-      - 'template/**/*.ts'
-      - 'template/**/*.tsx'
-      - 'template/src/**'
-      - 'template/__tests__/**'
-      - 'template/__mocks__/**'
-      - 'template/app.json'
-      - 'template/index.js'
-      - 'template/package.json'
-      - 'template/package-lock.json'
-      - 'template/tsconfig.json'
-      - 'template/.editorconfig'
-      - 'template/.eslintrc.js'
-      - 'template/.prettierrc.js'
-      - '.github/workflows/typescript.yaml'
   pull_request:
     branches:
       - master
@@ -29,17 +12,17 @@ on:
       - 'template/**/*.jsx'
       - 'template/**/*.ts'
       - 'template/**/*.tsx'
+      - 'template/jest/**'
       - 'template/src/**'
-      - 'template/__tests__/**'
-      - 'template/__mocks__/**'
-      - 'template/app.json'
-      - 'template/index.js'
-      - 'template/package.json'
-      - 'template/package-lock.json'
-      - 'template/tsconfig.json'
       - 'template/.editorconfig'
       - 'template/.eslintrc.js'
       - 'template/.prettierrc.js'
+      - 'template/babel.config.js'
+      - 'template/index.js'
+      - 'template/jest.config.js'
+      - 'template/metro.config.js'
+      - 'template/package.json'
+      - 'template/tsconfig.json'
       - '.github/workflows/typescript.yaml'
     types:
       - opened
