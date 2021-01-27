@@ -49,6 +49,6 @@ doc:
 
 # Add 'test' label to any change to files within the directories listed below
 test:
-  - template/jest
+  - template/jest/**/*
   - template/jest.config.js
   - template/src/**/*.test.tsx
