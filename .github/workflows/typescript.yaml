@@ -52,17 +52,6 @@ jobs:
           restore-keys: |
             1-${{ runner.os }}-npm-
 
-      # If package-lock.json matches, node_modules will also match.
-      # So, cache node_modules directly to skip install step.
-      - name: Cache node_modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          # If cache is corrupted, increment prefixed number.
-          # This repository does not contains `package-lock.json`. Instead, using `package.json`.
-          key: 1-${{ runner.os }}-node-modules-${{ hashFiles('**/package.json') }}
-
       - name: Install dependencies
         run: npm install --prefix template
 
