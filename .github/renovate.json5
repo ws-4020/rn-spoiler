@@ -7,8 +7,8 @@
     schedule: ['before 20:00 on sunday'],
   },
   ignorePaths: [
-    'Doodle/android',
-    'Doodle/ios'
+    'template/android',
+    'template/ios'
   ],
   packageRules: [
     {
