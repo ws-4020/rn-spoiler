@@ -4,23 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'template/**/*.js'
-      - 'template/**/*.jsx'
-      - 'template/**/*.ts'
-      - 'template/**/*.tsx'
-      - 'template/src/**'
-      - 'template/__tests__/**'
-      - 'template/__mocks__/**'
-      - 'template/app.json'
-      - 'template/index.js'
-      - 'template/package.json'
-      - 'template/package-lock.json'
-      - 'template/tsconfig.json'
-      - 'template/.editorconfig'
-      - 'template/.eslintrc.js'
-      - 'template/.prettierrc.js'
-      - '.github/workflows/typescript.yaml'
   pull_request:
     branches:
       - master
@@ -29,17 +12,17 @@ on:
       - 'template/**/*.jsx'
       - 'template/**/*.ts'
       - 'template/**/*.tsx'
+      - 'template/jest/**'
       - 'template/src/**'
-      - 'template/__tests__/**'
-      - 'template/__mocks__/**'
-      - 'template/app.json'
-      - 'template/index.js'
-      - 'template/package.json'
-      - 'template/package-lock.json'
-      - 'template/tsconfig.json'
       - 'template/.editorconfig'
       - 'template/.eslintrc.js'
       - 'template/.prettierrc.js'
+      - 'template/babel.config.js'
+      - 'template/index.js'
+      - 'template/jest.config.js'
+      - 'template/metro.config.js'
+      - 'template/package.json'
+      - 'template/tsconfig.json'
       - '.github/workflows/typescript.yaml'
     types:
       - opened
@@ -64,23 +47,12 @@ jobs:
         with:
           path: ~/.npm
           # If cache is corrupted, increment prefixed number.
-          key: 1-${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          # This repository does not contains `package-lock.json`. Instead, using `package.json`.
+          key: 1-${{ runner.os }}-npm-${{ hashFiles('**/package.json') }}
           restore-keys: |
             1-${{ runner.os }}-npm-
 
-      # If package-lock.json matches, node_modules will also match.
-      # So, cache node_modules directly to skip install step.
-      - name: Cache node_modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          # If cache is corrupted, increment prefixed number.
-          key: 1-${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-
-      # node_modulesがキャッシュから復元されなかった場合は、依存ライブラリをインストールします。
       - name: Install dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm install --prefix template
 
       - name: Set up reviewdog

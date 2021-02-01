@@ -5,6 +5,7 @@ on:
     types:
       - labeled
       - unlabeled
+      - ready_for_review
   pull_request_review:
     types:
       - submitted
@@ -27,7 +28,8 @@ jobs:
         env:
           MERGE_LABELS: '!skip-auto-complete,!wip'
           MERGE_METHOD: squash
-          MERGE_COMMIT_MESSAGE: pull-request-title
+          MERGE_COMMIT_MESSAGE: pull-request-title-and-description
+          MERGE_COMMIT_MESSAGE_REGEX: (.*?)^---+$
           MERGE_FORKS: false
           MERGE_RETRIES: 10
           MERGE_RETRY_SLEEP: 30000
