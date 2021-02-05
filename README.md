@@ -47,11 +47,11 @@ npm run android    # Androidエミュレータが起動します
 
 ### `debug.keystore` ファイルについて
 
-RN Spoilerでは新規プロジェクトの作成時に、自動的に`debug.keystore`を作成しています。そのため、新規プロジェクトの作成後に`npm run android`を実行して、Androidエミュレータでアプリを動かすための作業は特に必要ありません。
+RN Spoilerでは新規プロジェクトの作成時に、自動的に`debug.keystore`を作成します。
 
-ただし、新規プロジェクトを作成した環境にJDKがインストールされていないなど、[`keytool`](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)が実行できなかった場合は、`debug.keystore`を作成することができません。`npm run android`を実行する前に、`debug.keystore`を作成する必要があります。
+ただし、新規プロジェクトを作成した環境にJDKがインストールされていないなど、[`keytool`](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)が実行できなかった場合は、`debug.keystore`を作成することができません。
 
-プロジェクトのルートディレクトリで、次のコマンドを実行して`debug.keystore`を作成してください。コマンドの実行にはJDKがインストールされている必要があります。
+このような場合は`npm run android`を実行する前に、`debug.keystore`を作成する必要があります。プロジェクトのルートディレクトリで、次のコマンドを実行して`debug.keystore`を作成してください。コマンドの実行にはJDKがインストールされている必要があります。
 
 ```bash
 keytool -genkey -v -keystore android/app/debug.keystore -storepass android -alias androiddebugkey -keypass android -dname "CN=Android Debug,O=Android,C=US"
