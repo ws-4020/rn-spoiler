@@ -13,18 +13,17 @@
 
 `react-native-cli` がグローバルにインストールされていると、テンプレートからの新規プロジェクトの作成に失敗します。
 
-グローバルにインストールされているパッケージは `npm ls -g --depth=0` で確認することができます。
-実行結果に `react-native-cli` が含まれている場合は、 **必ず** アンインストールしてください。
+`npm ls -g --depth=0`の実行結果に `react-native-cli` が含まれている場合は、 **必ず** アンインストールしてください。
 `npm uninstall -g react-native-cli` でアンインストールできます。
 
-```bash
-・実行例
-npm ls -g --depth=0
-+-- expo-cli@3.28.5
-+-- npm@6.14.8
-+-- react-native-cli@2.0.1
-`-- yarn@1.22.10
+実行例:
 
+```bash
+$ npm ls -g --depth=0
+<path/to/npm/lib>
+├── expo-cli@3.28.5
+├── react-native-cli@2.0.1
+└── yarn@1.22.10
 ```
 
 ## 使い方
@@ -44,6 +43,18 @@ npx react-native init --template https://github.com/ws-4020/rn-spoiler.git <Your
 ```bash
 npm run ios        # iPhoneシミュレータが起動します
 npm run android    # Androidエミュレータが起動します
+```
+
+### `debug.keystore` ファイルについて
+
+RN Spoilerでは新規プロジェクトの作成時に、自動的に`debug.keystore`を作成します。
+
+ただし、新規プロジェクトを作成した環境にJDKがインストールされていないなど、[`keytool`](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)が実行できなかった場合は、`debug.keystore`を作成することができません。
+
+このような場合は`npm run android`を実行する前に、`debug.keystore`を作成する必要があります。プロジェクトのルートディレクトリで、次のコマンドを実行して`debug.keystore`を作成してください。コマンドの実行にはJDKがインストールされている必要があります。
+
+```bash
+keytool -genkey -v -keystore android/app/debug.keystore -storepass android -alias androiddebugkey -keypass android -dname "CN=Android Debug,O=Android,C=US"
 ```
 
 ## `expo-template-bare-typescript` からの変更点

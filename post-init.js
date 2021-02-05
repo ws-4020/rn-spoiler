@@ -47,7 +47,11 @@ const generateAndroidDebugKeystore = async () => {
           reject(stdout);
         }
       });
-  }).then(() => console.log("  ✔ Generate debug.keystore file"));
+  })
+    .then(() => console.log("  ✔ Generate debug.keystore file"))
+    .catch(() =>
+      console.log("  ⏭️ Failed to generate debug.keystore file. You need to generate debug.keystore manually.")
+    );
 };
 
 const main = async () => {
