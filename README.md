@@ -11,19 +11,20 @@
 
 ## 注意事項
 
-`react-native-cli` がグローバルにインストールされていると、テンプレートからの新規プロジェクトの作成に失敗します。
+`react-native-cli` がグローバルにインストールされていると、テンプレートからの新規プロジェクトの作成に失敗します。 次のコマンドでインストール状況を確認できます。
 
-`npm ls -g --depth=0`の実行結果に `react-native-cli` が含まれている場合は、 **必ず** アンインストールしてください。
-`npm uninstall -g react-native-cli` でアンインストールできます。
+```shell
+npm ls -g --depth=0
+```
 
-実行例:
+実行結果の例:
 
-```bash
+```console
 $ npm ls -g --depth=0
 <path/to/npm/lib>
 ├── expo-cli@3.28.5
-├── react-native-cli@2.0.1
-└── yarn@1.22.10
+├── npm@6.14.8
+└── react-native-cli@2.0.1
 ```
 
 ## 使い方
@@ -44,6 +45,33 @@ npx react-native init --template https://github.com/ws-4020/rn-spoiler.git <Your
 npm run ios        # iPhoneシミュレータが起動します
 npm run android    # Androidエミュレータが起動します
 ```
+
+npm 7で`peerDependencies`の扱いが変更された影響で、npm 7でRN Spoilerをテンプレートとしてプロジェクトを作成すると次のようなエラーが発生します。
+
+```console
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE unable to resolve dependency tree
+npm ERR!
+npm ERR! While resolving: undefined@undefined
+npm ERR! Found: @babel/core@7.9.6
+npm ERR! node_modules/@babel/core
+npm ERR!   dev @babel/core@"~7.9.0" from the root project
+npm ERR!
+npm ERR! Could not resolve dependency:
+npm ERR! peerOptional @babel/core@">=7.11.0" from eslint-config-universe@7.0.1
+npm ERR! node_modules/eslint-config-universe
+npm ERR!   dev eslint-config-universe@"^7.0.0" from the root project
+npm ERR!
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force, or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+```
+
+このエラーが発生した場合は次の手順でリカバリしてください。
+
+1. `cd <YourAppName>`（`<YourAppName>`は実際に作成したときの値に変更してください）
+2. `npm install --legacy-peer-deps`
+3. （macOSの場合のみ） `npx pod-install`
 
 ### `debug.keystore` ファイルについて
 

@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "description": "ws-4020 React Native Boilerplate",
   "private": true,
-  "engines": {
-    "node": "^12.13.0 || ^14.15.0",
-    "npm": "^6"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ws-4020/rn-spoiler.git"
