@@ -190,3 +190,4 @@ _*[Ss]cratch*
 ### React Native template ###
 template/package-lock.json
 template/ios/Podfile.lock
+template/android/app/src/main/java/com/helloworld/generated/BasePackageList.java

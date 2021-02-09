@@ -16,7 +16,7 @@
    * `CODE_SIGN_STYLE`: Automatic
    * `PERSONAL_IDENTIFIER`: 他の人とかぶらない、何らかの一意の値
    * `DEVELOPMENT_TEAM`: 個人のApple IDに割り当てられたID
-3. ルートディレクトリで`xed ios -b`と実行して、Xcodeでプロジェクトを開いてください。
+3. ルートディレクトリで`xed ios`と実行して、Xcodeでプロジェクトを開いてください。
 4. Xcode上で署名情報を確認し、エラーが発生していないことを確認してください
 5. ルートディレクトリで次のコマンドを実行してください。`<device name>`はインストール先のiOSデバイス名です。
    * `npm run ios -- --device='<device name>'`
