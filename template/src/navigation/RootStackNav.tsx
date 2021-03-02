@@ -1,7 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {Home} from 'screens/home';
-import {Instructions} from 'screens/instructions';
+import {Home, Instructions} from 'screens';
 
 const nav = createStackNavigator();
 export const RootStackNav: React.FC = () => {
