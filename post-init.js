@@ -4,13 +4,6 @@ const fs = require("fs");
 const fsp = require("fs").promises;
 const { spawn } = require("child_process");
 
-const copyIosPersonalAccountConfig = async () => {
-  const file = "ios/PersonalAccount.xcconfig";
-  await fsp.copyFile(`${file}.template`, `${file}`, fs.constants.COPYFILE_EXCL).then(() => {
-    console.log("  ✔ Copy configuration file to set your Apple ID");
-  });
-};
-
 const generateAndroidDebugKeystore = async () => {
   const file = "android/app/debug.keystore";
   if (fs.existsSync(file)) {
@@ -55,7 +48,7 @@ const generateAndroidDebugKeystore = async () => {
 };
 
 const main = async () => {
-  await Promise.all([copyIosPersonalAccountConfig(), generateAndroidDebugKeystore()]);
+  await Promise.all([generateAndroidDebugKeystore()]);
 };
 
 main().catch((reason) => {
