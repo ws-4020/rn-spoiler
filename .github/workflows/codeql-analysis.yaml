@@ -9,20 +9,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - '**/*.js'
-      - '**/*.jsx'
-      - '**/*.ts'
-      - '**/*.tsx'
-      - 'app/**'
-      - 'ios/**'
-      - 'android/**'
-      - '__tests__/**'
-      - '__mocks__/**'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'tsconfig.json'
-      - '.github/workflows/codeql-analysis.yaml'
   pull_request:
     branches:
       - master
