@@ -9,20 +9,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - '**/*.js'
-      - '**/*.jsx'
-      - '**/*.ts'
-      - '**/*.tsx'
-      - 'app/**'
-      - 'ios/**'
-      - 'android/**'
-      - '__tests__/**'
-      - '__mocks__/**'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'tsconfig.json'
-      - '.github/workflows/codeql-analysis.yaml'
   pull_request:
     branches:
       - master
@@ -62,15 +48,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          # We must fetch at least the immediate parents so that if this is
-          # a pull request then we can checkout the head.
-          fetch-depth: 2
-
-      # If this run was triggered by a pull request event, then checkout
-      # the head of the pull request instead of the merge commit.
-      - run: git checkout HEAD^2
-        if: ${{ github.event_name == 'pull_request' }}
 
       # Cache '.npm' to speed up clean-install when package-lock.json is updated.
       # Loosened up the restore-keys a bit, as it doesn't have to match the contents of package-lock.json exactly.
@@ -133,14 +110,24 @@ jobs:
       #    and modify them (or add more) to build your code if your project
       #    uses a compiled language
 
+      - name: Cache Gradle
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
       # Build java manually
       - name: Build (java)
         if: ${{ matrix.language == 'java' }}
         run: |
           cd template/android
           chmod +x gradlew
-          ./gradlew -Dorg.gradle.caching=false --no-daemon -S clean
-          ./gradlew -Dorg.gradle.caching=false --no-daemon -S build
+          ./gradlew -S clean
+          ./gradlew -S buildRelease
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
