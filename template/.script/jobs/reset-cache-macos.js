@@ -74,22 +74,6 @@ module.exports = [
     ],
   },
   {
-    name: 'Update CocoaPods dependency',
-    enabled: false,
-    commands: [
-      {
-        command: 'ls',
-        args: ['Pods'],
-        cwd: 'ios',
-      },
-      {
-        command: 'pod',
-        args: ['update'],
-        cwd: 'ios',
-      },
-    ],
-  },
-  {
     name: 'Delete ios/Pods directory',
     enabled: true,
     commands: [
