@@ -15,8 +15,8 @@
 
 次のコマンドを実行して、依存パッケージをインストールしてください。
 
-- `npm ci`
-- （macOSのみ）`npx pod-install`
+1. `npm ci`
+2. （macOSのみ）`npx pod-install`
 
 ## アプリを起動する
 
@@ -27,16 +27,16 @@
 
 ## アプリをビルドしてiOSデバイスにインストールする
 
-0. `ios-deploy --version`を実行して、インストール済みの`ios-deploy`のバージョンが表示されることを確認してください。
+1. `ios-deploy --version`を実行して、インストール済みの`ios-deploy`のバージョンが表示されることを確認してください。
    * エラーになった場合は、[ios-deploy](https://github.com/ios-control/ios-deploy)をインストールしてください。
-1. `ios/PersonalAccount.xcconfig.template` を `ios/PersonalAccount.xcconfig` としてコピーしてください。
-2. ファイルに記載されている設定値を、それぞれ次のように設定してください。
+2. `ios/PersonalAccount.xcconfig.template` を `ios/PersonalAccount.xcconfig` としてコピーしてください。
+3. ファイルに記載されている設定値を、それぞれ次のように設定してください。
    * `CODE_SIGN_STYLE`: Automatic
    * `PERSONAL_IDENTIFIER`: 他の人とかぶらない、何らかの一意の値
    * `DEVELOPMENT_TEAM`: 個人のApple IDに割り当てられたID
      * わからない場合は、[個人のApple IDでのチームIDの確認方法](#個人のapple-idでのチームidの確認方法)の手順で確認してください。
-3. ルートディレクトリで`xed ios`と実行して、Xcodeでプロジェクトを開いてください。開くだけで良いようです。
-4. ルートディレクトリで次のコマンドを実行してください。`<device name>`はインストール先のiOSデバイス名です。
+4. ルートディレクトリで`xed ios`と実行して、Xcodeでプロジェクトを開いてください。開くだけで良いようです。
+5. ルートディレクトリで次のコマンドを実行してください。`<device name>`はインストール先のiOSデバイス名です。
    * `npm run ios -- --device='<device name>'`
    * デバイス名、シミュレータ名の一覧は `xcrun xctrace list devices` で取得することができます。
 
