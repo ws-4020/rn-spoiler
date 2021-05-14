@@ -7,7 +7,23 @@
   - インストールするNode.jsのバージョンはLTSバージョンとしてください。
     - WindowsでChocolateyでインストールする場合は、 `node-lts` パッケージをおすすめします。
   - 「Development OS」は、開発に利用している OS を選択してください。
-  - （macOS のみ）「Target OS」は、「iOS」「Android」の両方の手順を実施してください。
+  - （macOSのみ）「Target OS」は、「iOS」「Android」の両方の手順を実施してください。
+
+## 依存パッケージのインストール
+
+リポジトリをクローンした直後や`package-lock.json`が更新された場合は、依存パッケージをインストールする必要があります。
+
+次のコマンドを実行して、依存パッケージをインストールしてください。
+
+- `npm ci`
+- （macOSのみ）`npx pod-install`
+
+## アプリを起動する
+
+次のコマンドを実行して、Androidエミュレータ、iOSシミュレータでアプリを起動します。
+
+- Android: `npm run android`
+- iOS: `npm run ios`
 
 ## アプリをビルドしてiOSデバイスにインストールする
 
