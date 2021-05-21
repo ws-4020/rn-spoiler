@@ -20,32 +20,116 @@ index d697d1c..2fd4976 100644
 +    </UserContextProvider>
    );
  };
-diff --git a/src/navigation/UnauthedStackNav.tsx b/src/navigation/UnauthedStackNav.tsx
-index ca652aa..e230631 100644
---- a/src/navigation/UnauthedStackNav.tsx
-+++ b/src/navigation/UnauthedStackNav.tsx
-@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
+diff --git a/src/contexts/UserContext.tsx b/src/contexts/UserContext.tsx
+new file mode 100644
+index 0000000..50904ff
+--- /dev/null
++++ b/src/contexts/UserContext.tsx
+@@ -0,0 +1,42 @@
++import React, {useContext, useState} from 'react';
++import {AuthService} from 'services/AuthService';
++
++export class AccountConflictError {}
++
++export class AuthenticationFailedError {}
++
++interface ContextValueType {
++  signup: (userName: string, password: string) => Promise<void | AccountConflictError>;
++  login: (userName: string, password: string) => Promise<void | AuthenticationFailedError>;
++  logout: () => Promise<void>;
++  userName: string;
++  isLoggedIn: boolean;
++}
++
++export const UserContext = React.createContext<ContextValueType>({} as ContextValueType);
++
++export const useUserContext = () => useContext(UserContext);
++
++export const UserContextProvider: React.FC = ({children}) => {
++  const [userName, setUserName] = useState<string>('');
++
++  const contextValue: ContextValueType = {
++    signup: async (userName, password) => {
++      await AuthService.signup(userName, password);
++    },
++    login: async (userName, password) => {
++      await AuthService.login(userName, password);
++      await AuthService.refreshCsrfToken();
++      setUserName(userName);
++    },
++    logout: async () => {
++      await AuthService.logout();
++      await AuthService.refreshCsrfToken();
++      setUserName('');
++    },
++    userName,
++    isLoggedIn: userName !== '',
++  };
++
++  return <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>;
++};
+diff --git a/src/navigation/AuthedStackNav.tsx b/src/navigation/AuthedStackNav.tsx
+new file mode 100644
+index 0000000..1d06db8
+--- /dev/null
++++ b/src/navigation/AuthedStackNav.tsx
+@@ -0,0 +1,12 @@
++import {createStackNavigator} from '@react-navigation/stack';
++import React from 'react';
++import {TodoBoard} from 'screens';
++
++const nav = createStackNavigator();
++export const AuthedStackNav: React.FC = () => {
++  return (
++    <nav.Navigator screenOptions={{headerShown: false}}>
++      <nav.Screen name="Todo" component={TodoBoard} />
++    </nav.Navigator>
++  );
++};
+diff --git a/src/navigation/RootStackNav.tsx b/src/navigation/RootStackNav.tsx
+index ca652aa..5af6fcf 100644
+--- a/src/navigation/RootStackNav.tsx
++++ b/src/navigation/RootStackNav.tsx
+@@ -1,45 +1,20 @@
+-import {useNavigation} from '@react-navigation/native';
  import {createStackNavigator} from '@react-navigation/stack';
++import {useUserContext} from 'contexts/UserContext';
  import React from 'react';
- import {Button} from 'react-native-elements';
+-import {Button} from 'react-native-elements';
 -import {Welcome, Instructions, Login, TodoBoard} from 'screens';
-+import {Welcome, Instructions, Login} from 'screens';
  
- const HeaderRight: React.FC = () => {
-   const navigation = useNavigation();
-@@ -10,7 +10,7 @@ const HeaderRight: React.FC = () => {
- };
+-const HeaderRight: React.FC = () => {
+-  const navigation = useNavigation();
+-  return <Button type="clear" onPress={() => navigation.navigate('Login')} title="ログイン" />;
+-};
++import {AuthedStackNav} from './AuthedStackNav';
++import {UnauthedStackNav} from './UnauthedStackNav';
  
- const nav = createStackNavigator();
--export const RootStackNav: React.FC = () => {
-+export const UnauthedStackNav: React.FC = () => {
+-const nav = createStackNavigator();
++const rootNav = createStackNavigator();
+ export const RootStackNav: React.FC = () => {
++  const userContext = useUserContext();
    return (
-     <nav.Navigator
-       initialRouteName={Welcome.name}
-@@ -32,13 +32,6 @@ export const RootStackNav: React.FC = () => {
-           headerRight: undefined,
-         }}
-       />
+-    <nav.Navigator
+-      initialRouteName={Welcome.name}
+-      screenOptions={{
+-        headerRight: () => <HeaderRight />,
+-      }}>
+-      <nav.Screen
+-        name="Welcome"
+-        component={Welcome}
+-        options={{
+-          headerTitle: 'Welcome',
+-        }}
+-      />
+-      <nav.Screen
+-        name="Login"
+-        component={Login}
+-        options={{
+-          headerTitle: 'ログイン',
+-          headerRight: undefined,
+-        }}
+-      />
 -      <nav.Screen
 -        name="TodoBoard"
 -        component={TodoBoard}
@@ -53,9 +137,61 @@ index ca652aa..e230631 100644
 -          headerTitle: 'Todo',
 -        }}
 -      />
-       <nav.Screen name="Instructions" component={Instructions} />
-     </nav.Navigator>
+-      <nav.Screen name="Instructions" component={Instructions} />
+-    </nav.Navigator>
++    <rootNav.Navigator screenOptions={{headerShown: false}}>
++      {userContext.isLoggedIn ? (
++        <rootNav.Screen name="Authed" component={AuthedStackNav} />
++      ) : (
++        <rootNav.Screen name="Unauthed" component={UnauthedStackNav} />
++      )}
++    </rootNav.Navigator>
    );
+ };
+diff --git a/src/navigation/UnauthedStackNav.tsx b/src/navigation/UnauthedStackNav.tsx
+new file mode 100644
+index 0000000..e230631
+--- /dev/null
++++ b/src/navigation/UnauthedStackNav.tsx
+@@ -0,0 +1,38 @@
++import {useNavigation} from '@react-navigation/native';
++import {createStackNavigator} from '@react-navigation/stack';
++import React from 'react';
++import {Button} from 'react-native-elements';
++import {Welcome, Instructions, Login} from 'screens';
++
++const HeaderRight: React.FC = () => {
++  const navigation = useNavigation();
++  return <Button type="clear" onPress={() => navigation.navigate('Login')} title="ログイン" />;
++};
++
++const nav = createStackNavigator();
++export const UnauthedStackNav: React.FC = () => {
++  return (
++    <nav.Navigator
++      initialRouteName={Welcome.name}
++      screenOptions={{
++        headerRight: () => <HeaderRight />,
++      }}>
++      <nav.Screen
++        name="Welcome"
++        component={Welcome}
++        options={{
++          headerTitle: 'Welcome',
++        }}
++      />
++      <nav.Screen
++        name="Login"
++        component={Login}
++        options={{
++          headerTitle: 'ログイン',
++          headerRight: undefined,
++        }}
++      />
++      <nav.Screen name="Instructions" component={Instructions} />
++    </nav.Navigator>
++  );
++};
 diff --git a/src/navigation/index.ts b/src/navigation/index.ts
 index 7e4db67..9f57181 100644
 --- a/src/navigation/index.ts
@@ -116,3 +252,36 @@ index 7555435..caacb08 100644
      </View>
    );
  };
+diff --git a/src/services/AuthService.ts b/src/services/AuthService.ts
+new file mode 100644
+index 0000000..a6e9454
+--- /dev/null
++++ b/src/services/AuthService.ts
+@@ -0,0 +1,20 @@
++const refreshCsrfToken = async () => {};
++
++const signup = async (userName: string, password: string) => {
++  return Promise.resolve();
++};
++
++const login = async (userName: string, password: string) => {
++  return Promise.resolve();
++};
++
++const logout = async () => {
++  return Promise.resolve();
++};
++
++export const AuthService = {
++  signup,
++  login,
++  logout,
++  refreshCsrfToken,
++};
+diff --git a/src/services/index.ts b/src/services/index.ts
+new file mode 100644
+index 0000000..af1ad50
+--- /dev/null
++++ b/src/services/index.ts
+@@ -0,0 +1 @@
++export * from './AuthService';

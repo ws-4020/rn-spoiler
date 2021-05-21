@@ -1,3 +1,51 @@
+diff --git a/src/components/basics/index.ts b/src/components/basics/index.ts
+new file mode 100644
+index 0000000..5638cb2
+--- /dev/null
++++ b/src/components/basics/index.ts
+@@ -0,0 +1 @@
++export * from './view';
+diff --git a/src/components/basics/view/KeyboardView.tsx b/src/components/basics/view/KeyboardView.tsx
+new file mode 100644
+index 0000000..f0b8b0c
+--- /dev/null
++++ b/src/components/basics/view/KeyboardView.tsx
+@@ -0,0 +1,28 @@
++import React, {ComponentProps} from 'react';
++import {KeyboardAvoidingView, Platform, StyleSheet} from 'react-native';
++
++type KeyboardViewProps = ComponentProps<typeof KeyboardAvoidingView>;
++
++const defaultKeyboardAvoidingViewBehavior = Platform.select({
++  ios: 'padding',
++  android: undefined,
++} as const);
++
++export const KeyboardView: React.FC<KeyboardViewProps> = ({
++  children,
++  behavior = defaultKeyboardAvoidingViewBehavior,
++  style,
++  ...props
++}) => {
++  return (
++    <KeyboardAvoidingView behavior={behavior} style={StyleSheet.flatten([styles.container, style])} {...props}>
++      {children}
++    </KeyboardAvoidingView>
++  );
++};
++
++const styles = StyleSheet.create({
++  container: {
++    flex: 1,
++  },
++});
+diff --git a/src/components/basics/view/index.ts b/src/components/basics/view/index.ts
+new file mode 100644
+index 0000000..d106650
+--- /dev/null
++++ b/src/components/basics/view/index.ts
+@@ -0,0 +1 @@
++export * from './KeyboardView';
 diff --git a/src/screens/auth/Login.tsx b/src/screens/auth/Login.tsx
 index 2751a2f..87dab3e 100644
 --- a/src/screens/auth/Login.tsx
