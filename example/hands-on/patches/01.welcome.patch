@@ -1,0 +1,66 @@
+diff --git a/src/navigation/RootStackNav.tsx b/src/navigation/RootStackNav.tsx
+index a34be3a..64a5d0b 100644
+--- a/src/navigation/RootStackNav.tsx
++++ b/src/navigation/RootStackNav.tsx
+@@ -1,12 +1,12 @@
+ import {createStackNavigator} from '@react-navigation/stack';
+ import React from 'react';
+-import {Home, Instructions} from 'screens';
++import {Welcome, Instructions} from 'screens';
+ 
+ const nav = createStackNavigator();
+ export const RootStackNav: React.FC = () => {
+   return (
+-    <nav.Navigator initialRouteName={Home.name}>
+-      <nav.Screen name="Home" component={Home} options={{headerShown: false}} />
++    <nav.Navigator initialRouteName={Welcome.name}>
++      <nav.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
+       <nav.Screen name="Instructions" component={Instructions} />
+     </nav.Navigator>
+   );
+diff --git a/src/screens/home/Welcome.tsx b/src/screens/home/Welcome.tsx
+index 57c2190..38c2d0b 100644
+--- a/src/screens/home/Welcome.tsx
++++ b/src/screens/home/Welcome.tsx
+@@ -1,18 +1,16 @@
+ import {useNavigation} from '@react-navigation/native';
+-import React, {useCallback, useContext} from 'react';
++import React from 'react';
+ import {StyleSheet, View} from 'react-native';
+-import {Button, Text, ThemeContext} from 'react-native-elements';
++import {Button, Text} from 'react-native-elements';
+ 
+-export const Home: React.FC = () => {
++export const Welcome: React.FC = () => {
+   const navigation = useNavigation();
+-  const {theme} = useContext(ThemeContext);
+-  const onGoToInstructionButtonPress = useCallback(() => navigation.navigate('Instructions'), [navigation]);
+   return (
+-    <View style={StyleSheet.flatten([styles.container, {backgroundColor: theme.colors?.primary}])}>
+-      <Text h1 style={styles.textColor}>
+-        Hello, World!
+-      </Text>
+-      <Button title="Go to instructions" onPress={onGoToInstructionButtonPress} />
++    <View style={styles.container}>
++      <Text h1>Welcome</Text>
++      <View>
++        <Button onPress={() => navigation.navigate('Instructions')} title="登録する" />
++      </View>
+     </View>
+   );
+ };
+@@ -23,7 +21,4 @@ const styles = StyleSheet.create({
+     alignItems: 'center',
+     justifyContent: 'center',
+   },
+-  textColor: {
+-    color: '#fefefe',
+-  },
+ });
+diff --git a/src/screens/home/index.ts b/src/screens/home/index.ts
+index 6fd0b5b..a45bcfc 100644
+--- a/src/screens/home/index.ts
++++ b/src/screens/home/index.ts
+@@ -1 +1 @@
+-export * from './Home';
++export * from './Welcome';

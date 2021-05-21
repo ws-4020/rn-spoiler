@@ -1,0 +1,25 @@
+diff --git a/src/components/basics/index.ts b/src/components/basics/index.ts
+index 5638cb2..a4952fa 100644
+--- a/src/components/basics/index.ts
++++ b/src/components/basics/index.ts
+@@ -1 +1,2 @@
++export * from './image';
+ export * from './view';
+diff --git a/src/screens/home/Welcome.tsx b/src/screens/home/Welcome.tsx
+index 38c2d0b..bb7e8c9 100644
+--- a/src/screens/home/Welcome.tsx
++++ b/src/screens/home/Welcome.tsx
+@@ -1,4 +1,5 @@
+ import {useNavigation} from '@react-navigation/native';
++import {Logo} from 'components/basics';
+ import React from 'react';
+ import {StyleSheet, View} from 'react-native';
+ import {Button, Text} from 'react-native-elements';
+@@ -7,6 +8,7 @@ export const Welcome: React.FC = () => {
+   const navigation = useNavigation();
+   return (
+     <View style={styles.container}>
++      <Logo />
+       <Text h1>Welcome</Text>
+       <View>
+         <Button onPress={() => navigation.navigate('Instructions')} title="登録する" />

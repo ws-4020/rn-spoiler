@@ -1,0 +1,50 @@
+diff --git a/src/screens/todo/TodoBoard.tsx b/src/screens/todo/TodoBoard.tsx
+index fa96bf7..4d94a19 100644
+--- a/src/screens/todo/TodoBoard.tsx
++++ b/src/screens/todo/TodoBoard.tsx
+@@ -1,6 +1,6 @@
+-import {useNavigation} from '@react-navigation/native';
++import {useNavigation, useFocusEffect} from '@react-navigation/native';
+ import {FilterType, TodoFilter, TodoList} from 'components/parts';
+-import React, {useContext, useEffect, useState} from 'react';
++import React, {useCallback, useContext, useState} from 'react';
+ import {Alert, StyleSheet, View} from 'react-native';
+ import {Icon, ThemeContext} from 'react-native-elements';
+ import {Todo, TodoService} from 'services';
+@@ -21,21 +21,23 @@ export const TodoBoard: React.FC = () => {
+   const [todos, setTodos] = useState<Todo[]>([]);
+   const [filterType, setFilterType] = useState<FilterType>(FilterType.ALL);
+ 
+-  useEffect(() => {
+-    let isActive = true;
++  useFocusEffect(
++    useCallback(() => {
++      let isActive = true;
+ 
+-    TodoService.getTodos()
+-      .then((response) => {
+-        if (isActive) {
+-          setTodos(response);
+-        }
+-      })
+-      .catch(() => {});
++      TodoService.getTodos()
++        .then((response) => {
++          if (isActive) {
++            setTodos(response);
++          }
++        })
++        .catch(() => {});
+ 
+-    return () => {
+-      isActive = false;
+-    };
+-  }, []);
++      return () => {
++        isActive = false;
++      };
++    }, []),
++  );
+ 
+   const toggleTodoCompletion = (id: number) => {
+     const target = todos.find((todo) => todo.id === id);

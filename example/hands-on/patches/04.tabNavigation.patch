@@ -1,0 +1,64 @@
+diff --git a/src/navigation/AuthedStackNav.tsx b/src/navigation/AuthedStackNav.tsx
+index 1d06db8..510f506 100644
+--- a/src/navigation/AuthedStackNav.tsx
++++ b/src/navigation/AuthedStackNav.tsx
+@@ -1,12 +1,12 @@
+ import {createStackNavigator} from '@react-navigation/stack';
++import {MainTabNav} from 'navigation/MainTabNav';
+ import React from 'react';
+-import {TodoBoard} from 'screens';
+ 
+ const nav = createStackNavigator();
+ export const AuthedStackNav: React.FC = () => {
+   return (
+     <nav.Navigator screenOptions={{headerShown: false}}>
+-      <nav.Screen name="Todo" component={TodoBoard} />
++      <nav.Screen name="Main" component={MainTabNav} />
+     </nav.Navigator>
+   );
+ };
+diff --git a/src/navigation/index.ts b/src/navigation/index.ts
+index 9f57181..739c056 100644
+--- a/src/navigation/index.ts
++++ b/src/navigation/index.ts
+@@ -1,3 +1,6 @@
+ export * from './RootStackNav';
+ export * from './UnauthedStackNav';
+ export * from './AuthedStackNav';
++export * from './TodoStackNav';
++export * from './SettingsStackNav';
++export * from './MainTabNav';
+diff --git a/src/screens/index.ts b/src/screens/index.ts
+index 76fb4f8..a93d979 100644
+--- a/src/screens/index.ts
++++ b/src/screens/index.ts
+@@ -1,4 +1,5 @@
+ export * from './auth';
+ export * from './home';
+ export * from './instructions';
++export * from './settings';
+ export * from './todo';
+diff --git a/src/screens/todo/TodoBoard.tsx b/src/screens/todo/TodoBoard.tsx
+index caacb08..7555435 100644
+--- a/src/screens/todo/TodoBoard.tsx
++++ b/src/screens/todo/TodoBoard.tsx
+@@ -1,17 +1,11 @@
+-import {useUserContext} from 'contexts/UserContext';
+-import React, {useCallback} from 'react';
++import React from 'react';
+ import {StyleSheet, View} from 'react-native';
+-import {Text, Button} from 'react-native-elements';
++import {Text} from 'react-native-elements';
+ 
+ export const TodoBoard: React.FC = () => {
+-  const userContext = useUserContext();
+-
+-  const onLogout = useCallback(() => userContext.logout(), [userContext]);
+-
+   return (
+     <View style={styles.container}>
+       <Text h1>Todo</Text>
+-      <Button type="clear" onPress={onLogout} title="ログアウト" />
+     </View>
+   );
+ };
