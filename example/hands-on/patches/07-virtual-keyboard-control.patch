@@ -1,0 +1,82 @@
+diff --git a/src/screens/auth/Login.tsx b/src/screens/auth/Login.tsx
+index 6c8a320..2751a2f 100644
+--- a/src/screens/auth/Login.tsx
++++ b/src/screens/auth/Login.tsx
+@@ -1,7 +1,7 @@
+ import {useUserContext} from 'contexts/UserContext';
+ import {useFormik} from 'formik';
+ import React, {useCallback} from 'react';
+-import {StyleSheet, View} from 'react-native';
++import {KeyboardAvoidingView, Platform, StyleSheet, View} from 'react-native';
+ import {Button, Input} from 'react-native-elements';
+ import * as Yup from 'yup';
+ 
+@@ -29,34 +29,44 @@ export const Login: React.FC = () => {
+   });
+ 
+   return (
+-    <View style={styles.form}>
+-      <Input
+-        label="名前"
+-        containerStyle={styles.input}
+-        autoCapitalize="none"
+-        errorMessage={formik.errors.name}
+-        onChangeText={formik.handleChange('name')}
+-        value={formik.values.name}
+-      />
+-      <Input
+-        label="パスワード"
+-        containerStyle={styles.input}
+-        errorMessage={formik.errors.password}
+-        secureTextEntry
+-        onChangeText={formik.handleChange('password')}
+-        value={formik.values.password}
+-      />
+-      <Button
+-        disabled={formik.isSubmitting}
+-        onPress={() => formik.handleSubmit()}
+-        title="ログインする"
+-        buttonStyle={styles.button}
+-      />
+-    </View>
++    <KeyboardAvoidingView
++      behavior={Platform.select({
++        ios: 'padding',
++        android: undefined,
++      } as const)}
++      style={styles.container}>
++      <View style={styles.form}>
++        <Input
++          label="名前"
++          containerStyle={styles.input}
++          autoCapitalize="none"
++          errorMessage={formik.errors.name}
++          onChangeText={formik.handleChange('name')}
++          value={formik.values.name}
++        />
++        <Input
++          label="パスワード"
++          containerStyle={styles.input}
++          errorMessage={formik.errors.password}
++          secureTextEntry
++          onChangeText={formik.handleChange('password')}
++          value={formik.values.password}
++        />
++        <Button
++          disabled={formik.isSubmitting}
++          onPress={() => formik.handleSubmit()}
++          title="ログインする"
++          buttonStyle={styles.button}
++        />
++      </View>
++    </KeyboardAvoidingView>
+   );
+ };
+ 
+ const styles = StyleSheet.create({
++  container: {
++    flex: 1,
++  },
+   form: {
+     flex: 1,
+     alignItems: 'center',
