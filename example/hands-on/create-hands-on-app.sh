@@ -23,12 +23,15 @@ RN_SPOILER_DIR=$(pwd)
 mkdir -p generated
 cd generated
 WORK_DIR=$(pwd)
-APP_ROOT_DIR=$WORK_DIR/$APP_NAME
 cd $WORK_DIR
+
+# すでにアプリが存在していた場合は削除
+rm -rf $APP_NAME
 
 # rn-spoilerをテンプレートとして、新規アプリを作成
 npx react-native init --template https://github.com/ws-4020/rn-spoiler.git $APP_NAME
 
+APP_ROOT_DIR=$WORK_DIR/$APP_NAME
 cd $APP_ROOT_DIR
 
 NPM_VERSION=$(npm -v)
