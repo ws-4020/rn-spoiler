@@ -12,12 +12,10 @@ echo "Start creating $APP_NAME."
 
 # 実行ファイルのディレクトリを取得
 EXECUTABLE_SCRIPT_DIR=$(cd $(dirname $0); pwd)
-# プロジェクトルートを取得
-ROOT_DIR=$(cd $EXECUTABLE_SCRIPT_DIR; git rev-parse --show-toplevel)
 # パッチファイルが格納されているディレクトリを取得
 PATCHES_DIR=$EXECUTABLE_SCRIPT_DIR/patches
 # `generated`ディレクトリの中に新規アプリを作成する 
-WORK_DIR=$ROOT_DIR/generated
+WORK_DIR=$EXECUTABLE_SCRIPT_DIR/generated
 mkdir -p $WORK_DIR
 # 新規アプリのルートディレクトリ
 APP_ROOT_DIR=$WORK_DIR/$APP_NAME

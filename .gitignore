@@ -194,4 +194,4 @@ template/android/app/src/main/java/com/helloworld/generated/BasePackageList.java
 template/.gitignore
 
 ### generated ###
-generated
+example/hands-on/generated
