@@ -27,7 +27,7 @@ cd $WORK_DIR
 rm -rf $APP_NAME
 
 # rn-spoilerをテンプレートとして、新規アプリを作成
-npx react-native init --template https://github.com/ws-4020/rn-spoiler.git $APP_NAME
+npx react-native init --npm --template https://github.com/ws-4020/rn-spoiler.git $APP_NAME
 
 cd $APP_ROOT_DIR
 
