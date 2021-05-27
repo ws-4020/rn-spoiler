@@ -16,7 +16,7 @@ EXECUTABLE_SCRIPT_DIR=$(cd $(dirname $0); pwd)
 PATCHES_DIR=$EXECUTABLE_SCRIPT_DIR/patches
 
 cd $EXECUTABLE_SCRIPT_DIR
-# rn-spoilerの親ディレクトリに移動して、そこに新規アプリを作成する
+# rn-spoilerのルートディレクトリに移動して、`generated`ディレクトリの中に新規アプリを作成する
 cd ../../
 RN_SPOILER_DIR=$(pwd)
 # アプリを構築するディレクトリを作成
