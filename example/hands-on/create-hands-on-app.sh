@@ -12,26 +12,23 @@ echo "Start creating $APP_NAME."
 
 # 実行ファイルのディレクトリを取得
 EXECUTABLE_SCRIPT_DIR=$(cd $(dirname $0); pwd)
+# プロジェクトルートを取得
+ROOT_DIR=$(cd $EXECUTABLE_SCRIPT_DIR; git rev-parse --show-toplevel)
 # パッチファイルが格納されているディレクトリを取得
 PATCHES_DIR=$EXECUTABLE_SCRIPT_DIR/patches
+# `generated`ディレクトリの中に新規アプリを作成する 
+WORK_DIR=$ROOT_DIR/generated
+mkdir -p $WORK_DIR
+# 新規アプリのルートディレクトリ
+APP_ROOT_DIR=$WORK_DIR/$APP_NAME
 
-cd $EXECUTABLE_SCRIPT_DIR
-# rn-spoilerのルートディレクトリに移動して、`generated`ディレクトリの中に新規アプリを作成する
-cd ../../
-RN_SPOILER_DIR=$(pwd)
-# アプリを構築するディレクトリを作成
-mkdir -p generated
-cd generated
-WORK_DIR=$(pwd)
 cd $WORK_DIR
-
 # すでにアプリが存在していた場合は削除
 rm -rf $APP_NAME
 
 # rn-spoilerをテンプレートとして、新規アプリを作成
 npx react-native init --template https://github.com/ws-4020/rn-spoiler.git $APP_NAME
 
-APP_ROOT_DIR=$WORK_DIR/$APP_NAME
 cd $APP_ROOT_DIR
 
 NPM_VERSION=$(npm -v)
