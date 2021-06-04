@@ -62,7 +62,7 @@ index 7555435..0180c85 100644
    return (
      <View style={styles.container}>
        <Text h1>Todo</Text>
-+      <Button onPress={() => navigation.navigate('TodoForm')} title="タスク登録" />
++      <Button onPress={() => navigation.navigate('TodoForm')} title="ToDo登録" />
      </View>
    );
  };
@@ -79,7 +79,7 @@ index 0000000..f09c002
 +export const TodoForm: React.FC = () => {
 +  return (
 +    <View style={styles.container}>
-+      <Text h1>タスク登録</Text>
++      <Text h1>ToDo登録</Text>
 +    </View>
 +  );
 +};
