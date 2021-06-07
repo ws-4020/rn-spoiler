@@ -198,7 +198,7 @@ index 0180c85..fa96bf7 100644
    return (
 -    <View style={styles.container}>
 -      <Text h1>Todo</Text>
--      <Button onPress={() => navigation.navigate('TodoForm')} title="タスク登録" />
+-      <Button onPress={() => navigation.navigate('TodoForm')} title="ToDo登録" />
 +    <View style={styles.container} testID="screen/main/home">
 +      <TodoFilter filterType={filterType} setFilterType={setFilterType} />
 +      <TodoList

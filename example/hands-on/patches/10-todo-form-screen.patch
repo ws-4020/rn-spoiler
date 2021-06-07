@@ -28,7 +28,7 @@ index f09c002..2668e0e 100644
 +  const formik = useFormik({
 +    initialValues: {task: ''},
 +    validationSchema: Yup.object().shape({
-+      task: Yup.string().required('タスクを入力してください'),
++      task: Yup.string().required('ToDoを入力してください'),
 +    }),
 +    validateOnChange: false,
 +    onSubmit: onAdd,
@@ -55,7 +55,7 @@ index f09c002..2668e0e 100644
 +
    return (
 -    <View style={styles.container}>
--      <Text h1>タスク登録</Text>
+-      <Text h1>ToDo登録</Text>
 -    </View>
 +    <KeyboardAvoidingView
 +      behavior={Platform.select({
@@ -64,9 +64,9 @@ index f09c002..2668e0e 100644
 +      } as const)}
 +      style={styles.container}>
 +      <View style={styles.form}>
-+        <Text h1>タスク登録</Text>
++        <Text h1>ToDo登録</Text>
 +        <Input
-+          placeholder="タスクを入力してください"
++          placeholder="ToDoを入力してください"
 +          containerStyle={styles.input}
 +          autoCapitalize="none"
 +          errorMessage={formik.errors.task}

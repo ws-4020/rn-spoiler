@@ -116,7 +116,7 @@ index 2668e0e..570e67b 100644
 -      style={styles.container}>
 +    <KeyboardView>
        <View style={styles.form}>
-         <Text h1>タスク登録</Text>
+         <Text h1>ToDo登録</Text>
          <Input
 @@ -69,14 +65,11 @@ export const TodoForm: React.FC = () => {
            buttonStyle={styles.addButton}
