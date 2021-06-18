@@ -1,8 +1,8 @@
 diff --git a/src/screens/todo/TodoForm.tsx b/src/screens/todo/TodoForm.tsx
-index f09c002..2668e0e 100644
+index e627bce..dd185e6 100644
 --- a/src/screens/todo/TodoForm.tsx
 +++ b/src/screens/todo/TodoForm.tsx
-@@ -1,19 +1,90 @@
+@@ -1,19 +1,92 @@
 -import React from 'react';
 -import {StyleSheet, View} from 'react-native';
 -import {Text} from 'react-native-elements';
@@ -17,18 +17,20 @@ index f09c002..2668e0e 100644
  export const TodoForm: React.FC = () => {
 +  const navigation = useNavigation();
 +
-+  const onAdd = useCallback<(values: {task: string}) => void>(
-+    async ({task}) => {
-+      await TodoService.postTodo(task);
-+      navigation.goBack();
++  const onAdd = useCallback<(values: {todo: string}) => void>(
++    async ({todo}) => {
++      await TodoService.postTodo(todo);
++      if (navigation.isFocused()) {
++        navigation.goBack();
++      }
 +    },
 +    [navigation],
 +  );
 +
 +  const formik = useFormik({
-+    initialValues: {task: ''},
++    initialValues: {todo: ''},
 +    validationSchema: Yup.object().shape({
-+      task: Yup.string().required('ToDoを入力してください'),
++      todo: Yup.string().required('ToDoを入力してください'),
 +    }),
 +    validateOnChange: false,
 +    onSubmit: onAdd,
@@ -69,9 +71,9 @@ index f09c002..2668e0e 100644
 +          placeholder="ToDoを入力してください"
 +          containerStyle={styles.input}
 +          autoCapitalize="none"
-+          errorMessage={formik.errors.task}
-+          onChangeText={formik.handleChange('task')}
-+          value={formik.values.task}
++          errorMessage={formik.errors.todo}
++          onChangeText={formik.handleChange('todo')}
++          value={formik.values.todo}
 +        />
 +        <Button
 +          disabled={formik.isSubmitting}

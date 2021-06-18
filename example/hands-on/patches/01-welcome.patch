@@ -1,5 +1,33 @@
+diff --git a/android/app/src/main/java/com/todo_app_0617/generated/BasePackageList.java b/android/app/src/main/java/com/todo_app_0617/generated/BasePackageList.java
+new file mode 100644
+index 0000000..de9242d
+--- /dev/null
++++ b/android/app/src/main/java/com/todo_app_0617/generated/BasePackageList.java
+@@ -0,0 +1,22 @@
++package com.todo_app_0617.generated;
++
++import java.util.Arrays;
++import java.util.List;
++import org.unimodules.core.interfaces.Package;
++
++public class BasePackageList {
++  public List<Package> getPackageList() {
++    return Arrays.<Package>asList(
++        new expo.modules.application.ApplicationPackage(),
++        new expo.modules.constants.ConstantsPackage(),
++        new expo.modules.errorrecovery.ErrorRecoveryPackage(),
++        new expo.modules.filesystem.FileSystemPackage(),
++        new expo.modules.font.FontLoaderPackage(),
++        new expo.modules.imageloader.ImageLoaderPackage(),
++        new expo.modules.keepawake.KeepAwakePackage(),
++        new expo.modules.permissions.PermissionsPackage(),
++        new expo.modules.splashscreen.SplashScreenPackage(),
++        new expo.modules.updates.UpdatesPackage()
++    );
++  }
++}
 diff --git a/src/navigation/RootStackNav.tsx b/src/navigation/RootStackNav.tsx
-index a34be3a..64a5d0b 100644
+index a34be3a..e5e7673 100644
 --- a/src/navigation/RootStackNav.tsx
 +++ b/src/navigation/RootStackNav.tsx
 @@ -1,12 +1,12 @@
@@ -14,7 +42,7 @@ index a34be3a..64a5d0b 100644
 -    <nav.Navigator initialRouteName={Home.name}>
 -      <nav.Screen name="Home" component={Home} options={{headerShown: false}} />
 +    <nav.Navigator initialRouteName={Welcome.name}>
-+      <nav.Screen name="Home" component={Welcome} options={{headerShown: false}} />
++      <nav.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
        <nav.Screen name="Instructions" component={Instructions} />
      </nav.Navigator>
    );
