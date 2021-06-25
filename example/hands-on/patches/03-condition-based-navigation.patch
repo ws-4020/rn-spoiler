@@ -90,7 +90,7 @@ diff --git a/src/navigation/RootStackNav.tsx b/src/navigation/RootStackNav.tsx
 index dd63ae6..5af6fcf 100644
 --- a/src/navigation/RootStackNav.tsx
 +++ b/src/navigation/RootStackNav.tsx
-@@ -1,47 +1,20 @@
+@@ -1,46 +1,20 @@
 -import {useNavigation} from '@react-navigation/native';
  import {createStackNavigator} from '@react-navigation/stack';
 +import {useUserContext} from 'contexts/UserContext';
@@ -154,7 +154,7 @@ new file mode 100644
 index 0000000..d22bfd6
 --- /dev/null
 +++ b/src/navigation/UnauthedStackNav.tsx
-@@ -0,0 +1,39 @@
+@@ -0,0 +1,38 @@
 +import {useNavigation} from '@react-navigation/native';
 +import {createStackNavigator} from '@react-navigation/stack';
 +import React from 'react';
@@ -172,9 +172,8 @@ index 0000000..d22bfd6
 +    <nav.Navigator
 +      initialRouteName={Welcome.name}
 +      screenOptions={{
-+        headerRight: () => <HeaderRight />
-+      }}
-+    >
++        headerRight: () => <HeaderRight />,
++      }}>
 +      <nav.Screen
 +        name="Welcome"
 +        component={Welcome}
