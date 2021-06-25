@@ -21,10 +21,10 @@ index b38b1fa..9ab32d9 100644
    "devDependencies": {
      "@babel/core": "~7.9.0",
 diff --git a/src/screens/auth/Login.tsx b/src/screens/auth/Login.tsx
-index 31aaff5..6c8a320 100644
+index 242be0d..6c8a320 100644
 --- a/src/screens/auth/Login.tsx
 +++ b/src/screens/auth/Login.tsx
-@@ -1,29 +1,69 @@
+@@ -1,28 +1,69 @@
  import {useUserContext} from 'contexts/UserContext';
 +import {useFormik} from 'formik';
  import React, {useCallback} from 'react';
@@ -35,20 +35,21 @@ index 31aaff5..6c8a320 100644
  
  export const Login: React.FC = () => {
    const userContext = useUserContext();
--  
+ 
 -  const login = useCallback(() => {
--      userContext.login('user', 'password');
-+
+-    // 後で例外処理を追加するので、今はlintのエラーは無視してください。
+-    userContext.login('user', 'password');
+-  }, [userContext]);
 +  const login = useCallback(
 +    (values: {name: string; password: string}) => {
 +      userContext.login(values.name, values.password).then(
 +        () => {},
 +        () => {},
 +      );
-     },
-     [userContext],
-   );
- 
++    },
++    [userContext],
++  );
++
 +  const formik = useFormik({
 +    initialValues: {name: '', password: ''},
 +    validationSchema: Yup.object().shape({
@@ -58,7 +59,7 @@ index 31aaff5..6c8a320 100644
 +    validateOnChange: false,
 +    onSubmit: login,
 +  });
-+
+ 
    return (
 -    <View style={styles.container}>
 -      <Text h1>ログイン</Text>

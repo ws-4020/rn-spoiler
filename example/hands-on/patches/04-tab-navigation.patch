@@ -1,12 +1,12 @@
 diff --git a/src/navigation/AuthedStackNav.tsx b/src/navigation/AuthedStackNav.tsx
-index 1d06db8..a20b6a0 100644
+index 1d06db8..510f506 100644
 --- a/src/navigation/AuthedStackNav.tsx
 +++ b/src/navigation/AuthedStackNav.tsx
 @@ -1,12 +1,12 @@
  import {createStackNavigator} from '@react-navigation/stack';
++import {MainTabNav} from 'navigation/MainTabNav';
  import React from 'react';
 -import {TodoBoard} from 'screens';
-+import {MainTabNav} from 'navigation/MainTabNav';
  
  const nav = createStackNavigator();
  export const AuthedStackNav: React.FC = () => {

@@ -1,15 +1,15 @@
 diff --git a/src/navigation/AuthedStackNav.tsx b/src/navigation/AuthedStackNav.tsx
-index a20b6a0..ce97dae 100644
+index 510f506..9f47f9c 100644
 --- a/src/navigation/AuthedStackNav.tsx
 +++ b/src/navigation/AuthedStackNav.tsx
 @@ -1,12 +1,40 @@
 +import {Ionicons} from '@expo/vector-icons';
 +import {useNavigation} from '@react-navigation/native';
  import {createStackNavigator} from '@react-navigation/stack';
+ import {MainTabNav} from 'navigation/MainTabNav';
 -import React from 'react';
 +import React, {useCallback, useContext} from 'react';
 +import {Button, ThemeContext} from 'react-native-elements';
- import {MainTabNav} from 'navigation/MainTabNav';
 +import {TodoForm} from 'screens';
 +
 +const CloseButton: React.FC = () => {

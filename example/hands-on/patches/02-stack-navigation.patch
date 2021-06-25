@@ -23,9 +23,8 @@ index e5e7673..dd63ae6 100644
 +    <nav.Navigator
 +      initialRouteName={Welcome.name}
 +      screenOptions={{
-+        headerRight: () => <HeaderRight />
-+      }}
-+    >
++        headerRight: () => <HeaderRight />,
++      }}>
 +      <nav.Screen
 +        name="Welcome"
 +        component={Welcome}

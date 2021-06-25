@@ -113,9 +113,8 @@ index dd63ae6..5af6fcf 100644
 -    <nav.Navigator
 -      initialRouteName={Welcome.name}
 -      screenOptions={{
--        headerRight: () => <HeaderRight />
--      }}
--    >
+-        headerRight: () => <HeaderRight />,
+-      }}>
 -      <nav.Screen
 -        name="Welcome"
 -        component={Welcome}
@@ -204,10 +203,10 @@ index 7e4db67..9f57181 100644
 +export * from './UnauthedStackNav';
 +export * from './AuthedStackNav';
 diff --git a/src/screens/auth/Login.tsx b/src/screens/auth/Login.tsx
-index 7dd7160..31aaff5 100644
+index 7dd7160..242be0d 100644
 --- a/src/screens/auth/Login.tsx
 +++ b/src/screens/auth/Login.tsx
-@@ -1,14 +1,21 @@
+@@ -1,14 +1,20 @@
 -import {useNavigation} from '@react-navigation/native';
 -import React from 'react';
 +import {useUserContext} from 'contexts/UserContext';
@@ -218,12 +217,11 @@ index 7dd7160..31aaff5 100644
  export const Login: React.FC = () => {
 -  const navigation = useNavigation();
 +  const userContext = useUserContext();
-+  
++
 +  const login = useCallback(() => {
-+      userContext.login('user', 'password');
-+    },
-+    [userContext],
-+  );
++    // 後で例外処理を追加するので、今はlintのエラーは無視してください。
++    userContext.login('user', 'password');
++  }, [userContext]);
 +
    return (
      <View style={styles.container}>
@@ -259,10 +257,10 @@ index 7555435..caacb08 100644
  };
 diff --git a/src/services/AuthService.ts b/src/services/AuthService.ts
 new file mode 100644
-index 0000000..4446eb3
+index 0000000..a6e9454
 --- /dev/null
 +++ b/src/services/AuthService.ts
-@@ -0,0 +1,21 @@
+@@ -0,0 +1,20 @@
 +const refreshCsrfToken = async () => {};
 +
 +const signup = async (userName: string, password: string) => {
@@ -283,7 +281,6 @@ index 0000000..4446eb3
 +  logout,
 +  refreshCsrfToken,
 +};
-+
 diff --git a/src/services/index.ts b/src/services/index.ts
 new file mode 100644
 index 0000000..af1ad50

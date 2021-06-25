@@ -32,10 +32,10 @@ index 0000000..b95cae6
 +};
 diff --git a/src/components/parts/todo/TodoItem.tsx b/src/components/parts/todo/TodoItem.tsx
 new file mode 100644
-index 0000000..a70d4cf
+index 0000000..86a7aa7
 --- /dev/null
 +++ b/src/components/parts/todo/TodoItem.tsx
-@@ -0,0 +1,44 @@
+@@ -0,0 +1,43 @@
 +import React, {useCallback} from 'react';
 +import {StyleSheet, View} from 'react-native';
 +import {CheckBox} from 'react-native-elements';
@@ -79,7 +79,6 @@ index 0000000..a70d4cf
 +    borderWidth: 0,
 +  },
 +});
-+
 diff --git a/src/components/parts/todo/TodoList.tsx b/src/components/parts/todo/TodoList.tsx
 new file mode 100644
 index 0000000..9cf973f
@@ -134,7 +133,7 @@ index 0000000..232d971
 +export * from './TodoList';
 +export * from './TodoItem';
 diff --git a/src/screens/todo/TodoBoard.tsx b/src/screens/todo/TodoBoard.tsx
-index 04143f1..c463afe 100644
+index 04143f1..de0c824 100644
 --- a/src/screens/todo/TodoBoard.tsx
 +++ b/src/screens/todo/TodoBoard.tsx
 @@ -1,15 +1,83 @@
@@ -221,7 +220,7 @@ index 04143f1..c463afe 100644
 +        size={30}
 +        containerStyle={styles.iconContainerStyle}
 +        onPress={() => {
-+          navigation.navigate('TodoForm')
++          navigation.navigate('TodoForm');
 +        }}
 +      />
      </View>
@@ -245,94 +244,92 @@ index 04143f1..c463afe 100644
 +    right: 10,
    },
  });
-diff --git a/src/services/TodoService.ts b/src/services/TodoService.ts
+diff --git a/src/services/TodoService.tsx b/src/services/TodoService.tsx
 new file mode 100644
-index 0000000..471c033
+index 0000000..2115292
 --- /dev/null
-+++ b/src/services/TodoService.ts
-@@ -0,0 +1,81 @@
++++ b/src/services/TodoService.tsx
+@@ -0,0 +1,80 @@
 +export type Todo = {
-+    id: number;
-+    text: string;
-+    completed: boolean;
++  id: number;
++  text: string;
++  completed: boolean;
++};
++
++const todos: Todo[] = [
++  {
++    id: 0,
++    text: '洗濯物をたたむ',
++    completed: false,
++  },
++  {
++    id: 1,
++    text: '食器を洗う',
++    completed: false,
++  },
++  {
++    id: 2,
++    text: 'ゴミを出す',
++    completed: false,
++  },
++  {
++    id: 3,
++    text: '風呂掃除',
++    completed: false,
++  },
++  {
++    id: 4,
++    text: 'パンを買いに行く',
++    completed: false,
++  },
++  {
++    id: 5,
++    text: '電球をかえる',
++    completed: false,
++  },
++  {
++    id: 6,
++    text: '塾の送り迎え',
++    completed: false,
++  },
++  {
++    id: 7,
++    text: 'ご飯を炊く',
++    completed: false,
++  },
++];
++let id = 7;
++
++const getTodos = async () => {
++  // 新しい配列オブジェクトとして返却する
++  return Promise.resolve([...todos]);
++};
++
++const postTodo = async (text: string) => {
++  id++;
++  const todo: Todo = {
++    id,
++    text,
++    completed: false,
 +  };
-+  
-+  const todos: Todo[] = [
-+    {
-+      id: 0,
-+      text: '洗濯物をたたむ',
-+      completed: false,
-+    },
-+    {
-+      id: 1,
-+      text: '食器を洗う',
-+      completed: false,
-+    },
-+    {
-+      id: 2,
-+      text: 'ゴミを出す',
-+      completed: false,
-+    },
-+    {
-+      id: 3,
-+      text: '風呂掃除',
-+      completed: false,
-+    },
-+    {
-+      id: 4,
-+      text: 'パンを買いに行く',
-+      completed: false,
-+    },
-+    {
-+      id: 5,
-+      text: '電球をかえる',
-+      completed: false,
-+    },
-+    {
-+      id: 6,
-+      text: '塾の送り迎え',
-+      completed: false,
-+    },
-+    {
-+      id: 7,
-+      text: 'ご飯を炊く',
-+      completed: false,
-+    },
-+  ];
-+  let id = 7;
-+  
-+  const getTodos = async () => {
-+    // 新しい配列オブジェクトとして返却する
-+    return Promise.resolve([...todos]);
-+  };
-+  
-+  const postTodo = async (text: string) => {
-+    id++;
-+    const todo: Todo = {
-+      id,
-+      text,
-+      completed: false,
-+    };
-+    todos.push(todo);
-+    return Promise.resolve(todo);
-+  };
-+  
-+  const putTodo = async (id: number, completed: boolean) => {
-+    const target = todos.find((todo) => todo.id === id);
-+    if (!target) {
-+      return Promise.reject(new Error('not found'));
-+    }
-+    target.completed = completed;
-+    return Promise.resolve(target);
-+  };
-+  
-+  export const TodoService = {
-+    getTodos,
-+    postTodo,
-+    putTodo,
-+  };
-+  
-\ No newline at end of file
++  todos.push(todo);
++  return Promise.resolve(todo);
++};
++
++const putTodo = async (id: number, completed: boolean) => {
++  const target = todos.find((todo) => todo.id === id);
++  if (!target) {
++    return Promise.reject(new Error('not found'));
++  }
++  target.completed = completed;
++  return Promise.resolve(target);
++};
++
++export const TodoService = {
++  getTodos,
++  postTodo,
++  putTodo,
++};
 diff --git a/src/services/index.ts b/src/services/index.ts
 index af1ad50..3e40d75 100644
 --- a/src/services/index.ts
