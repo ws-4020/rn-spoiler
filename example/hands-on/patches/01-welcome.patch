@@ -1,5 +1,5 @@
 diff --git a/src/navigation/RootStackNav.tsx b/src/navigation/RootStackNav.tsx
-index a34be3a..64a5d0b 100644
+index a34be3a..e5e7673 100644
 --- a/src/navigation/RootStackNav.tsx
 +++ b/src/navigation/RootStackNav.tsx
 @@ -1,12 +1,12 @@
@@ -14,7 +14,7 @@ index a34be3a..64a5d0b 100644
 -    <nav.Navigator initialRouteName={Home.name}>
 -      <nav.Screen name="Home" component={Home} options={{headerShown: false}} />
 +    <nav.Navigator initialRouteName={Welcome.name}>
-+      <nav.Screen name="Home" component={Welcome} options={{headerShown: false}} />
++      <nav.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
        <nav.Screen name="Instructions" component={Instructions} />
      </nav.Navigator>
    );

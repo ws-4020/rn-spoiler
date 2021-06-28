@@ -21,10 +21,10 @@ index b38b1fa..9ab32d9 100644
    "devDependencies": {
      "@babel/core": "~7.9.0",
 diff --git a/src/screens/auth/Login.tsx b/src/screens/auth/Login.tsx
-index bfae7c2..6c8a320 100644
+index 242be0d..6c8a320 100644
 --- a/src/screens/auth/Login.tsx
 +++ b/src/screens/auth/Login.tsx
-@@ -1,27 +1,69 @@
+@@ -1,28 +1,69 @@
  import {useUserContext} from 'contexts/UserContext';
 +import {useFormik} from 'formik';
  import React, {useCallback} from 'react';
@@ -37,6 +37,7 @@ index bfae7c2..6c8a320 100644
    const userContext = useUserContext();
  
 -  const login = useCallback(() => {
+-    // 後で例外処理を追加するので、今はlintのエラーは無視してください。
 -    userContext.login('user', 'password');
 -  }, [userContext]);
 +  const login = useCallback(

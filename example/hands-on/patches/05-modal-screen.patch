@@ -46,7 +46,7 @@ index 510f506..9f47f9c 100644
    );
  };
 diff --git a/src/screens/todo/TodoBoard.tsx b/src/screens/todo/TodoBoard.tsx
-index 7555435..0180c85 100644
+index 7555435..04143f1 100644
 --- a/src/screens/todo/TodoBoard.tsx
 +++ b/src/screens/todo/TodoBoard.tsx
 @@ -1,11 +1,15 @@
@@ -68,7 +68,7 @@ index 7555435..0180c85 100644
  };
 diff --git a/src/screens/todo/TodoForm.tsx b/src/screens/todo/TodoForm.tsx
 new file mode 100644
-index 0000000..f09c002
+index 0000000..e627bce
 --- /dev/null
 +++ b/src/screens/todo/TodoForm.tsx
 @@ -0,0 +1,19 @@

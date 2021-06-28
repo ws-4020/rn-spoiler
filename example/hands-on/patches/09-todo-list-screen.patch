@@ -133,10 +133,10 @@ index 0000000..232d971
 +export * from './TodoList';
 +export * from './TodoItem';
 diff --git a/src/screens/todo/TodoBoard.tsx b/src/screens/todo/TodoBoard.tsx
-index 0180c85..fa96bf7 100644
+index 04143f1..de0c824 100644
 --- a/src/screens/todo/TodoBoard.tsx
 +++ b/src/screens/todo/TodoBoard.tsx
-@@ -1,15 +1,79 @@
+@@ -1,15 +1,83 @@
  import {useNavigation} from '@react-navigation/native';
 -import React from 'react';
 -import {StyleSheet, View} from 'react-native';
@@ -185,7 +185,11 @@ index 0180c85..fa96bf7 100644
 +      return;
 +    }
 +    TodoService.putTodo(id, !target.completed)
-+      .then((returnedTodo) => setTodos(todos.map((todo) => (todo.id === id ? returnedTodo : todo))))
++      .then((returnedTodo) =>
++        setTodos((prevTodos) => {
++          return prevTodos.map((todo) => (todo.id === id ? returnedTodo : todo));
++        }),
++      )
 +      .catch(() => {});
 +  };
 +
@@ -222,7 +226,7 @@ index 0180c85..fa96bf7 100644
      </View>
    );
  };
-@@ -17,7 +81,15 @@ export const TodoBoard: React.FC = () => {
+@@ -17,7 +85,15 @@ export const TodoBoard: React.FC = () => {
  const styles = StyleSheet.create({
    container: {
      flex: 1,
@@ -240,11 +244,11 @@ index 0180c85..fa96bf7 100644
 +    right: 10,
    },
  });
-diff --git a/src/services/TodoService.ts b/src/services/TodoService.ts
+diff --git a/src/services/TodoService.tsx b/src/services/TodoService.tsx
 new file mode 100644
 index 0000000..2115292
 --- /dev/null
-+++ b/src/services/TodoService.ts
++++ b/src/services/TodoService.tsx
 @@ -0,0 +1,80 @@
 +export type Todo = {
 +  id: number;

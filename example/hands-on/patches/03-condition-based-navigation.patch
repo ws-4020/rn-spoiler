@@ -87,10 +87,10 @@ index 0000000..1d06db8
 +  );
 +};
 diff --git a/src/navigation/RootStackNav.tsx b/src/navigation/RootStackNav.tsx
-index ca652aa..5af6fcf 100644
+index dd63ae6..5af6fcf 100644
 --- a/src/navigation/RootStackNav.tsx
 +++ b/src/navigation/RootStackNav.tsx
-@@ -1,45 +1,20 @@
+@@ -1,46 +1,20 @@
 -import {useNavigation} from '@react-navigation/native';
  import {createStackNavigator} from '@react-navigation/stack';
 +import {useUserContext} from 'contexts/UserContext';
@@ -135,6 +135,7 @@ index ca652aa..5af6fcf 100644
 -        component={TodoBoard}
 -        options={{
 -          headerTitle: 'Todo',
+-          headerRight: undefined,
 -        }}
 -      />
 -      <nav.Screen name="Instructions" component={Instructions} />
@@ -150,7 +151,7 @@ index ca652aa..5af6fcf 100644
  };
 diff --git a/src/navigation/UnauthedStackNav.tsx b/src/navigation/UnauthedStackNav.tsx
 new file mode 100644
-index 0000000..e230631
+index 0000000..d22bfd6
 --- /dev/null
 +++ b/src/navigation/UnauthedStackNav.tsx
 @@ -0,0 +1,38 @@
@@ -201,10 +202,10 @@ index 7e4db67..9f57181 100644
 +export * from './UnauthedStackNav';
 +export * from './AuthedStackNav';
 diff --git a/src/screens/auth/Login.tsx b/src/screens/auth/Login.tsx
-index 7dd7160..bfae7c2 100644
+index 7dd7160..242be0d 100644
 --- a/src/screens/auth/Login.tsx
 +++ b/src/screens/auth/Login.tsx
-@@ -1,14 +1,19 @@
+@@ -1,14 +1,20 @@
 -import {useNavigation} from '@react-navigation/native';
 -import React from 'react';
 +import {useUserContext} from 'contexts/UserContext';
@@ -217,6 +218,7 @@ index 7dd7160..bfae7c2 100644
 +  const userContext = useUserContext();
 +
 +  const login = useCallback(() => {
++    // 後で例外処理を追加するので、今はlintのエラーは無視してください。
 +    userContext.login('user', 'password');
 +  }, [userContext]);
 +
