@@ -1,0 +1,86 @@
+diff --git a/src/backend/config.ts b/src/backend/config.ts
+index c0615d0..39ed711 100644
+--- a/src/backend/config.ts
++++ b/src/backend/config.ts
+@@ -1,2 +1,8 @@
+-import {Configuration} from './generated-rest-client';
+-export const config = new Configuration({basePath: 'http://192.168.1.6:9080/api'});
++import {Configuration, Middleware} from './generated-rest-client';
++const waitResponse: Middleware = {
++  post: async (context) => {
++    await new Promise((resolve) => setTimeout(resolve, 3000));
++    return Promise.resolve(context.response);
++  },
++};
++export const config = new Configuration({basePath: 'http://192.168.1.6:9080/api', middleware: [waitResponse]});
+diff --git a/src/screens/todo/TodoBoard.tsx b/src/screens/todo/TodoBoard.tsx
+index 27ae62e..5d94d3a 100644
+--- a/src/screens/todo/TodoBoard.tsx
++++ b/src/screens/todo/TodoBoard.tsx
+@@ -1,7 +1,7 @@
+ import {useNavigation, useFocusEffect} from '@react-navigation/native';
+ import {FilterType, TodoFilter, TodoList} from 'components/parts';
+ import React, {useCallback, useContext, useState} from 'react';
+-import {Alert, StyleSheet, View} from 'react-native';
++import {Alert, StyleSheet, View, ActivityIndicator} from 'react-native';
+ import {Icon, ThemeContext} from 'react-native-elements';
+ import {Todo, TodoService} from 'services';
+ 
+@@ -20,10 +20,12 @@ export const TodoBoard: React.FC = () => {
+   const {theme} = useContext(ThemeContext);
+   const [todos, setTodos] = useState<Todo[]>([]);
+   const [filterType, setFilterType] = useState<FilterType>(FilterType.ALL);
++  const [loading, setLoading] = useState(false);
+ 
+   useFocusEffect(
+     useCallback(() => {
+       let isActive = true;
++      setLoading(true);
+ 
+       TodoService.getTodos()
+         .then((response) => {
+@@ -31,7 +33,14 @@ export const TodoBoard: React.FC = () => {
+             setTodos(response);
+           }
+         })
+-        .catch(() => {});
++        .catch((error) => {
++          console.log(error);
++        })
++        .finally(() => {
++          if (isActive) {
++            setLoading(false);
++          }
++        });
+ 
+       return () => {
+         isActive = false;
+@@ -80,6 +89,11 @@ export const TodoBoard: React.FC = () => {
+           navigation.navigate('TodoForm');
+         }}
+       />
++      {loading && (
++        <View style={styles.indicatorContainer}>
++          <ActivityIndicator color="red" style={styles.indicator} size="large" />
++        </View>
++      )}
+     </View>
+   );
+ };
+@@ -98,4 +112,16 @@ const styles = StyleSheet.create({
+     bottom: 10,
+     right: 10,
+   },
++  indicatorContainer: {
++    position: 'absolute',
++    zIndex: 2,
++    width: '100%',
++    flex: 1,
++    alignContent: 'center',
++    height: '100%',
++    backgroundColor: 'rgba(0, 0, 0, 0.2)',
++  },
++  indicator: {
++    flex: 1,
++  },
+ });
