@@ -18,7 +18,7 @@ index 0000000..c0615d0
 +++ b/src/backend/config.ts
 @@ -0,0 +1,2 @@
 +import {Configuration} from './generated-rest-client';
-+export const config = new Configuration({basePath: 'http://192.168.1.6:9080/api'});
++export const config = new Configuration({basePath: 'http://LOCALHOST:9080/api'});
 diff --git a/src/backend/generated-rest-client/.openapi-generator-ignore b/src/backend/generated-rest-client/.openapi-generator-ignore
 new file mode 100644
 index 0000000..7484ee5
