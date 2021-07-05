@@ -12,6 +12,7 @@ main();
 
 async function main() {
   // オプションの定義
+  let backendIpAdress = await getLocalIpAdress(); // バックエンド接続先IPアドレスのデフォルト値を取得
   program
     .version(
       '0.0.1',
@@ -25,7 +26,7 @@ async function main() {
     .option(
       '-b, --backend-ip-adress <value>',
       'Backend connection IP address',
-      '192.xxx.xxx'	// TODO デフォルト値の取得（ローカルのIPアドレス）
+      backendIpAdress
     )
     .parse(process.argv);
 
@@ -107,26 +108,25 @@ async function main() {
   // バックエンド接続先IPアドレスの置換
   // --backend-ip-adressオプションで指定したIPアドレスでsrc/backend/config.tsのIPアドレス部分を置換（デフォルト値：ローカルのIPアドレス）
   if (options.backendIpAdress) {
+    backendIpAdress = options.backendIpAdress;
     // src/backend/config.tsのパス
     const backendConfigTs = `${appDir}/src/backend/config.ts`
     if (fs.existsSync(backendConfigTs)) {
       // 置換処理
       fs.writeFileSync(
         backendConfigTs,
-        fs.readFileSync(backendConfigTs).toString().replace(/{{{LOCALHOST}}}/g, options.backendIpAdress)
+        fs.readFileSync(backendConfigTs).toString().replace(/{{{LOCALHOST}}}/g, backendIpAdress)
       );
       // git add git commit
       await execute(appDir, `git add src/backend/config.ts`);
       await execute(appDir, `git commit -m "update src/backend/config.ts"`);
-      outputLog(`Replaced the backend connection IP address in src/backend/config.ts with [${options.backendIpAdress}].`);
+      outputLog(`Replaced the backend connection IP address in src/backend/config.ts with [${backendIpAdress}].`);
     }
   }
 
   // 処理終了
   outputLog(`Successfully created ${appName}.`);
 }
-
-
 
 /**
  * パッチファイル名からパッチファイル番号を取得し返却する
@@ -168,6 +168,18 @@ function execute(cwd, cmd) {
       } else {
         resolve(code);
       }
+    });
+  })
+}
+
+/**
+ * ローカルのIPアドレスを取得し返却する
+ * @returns 
+ */
+function getLocalIpAdress() {
+  return new Promise((resolve) => {
+    require("dns").lookup(require("os").hostname(), (err, add, fam) => {
+      resolve(add);
     });
   })
 }
