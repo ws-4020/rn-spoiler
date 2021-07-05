@@ -112,6 +112,9 @@ async function main() {
     const backendConfigTs = `${appDir}/src/backend/config.ts`
     if (fs.existsSync(backendConfigTs)) {
       // 置換処理
+      // fs.readFileSync()にてファイル内容を一括で読み込んでいる理由は以下のとおり。
+      //   - 入出力が同じファイル（streamで処理できない）
+      //   - 該当ファイルが数行の小さいファイルである
       fs.writeFileSync(
         backendConfigTs,
         fs.readFileSync(backendConfigTs).toString().replace(/{{{LOCALHOST}}}/g, backendIpAdress)
