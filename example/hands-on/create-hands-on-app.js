@@ -163,7 +163,7 @@ function execute(cwd, cmd) {
     });
     proc.on('exit', (code) => {
       if (code !== 0) {
-        reject(data);
+        reject(code);
       } else {
         resolve(code);
       }
