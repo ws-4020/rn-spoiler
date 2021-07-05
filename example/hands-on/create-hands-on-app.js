@@ -11,8 +11,8 @@ const fs = require('fs');
 main();
 
 async function main() {
+
   // オプションの定義
-  let backendIpAdress = await getLocalIpAdress(); // バックエンド接続先IPアドレスのデフォルト値を取得
   program
     .version(
       '0.0.1',
@@ -21,12 +21,10 @@ async function main() {
     .option(
       '-s, --skip-patch-file-num <number>',
       'Patch file number to skip applying to the app (skip patch file application after the specified patch file number)',
-      undefined
     )
     .option(
       '-b, --backend-ip-adress <value>',
       'Backend connection IP address',
-      backendIpAdress
     )
     .parse(process.argv);
 
@@ -106,24 +104,27 @@ async function main() {
 
   // バックエンド接続先IPアドレスの置換
   // --backend-ip-adressオプションで指定したIPアドレスでsrc/backend/config.tsのIPアドレス部分を置換（デフォルト値：ローカルのIPアドレス）
-  if (options.backendIpAdress) {
-    backendIpAdress = options.backendIpAdress;
-    // src/backend/config.tsのパス
-    const backendConfigTs = `${appDir}/src/backend/config.ts`
-    if (fs.existsSync(backendConfigTs)) {
-      // 置換処理
-      // fs.readFileSync()にてファイル内容を一括で読み込んでいる理由は以下のとおり。
-      //   - 入出力が同じファイル（streamで処理できない）
-      //   - 該当ファイルが数行の小さいファイルである
-      fs.writeFileSync(
-        backendConfigTs,
-        fs.readFileSync(backendConfigTs).toString().replace(/{{{LOCALHOST}}}/g, backendIpAdress)
-      );
-      // git add git commit
-      await execute(appDir, `git add src/backend/config.ts`);
-      await execute(appDir, `git commit -m "update src/backend/config.ts"`);
-      outputLog(`Replaced the backend connection IP address in src/backend/config.ts with [${backendIpAdress}].`);
-    }
+  const defaultIpAddress = await getLocalIpAdress();
+  outputLog(`Get default IP Address. [${defaultIpAddress}] `);
+  outputLog(`Replaces src/backend/config.ts with this value if not specified with the --backend-ip-adress option`);
+
+  let backendIpAdress = options.backendIpAdress ? options.backendIpAdress : defaultIpAddress;
+  // src/backend/config.tsのパス
+  const backendConfigTs = `${appDir}/src/backend/config.ts`
+  if (fs.existsSync(backendConfigTs)) {
+    // 置換処理
+    // fs.readFileSync()にてファイル内容を一括で読み込んでいる理由は以下のとおり。
+    //   - 入出力が同じファイル（streamで処理できない）
+    //   - 該当ファイルが数行の小さいファイルである
+    fs.writeFileSync(
+      backendConfigTs,
+      fs.readFileSync(backendConfigTs).toString().replace(/{{{LOCALHOST}}}/g, backendIpAdress)
+    );
+    // git add git commit
+    await execute(appDir, `git add src/backend/config.ts`);
+    await execute(appDir, `git commit -m "update src/backend/config.ts"`);
+    outputLog(`Replaced the backend connection IP address in src/backend/config.ts with [${backendIpAdress}].`);
+ 
   }
 
   // 処理終了
