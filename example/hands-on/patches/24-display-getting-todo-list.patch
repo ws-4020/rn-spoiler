@@ -4,7 +4,7 @@ index c0615d0..39ed711 100644
 +++ b/src/backend/config.ts
 @@ -1,2 +1,8 @@
 -import {Configuration} from './generated-rest-client';
--export const config = new Configuration({basePath: 'http://LOCALHOST:9080/api'});
+-export const config = new Configuration({basePath: 'http://{{{LOCALHOST}}}:9080/api'});
 +import {Configuration, Middleware} from './generated-rest-client';
 +const waitResponse: Middleware = {
 +  post: async (context) => {
@@ -12,7 +12,7 @@ index c0615d0..39ed711 100644
 +    return Promise.resolve(context.response);
 +  },
 +};
-+export const config = new Configuration({basePath: 'http://LOCALHOST:9080/api', middleware: [waitResponse]});
++export const config = new Configuration({basePath: 'http://{{{LOCALHOST}}}:9080/api', middleware: [waitResponse]});
 diff --git a/src/screens/todo/TodoBoard.tsx b/src/screens/todo/TodoBoard.tsx
 index 27ae62e..5d94d3a 100644
 --- a/src/screens/todo/TodoBoard.tsx

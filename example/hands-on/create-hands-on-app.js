@@ -109,7 +109,7 @@ if (options.backendIpAdress) {
     // 置換処理
     fs.writeFileSync(
       backendConfigTs,
-      fs.readFileSync(backendConfigTs).toString().replace("LOCALHOST", options.backendIpAdress)
+      fs.readFileSync(backendConfigTs).toString().replace(/{{{LOCALHOST}}}/g, options.backendIpAdress)
     );
     outputLog(`Replaced the backend connection IP address in src/backend/config.ts with [${options.backendIpAdress}].`);
   }
