@@ -107,9 +107,10 @@ if (options.backendIpAdress) {
   const backendConfigTs = `${appDir}/src/backend/config.ts`
   if (fs.existsSync(backendConfigTs)) {
     // 置換処理
-    let res = fs.readFileSync(backendConfigTs);
-    res = res.toString().replace("LOCALHOST", options.backendIpAdress);
-    fs.writeFileSync(backendConfigTs, res);
+    fs.writeFileSync(
+      backendConfigTs,
+      fs.readFileSync(backendConfigTs).toString().replace("LOCALHOST", options.backendIpAdress)
+    );
     outputLog(`Replaced the backend connection IP address in src/backend/config.ts with [${options.backendIpAdress}].`);
   }
 }
