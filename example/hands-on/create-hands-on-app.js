@@ -124,7 +124,7 @@ outputLog(`Successfully created ${appName}.`);
  * @returns 
  */
 function getPatchFileNum(fileName) {
-  return fileName.split("-")[0] -0;
+  return parseInt(fileName.split("-")[0]);
 }
 
 /**
