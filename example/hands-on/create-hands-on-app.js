@@ -29,7 +29,7 @@ program
 const options = program.opts();
 
 // 第一引数:アプリ名を取得
-const appName = program.args[0] === undefined ? "HandsOnApp" : program.args[0];
+const appName = program.args[0] ?? "HandsOnApp";
 
 // アプリ作成処理開始
 outputLog(`Start creating ${appName}.`);
