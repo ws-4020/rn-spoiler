@@ -19,7 +19,7 @@ program
     0
   )
   .option(
-    '-b, --backend-ipadress <value>',
+    '-b, --backend-ip-adress <value>',
     'Backend connection IP address',
     '192.xxx.xxx'	// TODO デフォルト値の取得（ローカルのIPアドレス）
   )
