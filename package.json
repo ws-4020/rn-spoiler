@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/ws-4020/rn-spoiler#readme",
   "scripts": {
-    "create-hands-on-app": "node example/hands-on/create-hands-on-app.js"
+    "create-app:hands-on": "node example/hands-on/create-hands-on-app.js"
   },
   "devDependencies": {
     "commander": "^8.0.0"
