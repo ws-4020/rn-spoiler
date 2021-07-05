@@ -78,7 +78,7 @@ for (const patchFileName of fs.readdirSync(patchesDir)) {
   // パッチファイル番号を取得
   const pathFileNum = getPatchFileNum(patchFileName);
   // --skip-patch-file-numオプション値が適用するパッチファイル番号より大きい場合にパッチファイルを適用
-  if (0 === options.skipPatchFileNum || options.skipPatchFileNum > pathFileNum) {
+  if (0 === options.skipPatchFileNum || pathFileNum < options.skipPatchFileNum) {
     // execSyncCmd(`cd ${appDir} && git apply ../../patches/${patchFileName} && git add . && git commit -m "apply ${patchFileName}."`);
     execSyncCmd(`cd ${appDir} && git apply ../../patches/${patchFileName}`);
     execSyncCmd(`cd ${appDir} && git add .`);
