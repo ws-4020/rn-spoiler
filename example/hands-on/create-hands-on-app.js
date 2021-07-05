@@ -4,7 +4,7 @@
  **/
 
 const program = require('commander');
-const { spawn } = require('child_process');
+const { exec, spawn } = require('child_process');
 const fs = require('fs');
 
 // メイン処理の実行
@@ -58,15 +58,14 @@ async function main() {
   // rn-spoilerをテンプレートとして、新規アプリを作成
   await execute(generetedDir, `npx react-native init --npm --template https://github.com/ws-4020/rn-spoiler.git ${appName}`);
 
-  // TODO npm7以上の場合は、エラーが発生するので対処
-  // NPM_VERSION=$(npm -v)
   // npm7以上の場合は、エラーが発生するので対処
   // https://github.com/ws-4020/rn-spoiler#%E6%96%B0%E8%A6%8F%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90
-  // if [ ${NPM_VERSION:0:1} -ge 7 ]; then
-  //   echo "Reinstall using legacy-peer-deps for npm version 7 or later."
-  //   npm install --legacy-peer-deps
-  //   npx pod-install
-  // fi
+  const npmVersion = await getNpmVersion();
+  if (7 <= parseFloat(npmVersion)) {
+    outputLog(`Reinstall using legacy-peer-deps for npm version 7 or later.`);
+    await execute(appDir, `npm install --legacy-peer-deps`);
+    await execute(appDir, `npx pod-install`);
+  }
 
   // git init
   // git add .
@@ -182,4 +181,16 @@ function getLocalIpAdress() {
       resolve(add);
     });
   })
+}
+
+/**
+ * 「npm -v」を実行した結果のインストールされているnpmのバージョンを返却する
+ * @returns 
+ */
+function getNpmVersion() {
+  return new Promise((resolve) => {
+    exec(`npm -v`, (error, stdout, stderr) => {
+      resolve(stdout);
+    });
+  });
 }
