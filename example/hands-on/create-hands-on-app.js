@@ -42,7 +42,7 @@ if (!fs.existsSync(generetedDir)) {
 }
 
 // 新規アプリのルートディレクトリ
-const appDir = `${__dirname}/generated/${appName}`;
+const appDir = `${generetedDir}/${appName}`;
 
 // すでにアプリが存在していた場合は削除
 if (fs.existsSync(appDir)) {
