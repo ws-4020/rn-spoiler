@@ -101,16 +101,16 @@ execSyncCmd(`cd ${appDir} && git add package-lock.json`);
 execSyncCmd(`cd ${appDir} && git commit -m "update package-lock.json"`);
 
 // バックエンド接続先IPアドレスの置換
-// --backend-ipadressオプションで指定したIPアドレスでsrc/backend/config.tsのIPアドレス部分を置換（デフォルト値：ローカルのIPアドレス）
-if (options.backendIpadress) {
+// --backend-ip-adressオプションで指定したIPアドレスでsrc/backend/config.tsのIPアドレス部分を置換（デフォルト値：ローカルのIPアドレス）
+if (options.backendIpAdress) {
   // src/backend/config.tsのパス
   const backendConfigTs = `${appDir}/src/backend/config.ts`
   if (fs.existsSync(backendConfigTs)) {
     // 置換処理
     let res = fs.readFileSync(backendConfigTs);
-    res = res.toString().replace("LOCALHOST", options.backendIpadress);
+    res = res.toString().replace("LOCALHOST", options.backendIpAdress);
     fs.writeFileSync(backendConfigTs, res);
-    outputLog(`Replaced the backend connection IP address in src/backend/config.ts with [${options.backendIpadress}].`);
+    outputLog(`Replaced the backend connection IP address in src/backend/config.ts with [${options.backendIpAdress}].`);
   }
 }
 
