@@ -115,7 +115,7 @@ async function main() {
       );
       // コマンドの実行
       await execute(appDir, `git add src/backend/config.ts`);
-      await execute(appDir, `git commit -m "update src/backend/config.ts"`);
+      await execute(appDir, `git commit -m "rewritten the connection destination IP address of the backend in src/backend/config.ts"`);
       outputLog(`Replaced the backend connection IP address in src/backend/config.ts with [${backendIpAdress}].`);
   
     }
