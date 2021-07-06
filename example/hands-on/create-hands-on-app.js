@@ -69,7 +69,6 @@ async function main() {
     // git init
     // git add .
     // git commit -m "initial commit"
-    // execute(`cd ${appDir} && git init && git add . && git commit -m "initial commit"`);
     await execute(appDir, `git init`);
     await execute(appDir, `git add .`);
     await execute(appDir, `git commit -m "initial commit"`);
@@ -82,7 +81,6 @@ async function main() {
       const pathFileNum = getPatchFileNum(patchFileName);
       // --skip-patch-file-numオプション値が適用するパッチファイル番号より大きい場合にパッチファイルを適用
       if (!options.skipPatchFileNum || pathFileNum < options.skipPatchFileNum) {
-        // execute(`cd ${appDir} && git apply ../../patches/${patchFileName} && git add . && git commit -m "apply ${patchFileName}."`);
         await execute(appDir, `git apply ../../patches/${patchFileName}`);
         await execute(appDir, `git add .`);
         await execute(appDir, `git commit -m "apply ${patchFileName}."`);
@@ -93,13 +91,11 @@ async function main() {
 
     // npm i
     // npx pod-install
-    // execute(`cd ${appDir} && npm i && npx pod-install`);
     await execute(appDir, `npm i`);
     await execute(appDir, `npx pod-install`);
 
     // git add package-lock.json 
     // git commit -m "update package-lock.json"
-    // execute(`cd ${appDir} && git add package-lock.json && git commit -m "update package-lock.json"`);
     await execute(appDir, `git add package-lock.json`);
     await execute(appDir, `git commit -m "update package-lock.json"`);
 
