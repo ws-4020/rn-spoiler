@@ -39,14 +39,14 @@ async function main() {
     outputLog(`Start creating ${appName}.`);
 
     // `generated`ディレクトリが存在しない場合は作成
-    const generetedDir = `${__dirname}/generated`;
-    if (!fs.existsSync(generetedDir)) {
+    const generatedDir = `${__dirname}/generated`;
+    if (!fs.existsSync(generatedDir)) {
       // ディレクトリ作成
-      fs.mkdirSync(generetedDir);
+      fs.mkdirSync(generatedDir);
     }
 
     // 新規アプリのルートディレクトリ
-    const appDir = `${generetedDir}/${appName}`;
+    const appDir = `${generatedDir}/${appName}`;
 
     // すでにアプリが存在していた場合は削除
     if (fs.existsSync(appDir)) {
@@ -55,7 +55,7 @@ async function main() {
     }
 
     // rn-spoilerをテンプレートとして、新規アプリを作成
-    await execute(generetedDir, `npx react-native init --npm --template https://github.com/ws-4020/rn-spoiler.git ${appName}`);
+    await execute(generatedDir, `npx react-native init --npm --template https://github.com/ws-4020/rn-spoiler.git ${appName}`);
 
     // npm7以上の場合は、エラーが発生するので対処
     // https://github.com/ws-4020/rn-spoiler#%E6%96%B0%E8%A6%8F%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90
