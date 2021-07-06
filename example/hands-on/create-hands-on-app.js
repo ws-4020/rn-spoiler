@@ -66,9 +66,7 @@ async function main() {
       await execute(appDir, `npx pod-install`);
     }
 
-    // git init
-    // git add .
-    // git commit -m "initial commit"
+    // コマンドの実行
     await execute(appDir, `git init`);
     await execute(appDir, `git add .`);
     await execute(appDir, `git commit -m "initial commit"`);
@@ -89,13 +87,11 @@ async function main() {
       }
     }
 
-    // npm i
-    // npx pod-install
+    // コマンドの実行
     await execute(appDir, `npm i`);
     await execute(appDir, `npx pod-install`);
 
-    // git add package-lock.json 
-    // git commit -m "update package-lock.json"
+    // コマンドの実行
     await execute(appDir, `git add package-lock.json`);
     await execute(appDir, `git commit -m "update package-lock.json"`);
 
@@ -117,7 +113,7 @@ async function main() {
         backendConfigTs,
         fs.readFileSync(backendConfigTs).toString().replace(/{{{LOCALHOST}}}/g, backendIpAdress)
       );
-      // git add git commit
+      // コマンドの実行
       await execute(appDir, `git add src/backend/config.ts`);
       await execute(appDir, `git commit -m "update src/backend/config.ts"`);
       outputLog(`Replaced the backend connection IP address in src/backend/config.ts with [${backendIpAdress}].`);
