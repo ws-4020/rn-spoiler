@@ -1,6 +1,6 @@
 /**
  * rn-spoilerをテンプレートとして、学習コンテンツの内容を適用したアプリの作成
- * 第一引数：アプリ名(Optional. デフォルト値:HandsOnApp)
+ * 引数、オプションについては--helpにて参照
  **/
 
 const program = require('commander');
@@ -13,12 +13,15 @@ main();
 async function main() {
 
   try {
+    // 第一引数 アプリ名
+    let appName;
     // オプションの定義
     program
       .version(
         '0.0.1',
         '-v, --version'
       )
+      .argument('[appName]', 'app name (optional)', 'HandsOnApp')
       .option(
         '-s, --skip-patch-file-num <number>',
         'Patch file number to skip applying to the app (skip patch file application after the specified patch file number)',
@@ -28,13 +31,13 @@ async function main() {
         'Backend connection IP address',
         'localhost'
       )
+      .action((argAppName) => {
+        appName = argAppName;
+      })
       .parse(process.argv);
 
     // オプションの取得
     const options = program.opts();
-
-    // 第一引数:アプリ名を取得
-    const appName = program.args[0] ?? "HandsOnApp";
 
     // アプリ作成処理開始
     outputLog(`Start creating ${appName}.`);
