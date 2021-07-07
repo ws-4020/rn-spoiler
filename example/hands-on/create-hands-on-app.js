@@ -26,6 +26,7 @@ async function main() {
       .option(
         '-b, --backend-ip-adress <value>',
         'Backend connection IP address',
+        'localhost'
       )
       .parse(process.argv);
 
@@ -96,12 +97,8 @@ async function main() {
     await execute(appDir, `git commit -m "update package-lock.json"`);
 
     // バックエンド接続先IPアドレスの置換
-    // --backend-ip-adressオプションで指定したIPアドレスでsrc/backend/config.tsのIPアドレス部分を置換（デフォルト値：ローカルのIPアドレス）
-    const defaultIpAddress = await getLocalIpAdress();
-    outputLog(`Get default IP Address. [${defaultIpAddress}] `);
-    outputLog(`Replaces src/backend/config.ts with this value if not specified with the --backend-ip-adress option`);
-
-    let backendIpAdress = options.backendIpAdress ? options.backendIpAdress : defaultIpAddress;
+    // --backend-ip-adressオプションで指定したIPアドレスでsrc/backend/config.tsのIPアドレス部分を置換（デフォルト値：localhost）
+    const backendIpAdress = options.backendIpAdress;
     // src/backend/config.tsのパス
     const backendConfigTs = `${appDir}/src/backend/config.ts`
     if (fs.existsSync(backendConfigTs)) {
@@ -171,23 +168,6 @@ function execute(cwd, cmd) {
         reject(code);
       } else {
         resolve(code);
-      }
-    });
-  })
-}
-
-/**
- * ローカルのIPアドレスを取得し返却する
- * @returns 
- */
-function getLocalIpAdress() {
-  return new Promise((resolve, reject) => {
-    require("dns").lookup(require("os").hostname(), (err, add, fam) => {
-      if (err) {
-        outputLog(err.message);
-        reject();
-      } else {
-        resolve(add);
       }
     });
   })
