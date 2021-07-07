@@ -28,7 +28,7 @@ async function main() {
       )
       .option(
         '-b, --backend-ip-adress <value>',
-        'Backend connection IP address',
+        'Backend Server IP address',
         'localhost'
       )
       .action((argAppName) => {
@@ -115,8 +115,8 @@ async function main() {
       );
       // コマンドの実行
       await execute(appDir, `git add src/backend/config.ts`);
-      await execute(appDir, `git commit -m "rewritten the connection destination IP address of the backend in src/backend/config.ts"`);
-      outputLog(`Replaced the backend connection IP address in src/backend/config.ts with [${backendIpAdress}].`);
+      await execute(appDir, `git commit -m "rewritten the Backend Server IP address in src/backend/config.ts"`);
+      outputLog(`Replaced the Backend Server IP address in src/backend/config.ts with [${backendIpAdress}].`);
   
     }
 
