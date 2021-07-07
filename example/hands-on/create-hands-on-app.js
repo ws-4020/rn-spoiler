@@ -181,9 +181,14 @@ function execute(cwd, cmd) {
  * @returns 
  */
 function getLocalIpAdress() {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     require("dns").lookup(require("os").hostname(), (err, add, fam) => {
-      resolve(add);
+      if (err) {
+        outputLog(err.message);
+        reject();
+      } else {
+        resolve(add);
+      }
     });
   })
 }
