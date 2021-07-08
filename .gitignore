@@ -195,3 +195,8 @@ template/.gitignore
 
 ### generated ###
 example/hands-on/generated
+
+### Node ###
+
+# Dependency directories
+node_modules/

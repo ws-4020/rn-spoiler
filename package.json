@@ -11,5 +11,11 @@
   "bugs": {
     "url": "https://github.com/ws-4020/rn-spoiler/issues"
   },
-  "homepage": "https://github.com/ws-4020/rn-spoiler#readme"
+  "homepage": "https://github.com/ws-4020/rn-spoiler#readme",
+  "scripts": {
+    "create-app:hands-on": "node example/hands-on/create-hands-on-app.js"
+  },
+  "devDependencies": {
+    "commander": "^8.0.0"
+  }
 }
