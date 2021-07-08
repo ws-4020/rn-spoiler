@@ -163,10 +163,6 @@ function execute(cwd, cmd) {
     proc.stderr.on('data', (data) => {
       outputLog(data.toString());
     });
-    proc.stderr.on('error', (error) => {
-      outputLog(`stderr: ${error}`);
-      reject(error);
-    });
     proc.on('exit', (code) => {
       if (code !== 0) {
         outputLog(`Command failed. cmd: [${cmd}] code: [${code}]`);
