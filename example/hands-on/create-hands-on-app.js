@@ -83,7 +83,9 @@ async function main() {
       const pathFileNum = getPatchFileNum(patchFileName);
       // --skip-patch-file-numオプション値が適用するパッチファイル番号より大きい場合にパッチファイルを適用
       if (!options.skipPatchFileNum || pathFileNum < options.skipPatchFileNum) {
-        await execute(appDir, `git apply ../../patches/${patchFileName}`);
+        // git apply実行時、open-api-generatorによる自動生成コードに対して
+        // trailing whitespaceの警告メッセージが出力されないように--whitespaceオプションを付与する
+        await execute(appDir, `git apply --whitespace=nowarn ../../patches/${patchFileName}`);
         await execute(appDir, `git add .`);
         await execute(appDir, `git commit -m "apply ${patchFileName}."`);
       } else {
