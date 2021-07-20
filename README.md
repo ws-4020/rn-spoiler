@@ -1,6 +1,6 @@
 # RN Spoiler
 
-[Expo](https://expo.io/) の [expo-template-bare-typescript](https://github.com/expo/expo/tree/master/templates/expo-template-bare-typescript) をベースにした React Native のテンプレートです。
+[Expo](https://expo.io/) の [expo-template-bare-typescript](https://github.com/expo/expo/tree/sdk-41/templates/expo-template-bare-typescript) をベースにした React Native のテンプレートです。
 
 ## 前提条件
 
