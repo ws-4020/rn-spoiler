@@ -36,7 +36,6 @@
         'jest-expo',
         'typescript',
       ],
-      matchPackagePrefixes: ['com.facebook.flipper'],
     },
     {
       // expo upgradeで更新されるパッケージに依存するパッケージは手動で更新する必要があるのでRenovateの対象外とします
@@ -47,6 +46,7 @@
         '@types/react-test-renderer', // jest-expo -> react-test-renderer
         'gradle', // expo-template-bare-typescript
       ],
+      matchPackagePrefixes: ['com.facebook.flipper'],
     },
     {
       // React Navigationの関連パッケージはまとめて更新するようにします
