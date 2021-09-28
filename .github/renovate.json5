@@ -46,6 +46,7 @@
         '@types/react-test-renderer', // jest-expo -> react-test-renderer
         'gradle', // expo-template-bare-typescript
       ],
+      matchPackagePrefixes: ['com.facebook.flipper'],
     },
     {
       // React Navigationの関連パッケージはまとめて更新するようにします
