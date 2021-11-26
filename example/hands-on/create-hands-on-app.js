@@ -4,8 +4,9 @@
  **/
 
 const program = require('commander');
-const { exec, spawn } = require('child_process');
+const {exec, spawn} = require('child_process');
 const fs = require('fs');
+const path = require('path')
 
 // メイン処理の実行
 main();
@@ -17,24 +18,29 @@ async function main() {
     let appName;
     // オプションの定義
     program
-      .version(
-        '0.0.1',
-        '-v, --version'
-      )
-      .argument('[appName]', 'app name (optional)', 'HandsOnApp')
-      .option(
-        '-s, --skip-patch-file-num <number>',
-        'Patch file number to skip applying to the app (skip patch file application after the specified patch file number)',
-      )
-      .option(
-        '-b, --backend-ip-adress <value>',
-        'Backend Server IP address',
-        'localhost'
-      )
-      .action((argAppName) => {
-        appName = argAppName;
-      })
-      .parse(process.argv);
+    .version(
+      '0.0.1',
+      '-v, --version'
+    )
+    .argument('[appName]', 'app name (optional)', 'HandsOnApp')
+    .option(
+      '-s, --skip-patch-file-num <number>',
+      'Patch file number to skip applying to the app (skip patch file application after the specified patch file number)',
+    )
+    .option(
+      '-t, --template <templateDir>',
+      'Directory to use as the project template.',
+      `file://${path.resolve(__dirname, '../..')}`
+    )
+    .option(
+      '-b, --backend-ip-address <value>',
+      'Backend Server IP address',
+      'localhost'
+    )
+    .action((argAppName) => {
+      appName = argAppName;
+    })
+    .parse(process.argv);
 
     // オプションの取得
     const options = program.opts();
@@ -55,11 +61,12 @@ async function main() {
     // すでにアプリが存在していた場合は削除
     if (fs.existsSync(appDir)) {
       // ディレクトリ削除
-      fs.rmdirSync(appDir, { recursive: true });
+      fs.rmSync(appDir, {recursive: true});
     }
 
     // rn-spoilerをテンプレートとして、新規アプリを作成
-    await execute(generatedDir, `npx react-native init --npm --template https://github.com/ws-4020/rn-spoiler.git ${appName}`);
+    await execute(generatedDir,
+      `npx react-native init --npm --template ${options.template} ${appName}`);
 
     // npm7以上の場合は、エラーが発生するので対処
     // https://github.com/ws-4020/rn-spoiler#%E6%96%B0%E8%A6%8F%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90
@@ -119,12 +126,10 @@ async function main() {
       await execute(appDir, `git add src/backend/config.ts`);
       await execute(appDir, `git commit -m "rewritten the Backend Server IP address in src/backend/config.ts"`);
       outputLog(`Replaced the Backend Server IP address in src/backend/config.ts with [${backendIpAdress}].`);
-  
     }
 
     // 処理終了
     outputLog(`Successfully created ${appName}.`);
- 
   } catch (e) {
     outputLog(`Error occurred. exit code: ${e}`);
   }
@@ -133,8 +138,8 @@ async function main() {
 /**
  * パッチファイル名からパッチファイル番号を取得し返却する
  * 例：01-welcome.patch -> 1
- * @param {*} fileName 
- * @returns 
+ * @param {*} fileName
+ * @returns
  */
 function getPatchFileNum(fileName) {
   return parseInt(fileName.split("-")[0]);
@@ -142,7 +147,7 @@ function getPatchFileNum(fileName) {
 
 /**
  * 標準出力を行う
- * @param {*} str 
+ * @param {*} str
  */
 function outputLog(str) {
   console.log(str);
@@ -150,13 +155,13 @@ function outputLog(str) {
 
 /**
  * コマンドを実行する
- * @param {*} cwd 
- * @param {*} cmd 
- * @returns 
+ * @param {*} cwd
+ * @param {*} cmd
+ * @returns
  */
 function execute(cwd, cmd) {
   return new Promise((resolve, reject) => {
-    const proc = spawn(cmd, { shell: true, cwd: cwd });
+    const proc = spawn(cmd, {shell: true, cwd: cwd});
     proc.stdout.on('data', (data) => {
       outputLog(data.toString());
     });
@@ -176,7 +181,7 @@ function execute(cwd, cmd) {
 
 /**
  * 「npm -v」を実行した結果のインストールされているnpmのバージョンを返却する
- * @returns 
+ * @returns
  */
 function getNpmVersion() {
   return new Promise((resolve) => {
