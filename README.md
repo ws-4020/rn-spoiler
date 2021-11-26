@@ -101,3 +101,4 @@ keytool -genkey -v -keystore android/app/debug.keystore -storepass android -alia
 - [x] `src`ディレクトリを基準とした絶対パスで`import`できるように変更
 - [x] プロジェクト作成後に自動的に必要なファイルを作成するように変更
 - [x] キャッシュを削除するためのスクリプトを追加
+- [x] React Navigation用のデフォルトの型定義を追加
