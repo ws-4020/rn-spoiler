@@ -25,12 +25,12 @@ index 510f506..9f47f9c 100644
 +    />
 +  );
 +};
- 
+
  const nav = createStackNavigator();
  export const AuthedStackNav: React.FC = () => {
    return (
 -    <nav.Navigator screenOptions={{headerShown: false}}>
-+    <nav.Navigator screenOptions={{headerShown: false}} initialRouteName="Main" mode="modal">
++    <nav.Navigator screenOptions={{headerShown: false, presentation: 'modal'}} initialRouteName="Main">
        <nav.Screen name="Main" component={MainTabNav} />
 +      <nav.Screen
 +        name="TodoForm"
@@ -55,7 +55,7 @@ index 7555435..04143f1 100644
  import {StyleSheet, View} from 'react-native';
 -import {Text} from 'react-native-elements';
 +import {Text, Button} from 'react-native-elements';
- 
+
  export const TodoBoard: React.FC = () => {
 +  const navigation = useNavigation();
 +
