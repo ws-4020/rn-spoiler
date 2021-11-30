@@ -12,3 +12,7 @@
 # React Native ReanimatedからTurbomoduleを使うための設定
 # https://docs.swmansion.com/react-native-reanimated/docs/2.2.0/installation
 -keep class com.facebook.react.turbomodule.** { *; }
+
+# ExpoModulesPakage.ktから、自動生成されたクラスを参照するためにクラス名を利用しているので、クラス名が変わるとアプリが起動しなくなる。
+# https://github.com/expo/expo/blob/sdk-43/packages/expo/android/src/main/java/expo/modules/ExpoModulesPackage.kt#L22
+-keep class expo.modules.ExpoModulesPackageList { *; }
