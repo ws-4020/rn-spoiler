@@ -3,8 +3,12 @@ module.exports = {
   // https://prettier.io/docs/en/options.html#bracket-spacing
   // import {React} from 'React' のように、{}の間にスペースを含まないようにする。
   bracketSpacing: false,
-  // https://prettier.io/docs/en/options.html#jsx-brackets
+  // https://prettier.io/docs/en/options.html#bracket-line
   // JSXのタグが複数行になったときに、最後の'>'の前で改行しない。
+  bracketSameLine: true,
+  // https://prettier.io/docs/en/options.html#deprecated-jsx-brackets
+  // 【Deprecated】 JSXのタグが複数行になったときに、最後の'>'の前で改行しない。
+  // IntelliJ IDEAのPrettierプラグインでbracketSameLineがまだサポートされていないようなので残しておく
   jsxBracketSameLine: true,
   // https://prettier.io/docs/en/options.html#quotes
   // ダブルクオートではなく、シングルクオートに統一する。
