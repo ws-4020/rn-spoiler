@@ -12,4 +12,7 @@ module.exports = {
   // https://prettier.io/docs/en/options.html#trailing-commas
   // 配列などの最後の要素の後にもカンマを付けるようにする。（順番を入れ替えたりするときに行を入れ替えるだけで良くなるので便利です。）
   trailingComma: 'all',
+  // https://prettier.io/docs/en/options.html#arrow-function-parentheses
+  // アロー関数の引数に不要なカッコを付けないようにする。
+  arrowParens: 'avoid',
 };
