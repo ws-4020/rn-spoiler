@@ -46,7 +46,7 @@ npm run ios        # iPhoneシミュレータが起動します
 npm run android    # Androidエミュレータが起動します
 ```
 
-npm 7で`peerDependencies`の扱いが変更された影響で、npm 7でRN Spoilerをテンプレートとしてプロジェクトを作成すると次のようなエラーが発生します。
+npm 7で`peerDependencies`の扱いが変更された影響で、npm 7でRN Spoilerをテンプレートとしてプロジェクトを作成すると次のようなエラーが発生する可能性があります。
 
 ```console
 npm ERR! code ERESOLVE
