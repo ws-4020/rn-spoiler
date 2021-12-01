@@ -109,8 +109,8 @@ async function main() {
     await execute(appDir, `git commit -m "update package-lock.json"`);
 
     // バックエンド接続先IPアドレスの置換
-    // --backend-ip-adressオプションで指定したIPアドレスでsrc/backend/config.tsのIPアドレス部分を置換（デフォルト値：localhost）
-    const backendIpAdress = options.backendIpAdress;
+    // --backend-ip-addressオプションで指定したIPアドレスでsrc/backend/config.tsのIPアドレス部分を置換（デフォルト値：localhost）
+    const backendIpAddress = options.backendIpAddress;
     // src/backend/config.tsのパス
     const backendConfigTs = `${appDir}/src/backend/config.ts`
     if (fs.existsSync(backendConfigTs)) {
@@ -120,12 +120,12 @@ async function main() {
       //   - 該当ファイルが数行の小さいファイルである
       fs.writeFileSync(
         backendConfigTs,
-        fs.readFileSync(backendConfigTs).toString().replace(/{{{LOCALHOST}}}/g, backendIpAdress)
+        fs.readFileSync(backendConfigTs).toString().replace(/{{{LOCALHOST}}}/g, backendIpAddress)
       );
       // コマンドの実行
       await execute(appDir, `git add src/backend/config.ts`);
       await execute(appDir, `git commit -m "rewritten the Backend Server IP address in src/backend/config.ts"`);
-      outputLog(`Replaced the Backend Server IP address in src/backend/config.ts with [${backendIpAdress}].`);
+      outputLog(`Replaced the Backend Server IP address in src/backend/config.ts with [${backendIpAddress}].`);
     }
 
     // 処理終了
