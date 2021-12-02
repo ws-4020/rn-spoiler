@@ -196,7 +196,7 @@ dependencies {
     // If your app supports Android versions before Ice Cream Sandwich (API level 14)
     // All fresco packages should use the same version
     if (isGifEnabled || isWebpEnabled) {
-        implementation 'com.facebook.fresco:fresco:2.0.0'
+        implementation 'com.facebook.fresco:fresco:2.6.0'
         implementation 'com.facebook.fresco:imagepipeline-okhttp3:2.0.0'
     }
 
