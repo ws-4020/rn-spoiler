@@ -210,7 +210,7 @@ dependencies {
         implementation 'com.facebook.fresco:webpsupport:2.0.0'
         if (isWebpAnimatedEnabled) {
             // Animated webp support
-            implementation 'com.facebook.fresco:animated-webp:2.0.0'
+            implementation 'com.facebook.fresco:animated-webp:2.6.0'
         }
     }
 
