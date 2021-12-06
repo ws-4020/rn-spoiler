@@ -1,0 +1,64 @@
+name: HandsOnApp
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+    paths:
+      - template/
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  hands-on-app:
+    name: Create, Test and Lint
+    runs-on: macos-11
+    env:
+      REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.13.x'
+
+      - name: Install dependencies
+        run: |
+          npm clean-install 2>&1 | tee /dev/stderr | test $(grep --count -E '(Error:|gyp ERR!)') -le 0
+
+      - name: Configure git
+        run: |
+          git config --global user.email "github-actions@example.com" && git config --global user.name "GitHub Actions"
+
+      - name: Create HandsOn App
+        run: |
+          npm run create-app:hands-on
+
+      - name: Test HandsOn App
+        run: |
+          cd example/hands-on/generated/HandsOnApp && npm test -s
+
+      - name: Set up reviewdog
+        uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+
+      - name: Lint (TypeScript)
+        if: always()
+        run: |
+          cd example/hands-on/generated/HandsOnApp && npm run -s lint:tsc | reviewdog -tee -fail-on-error -reporter=github-check -f=tsc -name="TypeScript (HandsOnApp)"
+
+      - name: Lint (ESLint)
+        if: always()
+        run: |
+          cd example/hands-on/generated/HandsOnApp && npm run -s lint:es | reviewdog -tee -fail-on-error -reporter=github-check -f=eslint -name="ESLint (HandsOnApp)"
