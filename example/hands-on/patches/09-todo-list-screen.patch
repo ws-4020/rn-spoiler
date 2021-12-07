@@ -113,7 +113,7 @@ index 0000000..9cf973f
 +          toggleTodoCompletion={toggleTodoCompletion}
 +        />
 +      )}
-+      keyExtractor={(todo) => String(todo.id)}
++      keyExtractor={todo => String(todo.id)}
 +    />
 +  );
 +};
@@ -153,10 +153,10 @@ index 04143f1..de0c824 100644
 +
 +const showFilter: ShowFilter = {
 +  [FilterType.ALL]: () => true,
-+  [FilterType.INCOMPLETE]: (todo) => !todo.completed,
-+  [FilterType.COMPLETED]: (todo) => todo.completed,
++  [FilterType.INCOMPLETE]: todo => !todo.completed,
++  [FilterType.COMPLETED]: todo => todo.completed,
 +};
- 
+
  export const TodoBoard: React.FC = () => {
    const navigation = useNavigation();
 +  const {theme} = useContext(ThemeContext);
@@ -167,7 +167,7 @@ index 04143f1..de0c824 100644
 +    let isActive = true;
 +
 +    TodoService.getTodos()
-+      .then((response) => {
++      .then(response => {
 +        if (isActive) {
 +          setTodos(response);
 +        }
@@ -180,14 +180,14 @@ index 04143f1..de0c824 100644
 +  }, []);
 +
 +  const toggleTodoCompletion = (id: number) => {
-+    const target = todos.find((todo) => todo.id === id);
++    const target = todos.find(todo => todo.id === id);
 +    if (!target) {
 +      return;
 +    }
 +    TodoService.putTodo(id, !target.completed)
-+      .then((returnedTodo) =>
-+        setTodos((prevTodos) => {
-+          return prevTodos.map((todo) => (todo.id === id ? returnedTodo : todo));
++      .then(returnedTodo =>
++        setTodos(prevTodos => {
++          return prevTodos.map(todo => (todo.id === id ? returnedTodo : todo));
 +        }),
 +      )
 +      .catch(() => {});
@@ -198,7 +198,7 @@ index 04143f1..de0c824 100644
 +  };
 +
 +  const showTodos = todos.filter(showFilter[filterType]);
- 
+
    return (
 -    <View style={styles.container}>
 -      <Text h1>Todo</Text>
@@ -317,7 +317,7 @@ index 0000000..2115292
 +};
 +
 +const putTodo = async (id: number, completed: boolean) => {
-+  const target = todos.find((todo) => todo.id === id);
++  const target = todos.find(todo => todo.id === id);
 +  if (!target) {
 +    return Promise.reject(new Error('not found'));
 +  }

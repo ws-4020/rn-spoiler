@@ -14,28 +14,28 @@ index de0c824..27ae62e 100644
 @@ -21,21 +21,23 @@ export const TodoBoard: React.FC = () => {
    const [todos, setTodos] = useState<Todo[]>([]);
    const [filterType, setFilterType] = useState<FilterType>(FilterType.ALL);
- 
+
 -  useEffect(() => {
 -    let isActive = true;
 +  useFocusEffect(
 +    useCallback(() => {
 +      let isActive = true;
- 
+
 -    TodoService.getTodos()
--      .then((response) => {
+-      .then(response => {
 -        if (isActive) {
 -          setTodos(response);
 -        }
 -      })
 -      .catch(() => {});
 +      TodoService.getTodos()
-+        .then((response) => {
++        .then(response => {
 +          if (isActive) {
 +            setTodos(response);
 +          }
 +        })
 +        .catch(() => {});
- 
+
 -    return () => {
 -      isActive = false;
 -    };
@@ -45,6 +45,6 @@ index de0c824..27ae62e 100644
 +      };
 +    }, []),
 +  );
- 
+
    const toggleTodoCompletion = (id: number) => {
-     const target = todos.find((todo) => todo.id === id);
+     const target = todos.find(todo => todo.id === id);

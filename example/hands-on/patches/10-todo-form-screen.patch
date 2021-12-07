@@ -13,7 +13,7 @@ index e627bce..dd185e6 100644
 +import {Button, Input, Text} from 'react-native-elements';
 +import {TodoService} from 'services';
 +import * as Yup from 'yup';
- 
+
  export const TodoForm: React.FC = () => {
 +  const navigation = useNavigation();
 +
@@ -37,7 +37,7 @@ index e627bce..dd185e6 100644
 +  });
 +
 +  useEffect(() => {
-+    const unsubscribe = navigation.addListener('beforeRemove', (event) => {
++    const unsubscribe = navigation.addListener('beforeRemove', event => {
 +      if (!formik.dirty || formik.isSubmitting) {
 +        return;
 +      }
@@ -85,7 +85,7 @@ index e627bce..dd185e6 100644
 +    </KeyboardAvoidingView>
    );
  };
- 
+
  const styles = StyleSheet.create({
    container: {
      flex: 1,

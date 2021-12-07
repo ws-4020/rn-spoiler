@@ -11,7 +11,7 @@ index 2115292..53c9ff0 100644
 +import {TodosApi, config} from 'backend';
 +
 +const todosApi = new TodosApi(config);
- 
+
 -const todos: Todo[] = [
 -  {
 -    id: 0,
@@ -56,13 +56,13 @@ index 2115292..53c9ff0 100644
 -];
 -let id = 7;
 +export type {Todo} from 'backend';
- 
+
  const getTodos = async () => {
 -  // 新しい配列オブジェクトとして返却する
 -  return Promise.resolve([...todos]);
 +  return await todosApi.getTodos();
  };
- 
+
  const postTodo = async (text: string) => {
 -  id++;
 -  const todo: Todo = {
@@ -74,9 +74,9 @@ index 2115292..53c9ff0 100644
 -  return Promise.resolve(todo);
 +  return await todosApi.postTodo({newTodo: {text}});
  };
- 
+
  const putTodo = async (id: number, completed: boolean) => {
--  const target = todos.find((todo) => todo.id === id);
+-  const target = todos.find(todo => todo.id === id);
 -  if (!target) {
 -    return Promise.reject(new Error('not found'));
 -  }
@@ -84,5 +84,5 @@ index 2115292..53c9ff0 100644
 -  return Promise.resolve(target);
 +  return await todosApi.putTodo({todoId: id, todoStatus: {completed}});
  };
- 
+
  export const TodoService = {
