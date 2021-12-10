@@ -7,8 +7,8 @@ on:
   pull_request:
     branches:
       - '*'
-#    paths:
-#      - template/
+    paths:
+      - template/
     types:
       - opened
       - synchronize
