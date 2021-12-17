@@ -7,7 +7,7 @@ index 86a7aa7..8dc922d 100644
 -import {StyleSheet, View} from 'react-native';
 +import {StyleSheet, View, ActivityIndicator} from 'react-native';
  import {CheckBox} from 'react-native-elements';
- 
+
  interface Props {
    id: number;
    text: string;
@@ -15,11 +15,11 @@ index 86a7aa7..8dc922d 100644
 +  processing: boolean;
    toggleTodoCompletion: (id: number) => void;
  }
- 
+
 -export const TodoItem: React.FC<Props> = ({id, text, completed, toggleTodoCompletion}) => {
 +export const TodoItem: React.FC<Props> = ({id, text, completed, toggleTodoCompletion, processing}) => {
    const onToggle = useCallback(() => toggleTodoCompletion(id), [id, toggleTodoCompletion]);
- 
+
    return (
 @@ -17,6 +18,11 @@ export const TodoItem: React.FC<Props> = ({id, text, completed, toggleTodoComple
        <View style={styles.todo}>
@@ -60,7 +60,7 @@ index 9cf973f..d61e5d0 100644
 --- a/src/components/parts/todo/TodoList.tsx
 +++ b/src/components/parts/todo/TodoList.tsx
 @@ -6,12 +6,19 @@ import {TodoItem} from './TodoItem';
- 
+
  interface Props {
    todos: Todo[];
 +  processingTodos: number[];
@@ -68,7 +68,7 @@ index 9cf973f..d61e5d0 100644
    toggleTodoCompletion: (id: number) => void;
    removeTodo: (id: number) => void;
  }
- 
+
 -export const TodoList: React.FC<Props> = ({todos, contentContainerStyle, toggleTodoCompletion, removeTodo}) => {
 +export const TodoList: React.FC<Props> = ({
 +  todos,
@@ -87,7 +87,7 @@ index 9cf973f..d61e5d0 100644
 +          processing={processingTodos.includes(todo.id)}
          />
        )}
-       keyExtractor={(todo) => String(todo.id)}
+       keyExtractor={todo => String(todo.id)}
 diff --git a/src/screens/todo/TodoBoard.tsx b/src/screens/todo/TodoBoard.tsx
 index 5d94d3a..ef0a2c6 100644
 --- a/src/screens/todo/TodoBoard.tsx
@@ -97,29 +97,29 @@ index 5d94d3a..ef0a2c6 100644
    const [filterType, setFilterType] = useState<FilterType>(FilterType.ALL);
    const [loading, setLoading] = useState(false);
 +  const [processingTodos, setProcessingTodos] = useState<number[]>([]);
- 
+
    useFocusEffect(
      useCallback(() => {
 @@ -53,13 +54,19 @@ export const TodoBoard: React.FC = () => {
      if (!target) {
        return;
      }
-+    setProcessingTodos((prevs) => [id, ...prevs]);
++    setProcessingTodos(prevs => [id, ...prevs]);
      TodoService.putTodo(id, !target.completed)
-       .then((returnedTodo) =>
-         setTodos((prevTodos) => {
-           return prevTodos.map((todo) => (todo.id === id ? returnedTodo : todo));
+       .then(returnedTodo =>
+         setTodos(prevTodos => {
+           return prevTodos.map(todo => (todo.id === id ? returnedTodo : todo));
          }),
        )
 -      .catch(() => {});
 +      .catch(() => {})
 +      .finally(() => {
-+        setProcessingTodos((prevs) => {
-+          return prevs.filter((processedId) => processedId !== id);
++        setProcessingTodos(prevs => {
++          return prevs.filter(processedId => processedId !== id);
 +        });
 +      });
    };
- 
+
    const removeTodo = (id: number) => {
 @@ -76,6 +83,7 @@ export const TodoBoard: React.FC = () => {
          contentContainerStyle={styles.todoListContainer}
