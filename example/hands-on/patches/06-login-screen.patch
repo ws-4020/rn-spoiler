@@ -1,19 +1,19 @@
 diff --git a/package.json b/package.json
-index b38b1fa..9ab32d9 100644
+index 33bda5d..b5e2f65 100644
 --- a/package.json
 +++ b/package.json
 @@ -23,6 +23,7 @@
-     "@react-navigation/stack": "~6.0.0",
-     "expo": "^43.0.0",
-     "expo-splash-screen": "~0.13.5",
+     "@react-navigation/stack": "~6.2.0",
+     "expo": "^44.0.0",
+     "expo-splash-screen": "~0.14.1",
 +    "formik": "^2.2.6",
      "react": "17.0.1",
      "react-dom": "17.0.1",
      "react-native": "0.64.3",
 @@ -31,7 +32,8 @@
-     "react-native-reanimated": "~2.2.0",
+     "react-native-reanimated": "~2.3.1",
      "react-native-safe-area-context": "3.3.2",
-     "react-native-screens": "~3.8.0",
+     "react-native-screens": "~3.10.1",
 -    "react-native-web": "0.17.1"
 +    "react-native-web": "0.17.1",
 +    "yup": "^0.32.9"
@@ -32,10 +32,10 @@ index 242be0d..6c8a320 100644
 -import {Text, Button} from 'react-native-elements';
 +import {Button, Input} from 'react-native-elements';
 +import * as Yup from 'yup';
-
+ 
  export const Login: React.FC = () => {
    const userContext = useUserContext();
-
+ 
 -  const login = useCallback(() => {
 -    // 後で例外処理を追加するので、今はlintのエラーは無視してください。
 -    userContext.login('user', 'password');
@@ -59,7 +59,7 @@ index 242be0d..6c8a320 100644
 +    validateOnChange: false,
 +    onSubmit: login,
 +  });
-
+ 
    return (
 -    <View style={styles.container}>
 -      <Text h1>ログイン</Text>
@@ -90,7 +90,7 @@ index 242be0d..6c8a320 100644
      </View>
    );
  };
-
+ 
  const styles = StyleSheet.create({
 -  container: {
 +  form: {
