@@ -95,6 +95,7 @@ keytool -genkey -v -keystore android/app/debug.keystore -storepass android -alia
 - [x] 開発者ごとに簡単にSigningできるように、Signing情報を記述するテンプレートファイルをiOSのビルド設定に追加
 - [x] UIライブラリとして[React Native Elements](https://reactnativeelements.com/)を追加
 - [x] ナビゲーションに[React Navigation](https://reactnavigation.org/)を追加、画面を修正
+- [x] アニメーションライブラリとして[React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)を追加
 - [x] React Native の使い方ページを、 [react-native-template-typescript](https://github.com/react-native-community/react-native-template-typescript) から追加。
   - `src/screens/instructions/Instructions.tsx` は、[react-native-template-typescript](https://github.com/react-native-community/react-native-template-typescript) に含めて配布されている [`App.tsx`](https://github.com/react-native-community/react-native-template-typescript/blob/60690d1f7f3c2856d4c7129fd972400452c9510d/template/App.tsx) を利用しています。
 - [x] Jestの設定を`jest.config.js`に移動し、`react-navigation`と`react-native-screens`に必要なネイティブモジュールをモック化
