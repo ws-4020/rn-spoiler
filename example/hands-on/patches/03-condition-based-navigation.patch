@@ -2,22 +2,25 @@ diff --git a/src/App.tsx b/src/App.tsx
 index d697d1c..2fd4976 100644
 --- a/src/App.tsx
 +++ b/src/App.tsx
-@@ -1,11 +1,14 @@
+@@ -1,4 +1,5 @@
  import {NavigationContainer} from '@react-navigation/native';
 +import {UserContextProvider} from 'contexts/UserContext';
  import {RootStackNav} from 'navigation';
  import React from 'react';
- 
+ import {StyleSheet} from 'react-native';
+@@ -7,9 +8,11 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
  export const App = () => {
    return (
--    <NavigationContainer>
--      <RootStackNav />
--    </NavigationContainer>
-+    <UserContextProvider>
-+      <NavigationContainer>
-+        <RootStackNav />
-+      </NavigationContainer>
-+    </UserContextProvider>
+     <GestureHandlerRootView style={StyleSheet.absoluteFill}>
+-      <NavigationContainer>
+-        <RootStackNav />
+-      </NavigationContainer>
++      <UserContextProvider>
++        <NavigationContainer>
++          <RootStackNav />
++        </NavigationContainer>
++      </UserContextProvider>
+     </GestureHandlerRootView>
    );
  };
 diff --git a/src/contexts/UserContext.tsx b/src/contexts/UserContext.tsx
