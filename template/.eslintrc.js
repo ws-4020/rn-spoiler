@@ -12,5 +12,11 @@ module.exports = {
         project: './tsconfig.json',
       },
     },
+    {
+      files: ['metro.config.js'],
+      env: {
+        node: true,
+      },
+    },
   ],
 };
