@@ -13,6 +13,20 @@ module.exports = {
       },
     },
     {
+      files: ['*.tsx'],
+      rules: {
+        // It is too strict to prohibit passing async functions to `onPress`, so disable the rule in JSX.
+        '@typescript-eslint/no-misused-promises': [
+          'error',
+          {
+            checksVoidReturn: {
+              attributes: false,
+            },
+          },
+        ],
+      },
+    },
+    {
       files: ['metro.config.js'],
       env: {
         node: true,
