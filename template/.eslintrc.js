@@ -27,7 +27,6 @@ module.exports = {
       files: ['*.tsx'],
       rules: {
         // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-misused-promises.md
-        // It is too strict to prohibit passing async functions to `onPress`, so disable the rule in JSX.
         '@typescript-eslint/no-misused-promises': [
           'error',
           {
