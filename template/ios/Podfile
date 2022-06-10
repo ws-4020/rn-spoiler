@@ -34,7 +34,9 @@ target 'HelloWorld' do
 
   # Uncomment to opt-in to using Flipper
   # Note that if you have use_frameworks! enabled, Flipper will not work
-  use_flipper!(configurations: ['Debug', 'DebugAdvanced'])
+  # if !ENV['CI']
+  #   use_flipper!(configurations: ['Debug', 'DebugAdvanced'])
+  # end
 
   post_install do |installer|
     react_native_post_install(installer)
