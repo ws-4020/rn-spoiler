@@ -3,7 +3,7 @@ index e995ccb..3481915 100644
 --- a/package.json
 +++ b/package.json
 @@ -22,6 +22,7 @@
-     "@react-navigation/stack": "~6.2.0",
+     "@react-navigation/stack": "~6.3.0",
      "expo": "^45.0.0",
      "expo-splash-screen": "~0.15.1",
 +    "formik": "^2.2.6",
