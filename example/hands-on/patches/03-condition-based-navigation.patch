@@ -48,7 +48,7 @@ index 0000000..50904ff
 +
 +export const useUserContext = () => useContext(UserContext);
 +
-+export const UserContextProvider: React.FC = ({children}) => {
++export const UserContextProvider: React.FC<React.PropsWithChildren> = ({children}) => {
 +  const [userName, setUserName] = useState<string>('');
 +
 +  const contextValue: ContextValueType = {
