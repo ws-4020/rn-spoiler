@@ -5,6 +5,7 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
+    "prebuild": "expo prebuild --clean --no-install",
     "test": "jest --detectOpenHandles --runInBand",
     "lint": "run-s --print-name --continue-on-error lint:*",
     "lint:es": "eslint --ext .jsx,.js,.tsx,.ts .",
