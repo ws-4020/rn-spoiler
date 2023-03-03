@@ -1,0 +1,2 @@
+# prebuild ごとに変更されるIDを固定値に置換して無視する
+project.pbxproj filter=ignore-pbxproj-random-id

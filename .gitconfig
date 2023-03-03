@@ -1,0 +1,6 @@
+# 最初だけ以下を実行してください
+# git config --local include.path '../.gitconfig'
+
+[filter "ignore-pbxproj-random-id"]
+    smudge = cat
+    clean = sed -E 's![0-9A-F]{24} /[*]!RANDOM_ID_REPLACED /*!g'
