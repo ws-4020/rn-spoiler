@@ -9,11 +9,6 @@ platform :ios, podfile_properties['ios.deploymentTarget'] || '12.4'
 install! 'cocoapods',
   :deterministic_uuids => false
 
-project 'HelloWorld',
-  'Debug' => :debug,
-  'DebugAdvanced' => :debug,
-  'Release' => :release
-
 target 'HelloWorld' do
   use_expo_modules!
   config = use_native_modules!
@@ -25,7 +20,6 @@ target 'HelloWorld' do
 
   use_react_native!(
     :path => config[:reactNativePath],
-    # to enable hermes on iOS, change `false` to `true` and then install pods
     :hermes_enabled => flags[:hermes_enabled] || podfile_properties['expo.jsEngine'] == 'hermes',
     :fabric_enabled => flags[:fabric_enabled],
     # An absolute path to your application root.
@@ -34,8 +28,9 @@ target 'HelloWorld' do
 
   # Uncomment to opt-in to using Flipper
   # Note that if you have use_frameworks! enabled, Flipper will not work
+  #
   # if !ENV['CI']
-  #   use_flipper!(configurations: ['Debug', 'DebugAdvanced'])
+  #   use_flipper!()
   # end
 
   post_install do |installer|
