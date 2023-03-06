@@ -35,7 +35,8 @@
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.15.0",
     "react-native-web": "~0.18.7",
-    "expo-status-bar": "~1.4.0"
+    "expo-status-bar": "~1.4.0",
+    "expo-build-properties": "~0.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
