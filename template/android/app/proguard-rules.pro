@@ -12,3 +12,11 @@
 -keep class com.facebook.react.turbomodule.** { *; }
 
 # Add any project specific keep options here:
+
+# @generated begin expo-build-properties - expo prebuild (DO NOT MODIFY) sync-3b10011dc45cc312f0e48ce52aaf1724f8612e10
+
+# ExpoModulesPakage.ktから、自動生成されたクラスを参照するためにクラス名を利用しているので、クラス名が変わるとアプリが起動しなくなる。
+# https://github.com/expo/expo/blob/sdk-43/packages/expo/android/src/main/java/expo/modules/ExpoModulesPackage.kt#L22
+-keep class expo.modules.ExpoModulesPackageList { *; }
+
+# @generated end expo-build-properties
