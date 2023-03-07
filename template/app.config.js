@@ -6,6 +6,7 @@ module.exports = ({config}) => {
     version: '1.0',
     android: {
       package: 'com.helloworld',
+      allowBackup: false,
     },
     ios: {
       bundleIdentifier: 'org.name.HelloWorld',
