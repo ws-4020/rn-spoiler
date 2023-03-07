@@ -9,6 +9,7 @@ module.exports = ({config}) => {
     },
     ios: {
       bundleIdentifier: 'org.name.HelloWorld',
+      supportsTablet: true,
     },
     plugins: [
       [
