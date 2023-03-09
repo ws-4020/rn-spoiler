@@ -1,9 +1,13 @@
-
 module.exports = ({config}) => {
   const defaultAppConfig = {
     ...config,
     name: 'HelloWorld',
     version: '1.0',
+    splash: {
+      image: './assets/splash.png',
+      resizeMode: 'contain',
+      backgroundColor: '#ffffff',
+    },
     android: {
       package: 'com.helloworld',
       allowBackup: false,
