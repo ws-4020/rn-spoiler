@@ -13,6 +13,12 @@ module.exports = ({config}) => {
     android: {
       package: 'com.helloworld',
       allowBackup: false,
+      blockedPermissions: [
+        'android.permission.READ_EXTERNAL_STORAGE',
+        'android.permission.SYSTEM_ALERT_WINDOW',
+        'android.permission.VIBRATE',
+        'android.permission.WRITE_EXTERNAL_STORAGE',
+      ],
     },
     ios: {
       bundleIdentifier: 'org.name.HelloWorld',
