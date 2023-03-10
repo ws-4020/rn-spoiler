@@ -33,6 +33,7 @@
 		RANDOM_ID_REPLACED /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		RANDOM_ID_REPLACED /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-HelloWorld/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		RANDOM_ID_REPLACED /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "HelloWorld/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		RANDOM_ID_REPLACED /* PersonalAccount.xcconfig */ = {isa = PBXFileReference; name = "PersonalAccount.xcconfig"; path = "HelloWorld/PersonalAccount.xcconfig"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.xcconfig; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +60,7 @@
 				RANDOM_ID_REPLACED /* main.m */,
 				RANDOM_ID_REPLACED /* SplashScreen.storyboard */,
 				RANDOM_ID_REPLACED /* noop-file.swift */,
+				RANDOM_ID_REPLACED /* PersonalAccount.xcconfig */,
 			);
 			name = HelloWorld;
 			sourceTree = "<group>";
@@ -199,6 +201,7 @@
 				RANDOM_ID_REPLACED /* Expo.plist in Resources */,
 				RANDOM_ID_REPLACED /* Images.xcassets in Resources */,
 				RANDOM_ID_REPLACED /* SplashScreen.storyboard in Resources */,
+				RANDOM_ID_REPLACED /* PersonalAccount.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +411,7 @@
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
+			baseConfigurationReference = RANDOM_ID_REPLACED;
 		};
 		RANDOM_ID_REPLACED /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -457,6 +461,7 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+			baseConfigurationReference = RANDOM_ID_REPLACED;
 		};
 /* End XCBuildConfiguration section */
 
