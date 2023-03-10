@@ -1,1 +1,1 @@
-export const _android = 'dummy';
+export * from './withAndroidMoveDevSettingsActivityToDebugAndroidManifest';

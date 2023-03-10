@@ -31,6 +31,7 @@ module.exports = ({config}) => {
           },
         },
       ],
+      appPlugin.withAndroidMoveDevSettingsActivityToDebugAndroidManifest,
       appPlugin.withIosAddPersonalAccountConfig,
     ],
   };
