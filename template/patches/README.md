@@ -17,3 +17,10 @@ React Native Elementsの3系ではこれらの変更に追従できていなか�
 * `ListItem.XXX`のPropsから`tvParallaxProperties`を削除
 * `Input`のPropsの`autoCompleteType`を`autoComplete`に変更
 * `ThemeProvider`のPropsに`children`を追加
+
+## Expo Config Pluginsで、iOS用に追加したファイルのIDを取得できない問題に対処するパッチ
+
+`IOSConfig.XcodeUtils.addResourceFileToGroup`でファイルを追加した際に、追加したファイルのIDが取得できません。
+そのため、追加したファイルのIDを参照するような設定ができない事象が発生しました。
+
+そこで、`IOSConfig.XcodeUtils.addResourceFileToGroup`にファイルのIDを指定できるパッチを当てています。
