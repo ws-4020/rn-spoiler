@@ -29,7 +29,7 @@
 
 1. `ios-deploy --version`を実行して、インストール済みの`ios-deploy`のバージョンが表示されることを確認してください。
    * エラーになった場合は、[ios-deploy](https://github.com/ios-control/ios-deploy)をインストールしてください。
-2. `ios/PersonalAccount.xcconfig.template` を `ios/PersonalAccount.xcconfig` としてコピーしてください。
+2. `config/plugin/template/ios/HelloWorld/PersonalAccount.xcconfig.template` を `config/plugin/template/ios/HelloWorld/PersonalAccount.xcconfig` としてコピーしてください。
 3. ファイルに記載されている設定値を、それぞれ次のように設定してください。
    * `CODE_SIGN_STYLE`: Automatic
    * `PERSONAL_IDENTIFIER`: 他の人とかぶらない、何らかの一意の値

@@ -58,4 +58,4 @@ dist/
 junit.xml
 
 # Local environmental variables
-ios/PersonalAccount.xcconfig
+PersonalAccount.xcconfig
