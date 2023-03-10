@@ -38,6 +38,7 @@ module.exports = ({config}) => {
         },
       ],
       appPlugin.withAndroidMoveDevSettingsActivityToDebugAndroidManifest,
+      appPlugin.withAndroidRemoveUsesClearTextTrafficForRelease,
       appPlugin.withIosAddPersonalAccountConfig,
     ],
   };
