@@ -53,4 +53,7 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: [
+    'config/plugin/build/**',
+  ],
 };
