@@ -41,6 +41,9 @@ module.exports = ({config}) => {
       appPlugin.withAndroidRemoveUsesClearTextTrafficForRelease,
       appPlugin.withIosAddPersonalAccountConfig,
     ],
+    updates: {
+      enabled: false,
+    },
   };
   return defaultAppConfig;
 };
