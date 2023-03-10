@@ -3,4 +3,4 @@
 
 [filter "ignore-pbxproj-random-id"]
     smudge = cat
-    clean = sed -E 's![0-9A-F]{24} /[*]!RANDOM_ID_REPLACED /*!g'
+    clean = sed -E -f ignore-pbxproj-random-id.sed
