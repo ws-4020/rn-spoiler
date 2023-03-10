@@ -195,6 +195,7 @@ template/.gitignore
 template/.expo
 template/ios/Pods/
 template/config/plugin/build/
+template/**/PersonalAccount.xcconfig
 
 ### generated ###
 example/hands-on/generated

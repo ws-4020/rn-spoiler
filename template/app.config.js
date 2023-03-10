@@ -1,3 +1,5 @@
+import * as appPlugin from './config/app.plugin.js';
+
 module.exports = ({config}) => {
   const defaultAppConfig = {
     ...config,
@@ -29,6 +31,7 @@ module.exports = ({config}) => {
           },
         },
       ],
+      appPlugin.withIosAddPersonalAccountConfig,
     ],
   };
   return defaultAppConfig;

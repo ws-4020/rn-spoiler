@@ -1,1 +1,1 @@
-export const _ios = 'dummy';
+export * from './withIosAddPersonalAccountConfig';
