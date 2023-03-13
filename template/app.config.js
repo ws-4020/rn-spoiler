@@ -13,6 +13,10 @@ module.exports = ({config}) => {
     },
     android: {
       package: 'com.helloworld',
+      adaptiveIcon: {
+        foregroundImage: './assets/adaptive-icon.png',
+        backgroundColor: '#FFFFFF',
+      },
       allowBackup: false,
       blockedPermissions: [
         'android.permission.READ_EXTERNAL_STORAGE',
