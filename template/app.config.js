@@ -5,6 +5,7 @@ module.exports = ({config}) => {
     ...config,
     name: 'HelloWorld',
     version: '1.0',
+    icon: './assets/icon.png',
     splash: {
       image: './assets/splash.png',
       resizeMode: 'contain',
