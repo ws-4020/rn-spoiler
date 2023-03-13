@@ -16,6 +16,7 @@
 次のコマンドを実行して、依存パッケージをインストールしてください。
 
 1. `npm ci`
+1. `npm run prebuild`
 2. （macOSのみ）`npx pod-install`
 
 ## アプリを起動する
