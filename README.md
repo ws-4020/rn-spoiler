@@ -85,7 +85,7 @@ RN Spoilerでは新規プロジェクトの作成時に、自動的に`debug.key
 keytool -genkey -v -keystore android/app/debug.keystore -storepass android -alias androiddebugkey -keypass android -dname "CN=Android Debug,O=Android,C=US"
 ```
 
-## `expo-template-bare-typescript` からの変更点
+## `expo-template-blank-typescript` からの変更点
 
 - [x] デフォルトでは`expo-update`を無効化
 - [x] Editorconfig, ESLint, Prettierを追加
