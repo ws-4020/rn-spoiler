@@ -4,7 +4,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
-    "start": "expo start --dev-client",
+    "start": "react-native start",
     "prebuild": "run-s build:plugin && expo prebuild --clean --no-install",
     "build:plugin": "rimraf config/plugin/build && tsc --build config/plugin",
     "test": "jest --detectOpenHandles --runInBand",
@@ -68,7 +68,5 @@
     "titleTemplate": "{title}",
     "ancestorSeparator": " › "
   },
-  "private": true,
-  "name": "template",
-  "version": "1.0.0"
+  "private": true
 }
