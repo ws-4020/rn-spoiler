@@ -1,3 +1,6 @@
+import {AndroidConfig} from '@expo/config-plugins';
+import {createAndroidManifestPlugin} from '@expo/config-plugins/build/plugins/android-plugins';
+
 import * as appPlugin from './config/app.plugin.js';
 
 module.exports = ({config}) => {
@@ -37,6 +40,10 @@ module.exports = ({config}) => {
           },
         },
       ],
+      createAndroidManifestPlugin(
+        (config, androidManifest) => AndroidConfig.Scheme.removeScheme(config.android.package, androidManifest),
+        'withAndroidRemoveScheme',
+      ),
       appPlugin.withAndroidMoveDevSettingsActivityToDebugAndroidManifest,
       appPlugin.withAndroidRemoveUsesClearTextTrafficForRelease,
       appPlugin.withIosAddPersonalAccountConfig,
