@@ -196,6 +196,7 @@ template/.expo
 template/ios/Pods/
 template/config/plugin/build/
 template/**/PersonalAccount.xcconfig
+template/Gemfile.lock
 
 ### generated ###
 example/hands-on/generated
