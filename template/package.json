@@ -4,7 +4,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
-    "start": "react-native start",
+    "start": "expo start --dev-client",
     "prebuild": "expo prebuild --clean --no-install",
     "test": "jest --detectOpenHandles --runInBand",
     "lint": "run-s --print-name --continue-on-error lint:*",
@@ -26,6 +26,7 @@
     "@react-navigation/stack": "~6.3.0",
     "expo": "^46.0.0",
     "expo-splash-screen": "~0.16.2",
+    "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-native": "0.69.5",
@@ -64,5 +65,7 @@
     "titleTemplate": "{title}",
     "ancestorSeparator": " › "
   },
-  "private": true
+  "private": true,
+  "name": "template",
+  "version": "1.0.0"
 }
