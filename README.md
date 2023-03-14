@@ -88,9 +88,16 @@ keytool -genkey -v -keystore android/app/debug.keystore -storepass android -alia
 ## `expo-template-blank-typescript` からの変更点
 
 - [x] デフォルトでは`expo-update`を無効化
+- [x] (prebuildそのまま)`orientation`設定を削除(default: 画面方向ロックなし)
+- [x] (prebuildそのまま)`assetBundlePatterns`設定を削除(default: 無し)
 - [x] Editorconfig, ESLint, Prettierを追加
 - [x] TypeScriptの設定ファイルを修正、`tsc`での型チェックをlintに追加
 - [x] Androidでデフォルトで要求するパーミッションの最小化
+- [x] Androidで`android:usesCleartextTraffic`の設定を削除(default: `false` = HTTPS通信のみ許可)
+- [x] AndroidでDevSettingsActivityの設定を「main/AndroidManifest.xml」から「debug/AndroidManifest.xml」に移動
+- [x] AndroidでデータのGoogle Driveへのバックアップ無効化
+- [x] AndroidでProGuardの除外設定にExpoModulesPackageListを追加
+- [x] カスタムスキーマを削除(セキュリティ強化)
 - [x] `App.tsx`を`src`ディレクトリ配下に移動
 - [x] 開発者ごとに簡単にSigningできるように、Signing情報を記述するテンプレートファイルをiOSのビルド設定に追加
 - [x] UIライブラリとして[React Native Elements](https://reactnativeelements.com/)を追加
