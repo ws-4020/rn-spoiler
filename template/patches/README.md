@@ -30,4 +30,6 @@ React Native Elementsの3系ではこれらの変更に追従できていなか�
 `expo prebuild`時にデフォルトpluginに含まれる`withScheme`pluginによってカスタムスキーマが追加されてしまいます。
 追加されたカスタムスキーマの記述を削除するためのpluginを新規作成するより、該当pluginを無効化したほうがシンプルなためExpo Config Pluginsにパッチを当てて機能拡張しました。
 
+※ 現在は `withPlugins` に渡されている plugin のみが対象です(`withRunOnce`, `withStaticPlugin` は対象外)。
+
 `app.config.js`の`disabledPlugins`にpluginの`name`を追加すれば除外できます。
