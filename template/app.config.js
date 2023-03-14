@@ -34,6 +34,7 @@ module.exports = ({config}) => {
     },
     disabledPlugins: [
       // default plugin を無効化するために patch-package を使用して機能拡張している
+      'withScheme', // カスタムスキーマ 削除
     ],
     plugins: [
       [
