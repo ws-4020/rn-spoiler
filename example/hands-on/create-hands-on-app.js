@@ -74,6 +74,7 @@ async function main() {
     if (7 <= parseFloat(npmVersion)) {
       outputLog(`Reinstall using legacy-peer-deps for npm version 7 or later.`);
       await execute(appDir, `npm install --legacy-peer-deps`);
+      await execute(appDir, `npm run prebuild`);
       await execute(appDir, `npx pod-install`);
     }
 
@@ -102,6 +103,7 @@ async function main() {
 
     // コマンドの実行
     await execute(appDir, `npm i`);
+    await execute(appDir, `npm run prebuild`);
     await execute(appDir, `npx pod-install`);
 
     // コマンドの実行
