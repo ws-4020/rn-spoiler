@@ -32,6 +32,9 @@ module.exports = ({config}) => {
       bundleIdentifier: 'org.name.HelloWorld',
       supportsTablet: true,
     },
+    disabledPlugins: [
+      // default plugin を無効化するために patch-package を使用して機能拡張している
+    ],
     plugins: [
       [
         'expo-build-properties',
