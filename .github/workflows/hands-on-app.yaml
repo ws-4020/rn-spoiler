@@ -9,6 +9,7 @@ on:
       - '*'
     paths:
       - 'template/**'
+      - 'example/hands-on/**'
       - '!**.md'
     types:
       - opened
