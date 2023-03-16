@@ -75,6 +75,10 @@ jobs:
       - name: Install dependencies
         run: npm install --prefix template
 
+      # expo prebuild で template/android ディレクトリを作成します
+      - name: Expo prebuild
+        run: npm run prebuild --prefix template
+
       # Cache '.gradle' to speed up gradle build
       - name: Cache .gradle
         uses: actions/cache@v3
