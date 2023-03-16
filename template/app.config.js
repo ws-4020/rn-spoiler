@@ -49,6 +49,14 @@ module.exports = ({config}) => {
       appPlugin.withAndroidMoveDevSettingsActivityToDebugAndroidManifest,
       appPlugin.withAndroidRemoveUsesClearTextTrafficForRelease,
       appPlugin.withIosAddPersonalAccountConfig,
+      [
+        appPlugin.withIosSetCredentials,
+        {
+          developmentTeam: '${DEVELOPMENT_TEAM}',
+          codeSignStyle: '${CODE_SIGN_STYLE}',
+          bundleIdentifier: 'personal.org.name.HelloWorld.${PERSONAL_IDENTIFIER}',
+        },
+      ],
     ],
     updates: {
       enabled: false,
