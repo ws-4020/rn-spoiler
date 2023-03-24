@@ -46,16 +46,17 @@ buck-out/
 # Bundle artifacts
 *.jsbundle
 
-# CocoaPods
-/ios/Pods/
-
 # Expo
 .expo/
 web-build/
 dist/
 
+## Prebuild
+/android/
+/ios/
+
 # Jest
 junit.xml
 
 # Local environmental variables
-ios/PersonalAccount.xcconfig
+PersonalAccount.xcconfig

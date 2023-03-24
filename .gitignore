@@ -189,11 +189,15 @@ _*[Ss]cratch*
 
 ### React Native template ###
 template/package-lock.json
-template/ios/Podfile.lock
-template/android/app/src/main/java/com/helloworld/generated/BasePackageList.java
 template/.gitignore
 template/.expo
-template/ios/Pods/
+template/config/plugin/build/
+template/**/PersonalAccount.xcconfig
+template/Gemfile.lock
+
+#### Prebuild
+template/android/
+template/ios/
 
 ### generated ###
 example/hands-on/generated

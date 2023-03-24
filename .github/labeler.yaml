@@ -1,15 +1,13 @@
-# Add 'iOS' label to any change within the 'ios' directory
-iOS:
-  - template/ios/**/*
-
-# Add 'Android' label to any change within the 'android' directory
-Android:
-  - template/android/**/*
+# Add 'native' label in case of prebuild related changes
+native:
+  - template/app.config.js
+  - template/config/**/*
+  - template/assets/**/*
 
 # Add 'app' label to any change within the 'src' directory and to the files listed below
 app:
   - template/src/**/*
-  - template/app.json
+  - template/app.config.js
   - template/index.js
 
 # Add 'build' label to any changes to the files listed below

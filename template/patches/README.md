@@ -17,3 +17,19 @@ React Native Elementsの3系ではこれらの変更に追従できていなか�
 * `ListItem.XXX`のPropsから`tvParallaxProperties`を削除
 * `Input`のPropsの`autoCompleteType`を`autoComplete`に変更
 * `ThemeProvider`のPropsに`children`を追加
+
+## Expo Config Pluginsで、iOS用に追加したファイルのIDを取得できない問題に対処するパッチ
+
+`IOSConfig.XcodeUtils.addResourceFileToGroup`でファイルを追加した際に、追加したファイルのIDが取得できません。
+そのため、追加したファイルのIDを参照するような設定ができない事象が発生しました。
+
+そこで、`IOSConfig.XcodeUtils.addResourceFileToGroup`にファイルのIDを指定できるパッチを当てています。
+
+## Expo Config Pluginsで、デフォルトpluginを無効化できるようにするパッチ
+
+`expo prebuild`時にデフォルトpluginに含まれる`withScheme`pluginによってカスタムスキーマが追加されてしまいます。
+追加されたカスタムスキーマの記述を削除するためのpluginを新規作成するより、該当pluginを無効化したほうがシンプルなためExpo Config Pluginsにパッチを当てて機能拡張しました。
+
+※ 現在は `withPlugins` に渡されている plugin のみが対象です(`withRunOnce`, `withStaticPlugin` は対象外)。
+
+`app.config.js`の`disabledPlugins`にpluginの`name`を追加すれば除外できます。
