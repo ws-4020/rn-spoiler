@@ -6,6 +6,7 @@ import {act, create} from 'react-test-renderer';
 import {App} from './App';
 
 jest.useFakeTimers();
+// eslint-disable-next-line jest/expect-expect
 it('renders correctly', async () => {
   // eslint-disable-next-line @typescript-eslint/require-await
   await act(async () => {
