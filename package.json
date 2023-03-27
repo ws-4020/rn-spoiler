@@ -16,6 +16,6 @@
     "create-app:hands-on": "node example/hands-on/create-hands-on-app.js"
   },
   "devDependencies": {
-    "commander": "^9.0.0"
+    "commander": "^10.0.0"
   }
 }
