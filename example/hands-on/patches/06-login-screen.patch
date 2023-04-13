@@ -1,15 +1,15 @@
 diff --git a/package.json b/package.json
-index e995ccb..3481915 100644
+index cb8af47..5f64535 100644
 --- a/package.json
 +++ b/package.json
-@@ -28,6 +28,7 @@
-     "expo": "~46.0.19",
+@@ -29,6 +29,7 @@
      "expo-build-properties": "~0.3.0",
      "expo-splash-screen": "~0.16.2",
-+    "formik": "^2.2.6",
      "expo-status-bar": "~1.4.0",
++    "formik": "^2.2.6",
      "react": "18.0.0",
      "react-dom": "18.0.0",
+     "react-native": "0.69.9",
 @@ -37,7 +38,8 @@
      "react-native-reanimated": "~2.9.1",
      "react-native-safe-area-context": "3.3.2",
