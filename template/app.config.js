@@ -15,7 +15,7 @@ module.exports = ({config}) => {
       package: 'com.helloworld',
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#ffffff',
       },
       allowBackup: false,
       blockedPermissions: [
