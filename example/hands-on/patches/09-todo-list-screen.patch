@@ -81,7 +81,7 @@ index 0000000..86a7aa7
 +});
 diff --git a/src/components/parts/todo/TodoList.tsx b/src/components/parts/todo/TodoList.tsx
 new file mode 100644
-index 0000000..9cf973f
+index 0000000..07310f9
 --- /dev/null
 +++ b/src/components/parts/todo/TodoList.tsx
 @@ -0,0 +1,38 @@
@@ -133,10 +133,10 @@ index 0000000..232d971
 +export * from './TodoList';
 +export * from './TodoItem';
 diff --git a/src/screens/todo/TodoBoard.tsx b/src/screens/todo/TodoBoard.tsx
-index 04143f1..de0c824 100644
+index 04143f1..8d1de08 100644
 --- a/src/screens/todo/TodoBoard.tsx
 +++ b/src/screens/todo/TodoBoard.tsx
-@@ -1,15 +1,83 @@
+@@ -1,15 +1,82 @@
  import {useNavigation} from '@react-navigation/native';
 -import React from 'react';
 -import {StyleSheet, View} from 'react-native';
@@ -156,7 +156,7 @@ index 04143f1..de0c824 100644
 +  [FilterType.INCOMPLETE]: todo => !todo.completed,
 +  [FilterType.COMPLETED]: todo => todo.completed,
 +};
-
+ 
  export const TodoBoard: React.FC = () => {
    const navigation = useNavigation();
 +  const {theme} = useContext(ThemeContext);
@@ -198,7 +198,7 @@ index 04143f1..de0c824 100644
 +  };
 +
 +  const showTodos = todos.filter(showFilter[filterType]);
-
+ 
    return (
 -    <View style={styles.container}>
 -      <Text h1>Todo</Text>
@@ -215,7 +215,6 @@ index 04143f1..de0c824 100644
 +        name="plus"
 +        type="font-awesome-5"
 +        color={theme.colors?.primary}
-+        raised
 +        reverse
 +        size={30}
 +        containerStyle={styles.iconContainerStyle}
@@ -226,7 +225,7 @@ index 04143f1..de0c824 100644
      </View>
    );
  };
-@@ -17,7 +85,15 @@ export const TodoBoard: React.FC = () => {
+@@ -17,7 +84,15 @@ export const TodoBoard: React.FC = () => {
  const styles = StyleSheet.create({
    container: {
      flex: 1,
@@ -246,7 +245,7 @@ index 04143f1..de0c824 100644
  });
 diff --git a/src/services/TodoService.tsx b/src/services/TodoService.tsx
 new file mode 100644
-index 0000000..2115292
+index 0000000..ed365ae
 --- /dev/null
 +++ b/src/services/TodoService.tsx
 @@ -0,0 +1,80 @@
