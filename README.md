@@ -90,6 +90,7 @@ keytool -genkey -v -keystore android/app/debug.keystore -storepass android -alia
 - [x] デフォルトでは`expo-update`を無効化
 - [x] (prebuildそのまま)`orientation`設定を削除(default: 画面方向ロックなし)
 - [x] (prebuildそのまま)`assetBundlePatterns`設定を削除(default: 無し)
+- [x] npm scriptsから`web`を削除
 - [x] Editorconfig, ESLint, Prettierを追加
 - [x] TypeScriptの設定ファイルを修正、`tsc`での型チェックをlintに追加
 - [x] Androidでデフォルトで要求するパーミッションの最小化

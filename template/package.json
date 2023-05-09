@@ -3,7 +3,6 @@
   "scripts": {
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web",
     "start": "expo start --dev-client",
     "prebuild": "run-s build:plugin && expo prebuild --clean --no-install",
     "build:plugin": "rimraf config/plugin/build && tsc --build config/plugin",
