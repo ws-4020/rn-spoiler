@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@react-native-masked-view/masked-view": "0.2.8",
-    "@react-navigation/bottom-tabs": "~6.4.0",
-    "@react-navigation/native": "~6.0.0",
+    "@react-navigation/bottom-tabs": "~6.5.0",
+    "@react-navigation/native": "~6.1.0",
     "@react-navigation/stack": "~6.3.0",
     "expo": "^48.0.15",
     "expo-build-properties": "~0.6.0",
