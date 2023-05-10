@@ -1,5 +1,5 @@
 diff --git a/node_modules/@expo/config-plugins/build/ios/utils/Xcodeproj.d.ts b/node_modules/@expo/config-plugins/build/ios/utils/Xcodeproj.d.ts
-index 403356f..8048396 100644
+index 8a1fc4e..a72436c 100644
 --- a/node_modules/@expo/config-plugins/build/ios/utils/Xcodeproj.d.ts
 +++ b/node_modules/@expo/config-plugins/build/ios/utils/Xcodeproj.d.ts
 @@ -14,13 +14,15 @@ export declare function getHackyProjectName(projectRoot: string, config: ExpoCon
@@ -38,10 +38,10 @@ index 403356f..8048396 100644
  export declare function getApplicationNativeTarget({ project, projectName, }: {
      project: XcodeProject;
 diff --git a/node_modules/@expo/config-plugins/build/ios/utils/Xcodeproj.js b/node_modules/@expo/config-plugins/build/ios/utils/Xcodeproj.js
-index 840276a..e205dba 100644
+index f2ff872..f39fd90 100644
 --- a/node_modules/@expo/config-plugins/build/ios/utils/Xcodeproj.js
 +++ b/node_modules/@expo/config-plugins/build/ios/utils/Xcodeproj.js
-@@ -181,7 +181,9 @@ function addResourceFileToGroup({
+@@ -146,7 +146,9 @@ function addResourceFileToGroup({
    isBuildFile,
    project,
    verbose,
@@ -52,24 +52,16 @@ index 840276a..e205dba 100644
  }) {
    return addFileToGroupAndLink({
      filepath,
-@@ -189,6 +191,8 @@ function addResourceFileToGroup({
+@@ -154,6 +156,8 @@ function addResourceFileToGroup({
      project,
      verbose,
      targetUuid,
 +    fileUuid,
 +    fileRef,
- 
      addFileToProject({
        project,
-@@ -202,7 +206,6 @@ function addResourceFileToGroup({
- 
-       project.addToPbxResourcesBuildPhase(file);
-     }
--
-   });
- }
- /**
-@@ -246,7 +249,9 @@ function addFileToGroupAndLink({
+       file
+@@ -204,7 +208,9 @@ function addFileToGroupAndLink({
    project,
    verbose,
    addFileToProject,
@@ -80,10 +72,10 @@ index 840276a..e205dba 100644
  }) {
    const group = pbxGroupByPathOrAssert(project, groupName);
    const file = createProjectFileForGroup({
-@@ -271,8 +276,16 @@ function addFileToGroupAndLink({
+@@ -225,8 +231,16 @@ function addFileToGroupAndLink({
+     const applicationNativeTarget = project.getTarget('com.apple.product-type.application');
      file.target = applicationNativeTarget === null || applicationNativeTarget === void 0 ? void 0 : applicationNativeTarget.uuid;
    }
- 
 -  file.uuid = project.generateUuid();
 -  file.fileRef = project.generateUuid();
 +  if (fileUuid) {
@@ -100,10 +92,10 @@ index 840276a..e205dba 100644
      project,
      file
 diff --git a/node_modules/@expo/config-plugins/build/plugins/withPlugins.js b/node_modules/@expo/config-plugins/build/plugins/withPlugins.js
-index 9349fdc..2981d7b 100644
+index 3623bd4..e389145 100644
 --- a/node_modules/@expo/config-plugins/build/plugins/withPlugins.js
 +++ b/node_modules/@expo/config-plugins/build/plugins/withPlugins.js
-@@ -35,6 +35,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
+@@ -27,6 +27,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   */
  const withPlugins = (config, plugins) => {
    (0, _assert().default)(Array.isArray(plugins), 'withPlugins expected a valid array of plugins or plugin module paths');
