@@ -10,6 +10,7 @@ on:
     paths:
       - 'template/**'
       - 'example/hands-on/**'
+      - 'package-lock.json'
       - '!**.md'
     types:
       - opened
