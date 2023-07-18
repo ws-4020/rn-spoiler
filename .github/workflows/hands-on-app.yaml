@@ -11,6 +11,7 @@ on:
       - 'template/**'
       - 'example/hands-on/**'
       - 'package-lock.json'
+      - '.github/workflows/hands-on-app.yaml'
       - '!**.md'
     types:
       - opened
