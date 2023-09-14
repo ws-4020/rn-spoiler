@@ -94,7 +94,6 @@ keytool -genkey -v -keystore android/app/debug.keystore -storepass android -alia
 - [x] Editorconfig, ESLint, Prettierを追加
 - [x] TypeScriptの設定ファイルを修正、`tsc`での型チェックをlintに追加
 - [x] Androidでデフォルトで要求するパーミッションの最小化
-- [x] Androidで`android:usesCleartextTraffic`の設定を削除(default: `false` = HTTPS通信のみ許可)
 - [x] AndroidでDevSettingsActivityの設定を「main/AndroidManifest.xml」から「debug/AndroidManifest.xml」に移動
 - [x] AndroidでデータのGoogle Driveへのバックアップ無効化
 - [x] AndroidでProGuardの除外設定にExpoModulesPackageListを追加
