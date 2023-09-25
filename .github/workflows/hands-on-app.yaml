@@ -3,13 +3,15 @@ name: HandsOnApp
 on:
   push:
     branches:
-      - '*'
+      - master
   pull_request:
     branches:
-      - '*'
+      - master
     paths:
       - 'template/**'
       - 'example/hands-on/**'
+      - 'package-lock.json'
+      - '.github/workflows/hands-on-app.yaml'
       - '!**.md'
     types:
       - opened
