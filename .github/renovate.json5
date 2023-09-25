@@ -38,8 +38,11 @@
         '@types/react',
         'babel-preset-expo',
         'expo',
+        'expo-build-properties',
         'expo-splash-screen',
+        'expo-status-bar',
         'jest',
+        'jest-expo',
         'react',
         'react-native',
         'react-native-gesture-handler',
@@ -54,6 +57,8 @@
       groupName: 'Depends on Expo version',
       enabled: false,
       matchPackageNames: [
+        // expo -> @expo/cli
+        '@expo/config-plugins',
         // jest-expo -> jest
         '@types/jest',
         // react, jest-expo -> react-test-renderer
