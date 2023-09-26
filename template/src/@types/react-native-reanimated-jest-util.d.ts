@@ -12,7 +12,7 @@ declare namespace jest {
   }
 }
 
-declare module 'react-native-reanimated/lib/reanimated2/jestUtils' {
+declare module 'react-native-reanimated/lib/module/reanimated2/jestUtils' {
   import {ReactTestInstance} from 'react-test-renderer';
   // eslint-disable-next-line import/no-duplicates
   import {ImageStyle, TextStyle, ViewStyle} from 'react-native';
