@@ -8,6 +8,7 @@
     - WindowsでChocolateyでインストールする場合は、 `node-lts` パッケージをおすすめします。
   - 「Development OS」は、開発に利用している OS を選択してください。
   - （macOSのみ）「Target OS」は、「iOS」「Android」の両方の手順を実施してください。
+- Visual Studio Code用の設定が含まれています。`Extensions`→`Recommended`で表示される`WORKSPACE RECOMMENDATIONS`に表示される拡張機能をインストールすると、ファイル保存時の自動formatなどが働くようになります。
 
 ## 依存パッケージのインストール
 
