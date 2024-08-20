@@ -1,13 +1,10 @@
 declare namespace jest {
-  import Reanimated from 'react-native-reanimated';
-  // eslint-disable-next-line import/no-duplicates
-  import {ImageStyle, TextStyle, ViewStyle} from 'react-native';
-
   interface Matchers<R> {
     toHaveAnimatedStyle(
-      style:
-        | Reanimated.AnimateStyle<ViewStyle | ImageStyle | TextStyle>[]
-        | Reanimated.AnimateStyle<ViewStyle | ImageStyle | TextStyle>,
+      style: Record<string, unknown>[] | Record<string, unknown>,
+      config?: {
+        shouldMatchAllProps?: boolean;
+      },
     ): R;
   }
 }
