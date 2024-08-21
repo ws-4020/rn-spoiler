@@ -1,0 +1,37 @@
+diff --git a/node_modules/@expo/config-plugins/build/ios/utils/Xcodeproj.d.ts b/node_modules/@expo/config-plugins/build/ios/utils/Xcodeproj.d.ts
+index 928ad98..525cebf 100644
+--- a/node_modules/@expo/config-plugins/build/ios/utils/Xcodeproj.d.ts
++++ b/node_modules/@expo/config-plugins/build/ios/utils/Xcodeproj.d.ts
+@@ -20,13 +20,15 @@ export declare function getHackyProjectName(projectRoot: string, config: ExpoCon
+  * Add a resource file (ex: `SplashScreen.storyboard`, `Images.xcassets`) to an Xcode project.
+  * This is akin to creating a new code file in Xcode with `⌘+n`.
+  */
+-export declare function addResourceFileToGroup({ filepath, groupName, isBuildFile, project, verbose, targetUuid, }: {
++export declare function addResourceFileToGroup({ filepath, groupName, isBuildFile, project, verbose, targetUuid, fileUuid, fileRef, }: {
+     filepath: string;
+     groupName: string;
+     isBuildFile?: boolean;
+     project: XcodeProject;
+     verbose?: boolean;
+     targetUuid?: string;
++    fileUuid?: string;
++    fileRef?: string;
+ }): XcodeProject;
+ /**
+  * Add a build source file (ex: `AppDelegate.m`, `ViewController.swift`) to an Xcode project.
+@@ -39,12 +41,14 @@ export declare function addBuildSourceFileToGroup({ filepath, groupName, project
+     verbose?: boolean;
+     targetUuid?: string;
+ }): XcodeProject;
+-export declare function addFileToGroupAndLink({ filepath, groupName, project, verbose, addFileToProject, targetUuid, }: {
++export declare function addFileToGroupAndLink({ filepath, groupName, project, verbose, addFileToProject, targetUuid, fileUuid, fileRef, }: {
+     filepath: string;
+     groupName: string;
+     project: XcodeProject;
+     verbose?: boolean;
+     targetUuid?: string;
++    fileUuid?: string;
++    fileRef?: string;
+     addFileToProject: (props: {
+         file: PBXFile;
+         project: XcodeProject;
