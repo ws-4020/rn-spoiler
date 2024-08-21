@@ -73,15 +73,10 @@ async function main() {
     const npmVersion = await getNpmVersion();
     if (7 <= parseFloat(npmVersion)) {
       outputLog(`Reinstall using legacy-peer-deps for npm version 7 or later.`);
-      await execute(appDir, `npm install --legacy-peer-deps`);
+      await execute(appDir, `npm install`);
       await execute(appDir, `npm run prebuild`);
       await execute(appDir, `npx pod-install`);
     }
-
-    // コマンドの実行
-    await execute(appDir, `git init`);
-    await execute(appDir, `git add .`);
-    await execute(appDir, `git commit -m "initial commit"`);
 
     // パッチファイルを適用
     const patchesDir = `${__dirname}/patches`;
@@ -163,13 +158,7 @@ function outputLog(str) {
  */
 function execute(cwd, cmd) {
   return new Promise((resolve, reject) => {
-    const proc = spawn(cmd, {shell: true, cwd: cwd});
-    proc.stdout.on('data', (data) => {
-      outputLog(data.toString());
-    });
-    proc.stderr.on('data', (data) => {
-      outputLog(data.toString());
-    });
+    const proc = spawn(cmd, {shell: true, cwd: cwd, stdio: ['inherit', 'inherit', 'inherit']});
     proc.on('exit', (code) => {
       if (code !== 0) {
         outputLog(`Command failed. cmd: [${cmd}] code: [${code}]`);
