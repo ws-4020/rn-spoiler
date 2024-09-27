@@ -39,7 +39,7 @@ index 0000000..bc381ac
 +        component={TodoStackNav}
 +        options={{
 +          title: 'ホーム',
-+          tabBarIcon: ({color}) => <Ionicons name="md-home" size={30} color={color} />,
++          tabBarIcon: ({color}) => <Ionicons name="home" size={30} color={color} />,
 +        }}
 +      />
 +      <nav.Screen
@@ -47,7 +47,7 @@ index 0000000..bc381ac
 +        component={SettingsStackNav}
 +        options={{
 +          title: '設定',
-+          tabBarIcon: ({color}) => <Ionicons name="md-settings" size={30} color={color} />,
++          tabBarIcon: ({color}) => <Ionicons name="settings" size={30} color={color} />,
 +        }}
 +      />
 +    </nav.Navigator>
