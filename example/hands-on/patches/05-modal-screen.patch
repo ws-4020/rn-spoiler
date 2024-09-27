@@ -20,7 +20,7 @@ index 510f506..9f47f9c 100644
 +  return (
 +    <Button
 +      type="clear"
-+      icon={<Ionicons name="md-close" color={theme.colors?.primary} size={30} />}
++      icon={<Ionicons name="close" color={theme.colors?.primary} size={30} />}
 +      onPress={onClose}
 +    />
 +  );
