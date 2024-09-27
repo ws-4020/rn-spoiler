@@ -163,13 +163,7 @@ function outputLog(str) {
  */
 function execute(cwd, cmd) {
   return new Promise((resolve, reject) => {
-    const proc = spawn(cmd, {shell: true, cwd: cwd});
-    proc.stdout.on('data', (data) => {
-      outputLog(data.toString());
-    });
-    proc.stderr.on('data', (data) => {
-      outputLog(data.toString());
-    });
+    const proc = spawn(cmd, {shell: true, cwd: cwd, stdio: ['inherit', 'inherit', 'inherit']});
     proc.on('exit', (code) => {
       if (code !== 0) {
         outputLog(`Command failed. cmd: [${cmd}] code: [${code}]`);
