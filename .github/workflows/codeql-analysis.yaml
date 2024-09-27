@@ -91,6 +91,11 @@ jobs:
           restore-keys: |
             1-${{ runner.os }}-gradle-
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.17.x'
+
       # Setup Java
       - name: Setup Java
         if: ${{ matrix.language == 'java' }}
