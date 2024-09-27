@@ -3,8 +3,8 @@ import fs from 'fs';
 import path from 'path';
 
 import {PbxProjectConfig} from './PbxProjectConfig';
-import {PbxProject} from './types/pbxproj';
 import {IOS} from '../constants';
+import {PbxProject} from './types/pbxproj';
 import {copyFile} from '../utils/copyFile';
 
 const PERSONAL_ACCOUNT_CONFIG_FILE_NAME = 'PersonalAccount.xcconfig';
