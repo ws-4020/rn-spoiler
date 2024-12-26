@@ -34,7 +34,7 @@ $ npm ls -g --depth=0
 次のコマンドを実行して、新規プロジェクトを作成できます。
 
 ```bash
-npx react-native@0.75.4 init --template https://github.com/ws-4020/rn-spoiler.git <YourAppName>
+npx @react-native-community/cli init --pm npm --template https://github.com/ws-4020/rn-spoiler.git <YourAppName>
 ```
 
 `<YourAppName>` に設定した名前でディレクトリが作成されます。
