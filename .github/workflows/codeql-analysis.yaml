@@ -94,7 +94,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.17.x'
+          node-version: '20.20.x'
 
       # Setup Java
       - name: Setup Java
