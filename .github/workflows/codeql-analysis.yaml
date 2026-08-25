@@ -99,7 +99,7 @@ jobs:
       # Setup Java
       - name: Setup Java
         if: ${{ matrix.language == 'java' }}
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           distribution: 'zulu'
           java-version: '17'
